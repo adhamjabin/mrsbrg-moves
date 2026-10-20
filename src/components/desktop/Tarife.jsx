@@ -31,37 +31,41 @@ export default function Tarife({ accent }) {
         </div>
 
         <div style={{ marginTop: 64, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: 20 }}>
-          <article className="plan rv" style={{ ...planStyle, background: '#121212', color: '#EFEDE8', position: 'relative', overflow: 'hidden' }}>
-            <div style={headRow}>
-              <span className="k" style={{ fontSize: 18 }}>12 Monate</span>
-              <span className="k" style={{ fontSize: 14, background: accent, color: '#121212', padding: '6px 12px', borderRadius: 2 }}>Bester Preis</span>
-            </div>
-            <div style={priceRow}>
-              <span className="d" style={{ ...bigPrice, color: accent }}>29,90</span>
-              <span className="k" style={{ fontSize: 20, paddingBottom: 14 }}>€ / Monat</span>
-            </div>
-            <Rows
-              rows={[['Gründer-Konditionen', 'gesichert'], ['Laufzeit', '12 Monate'], ['Erstes Jahr inkl. Startpaket', '407,80 €']]}
-              color="#C9C6C0" valueColor="#ffffff" lineColor="#333333"
-            />
-            <a className="btn b-acc" href="#besuch" style={{ alignSelf: 'flex-start' }}>Jetzt sichern <ArrowIcon /></a>
-          </article>
+          <div className="rv" style={{ display: 'flex' }}>
+            <article className="plan" style={{ ...planStyle, flex: 1, background: '#121212', color: '#EFEDE8', position: 'relative', overflow: 'hidden' }}>
+              <div style={headRow}>
+                <span className="k" style={{ fontSize: 18 }}>12 Monate</span>
+                <span className="k" style={{ fontSize: 14, background: accent, color: '#121212', padding: '6px 12px', borderRadius: 2 }}>Bester Preis</span>
+              </div>
+              <div style={priceRow}>
+                <span className="d" style={{ ...bigPrice, color: accent }}>29,90</span>
+                <span className="k" style={{ fontSize: 20, paddingBottom: 14 }}>€ / Monat</span>
+              </div>
+              <Rows
+                rows={[['Gründer-Konditionen', 'gesichert'], ['Laufzeit', '12 Monate'], ['Erstes Jahr inkl. Startpaket', '407,80 €']]}
+                color="#C9C6C0" valueColor="#ffffff" lineColor="#333333"
+              />
+              <a className="btn b-acc" href="#besuch" style={{ alignSelf: 'flex-start' }}>Jetzt sichern <ArrowIcon /></a>
+            </article>
+          </div>
 
-          <article className="plan rv tt" style={{ ...planStyle, background: 'var(--alt-bg)', color: 'var(--alt-fg)', boxShadow: 'inset 0 0 0 2px #121212' }}>
-            <div style={headRow}>
-              <span className="k" style={{ fontSize: 18 }}>3 Monate</span>
-              <span className="k" style={{ fontSize: 14, boxShadow: 'inset 0 0 0 1.5px #121212', padding: '6px 12px', borderRadius: 2 }}>Zum Ausprobieren</span>
-            </div>
-            <div style={priceRow}>
-              <span className="d" style={bigPrice}>34,90</span>
-              <span className="k" style={{ fontSize: 20, paddingBottom: 14 }}>€ / Monat</span>
-            </div>
-            <Rows
-              rows={[['Ideal für den Einstieg', 'kurz & flexibel'], ['Laufzeit', '3 Monate'], ['Gesamt inkl. Startpaket', '153,70 €']]}
-              color="var(--alt-muted)" valueColor="var(--alt-fg)" lineColor="var(--alt-line)"
-            />
-            <a className="btn b-ink" href="#besuch" style={{ alignSelf: 'flex-start' }}>Ausprobieren <ArrowIcon /></a>
-          </article>
+          <div className="rv" style={{ '--d': '.1s', display: 'flex' }}>
+            <article className="plan tt" style={{ ...planStyle, flex: 1, background: 'var(--alt-bg)', color: 'var(--alt-fg)', boxShadow: 'inset 0 0 0 2px #121212' }}>
+              <div style={headRow}>
+                <span className="k" style={{ fontSize: 18 }}>3 Monate</span>
+                <span className="k" style={{ fontSize: 14, boxShadow: 'inset 0 0 0 1.5px #121212', padding: '6px 12px', borderRadius: 2 }}>Zum Ausprobieren</span>
+              </div>
+              <div style={priceRow}>
+                <span className="d" style={bigPrice}>34,90</span>
+                <span className="k" style={{ fontSize: 20, paddingBottom: 14 }}>€ / Monat</span>
+              </div>
+              <Rows
+                rows={[['Ideal für den Einstieg', 'kurz & flexibel'], ['Laufzeit', '3 Monate'], ['Gesamt inkl. Startpaket', '153,70 €']]}
+                color="var(--alt-muted)" valueColor="var(--alt-fg)" lineColor="var(--alt-line)"
+              />
+              <a className="btn b-ink" href="#besuch" style={{ alignSelf: 'flex-start' }}>Ausprobieren <ArrowIcon /></a>
+            </article>
+          </div>
         </div>
 
         <div className="rv tt" style={{ marginTop: 20, borderRadius: 4, background: 'var(--alt-surface)', padding: '26px clamp(24px, 4vw, 48px)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px 40px', flexWrap: 'wrap' }}>

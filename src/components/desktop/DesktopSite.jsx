@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+import { useReveal } from '../../hooks/useReveal.js'
 import Header from './Header.jsx'
 import Hero from './Hero.jsx'
 import Marquee from '../Marquee.jsx'
@@ -10,8 +12,10 @@ import Cta from './Cta.jsx'
 import Footer from './Footer.jsx'
 
 export default function DesktopSite({ theme, accent, accentText }) {
+  const rootRef = useRef(null)
+  useReveal(rootRef)
   return (
-    <div className={'root dsk tt ' + theme.mode} style={{ '--acc': accent }}>
+    <div ref={rootRef} className={'root dsk tt ' + theme.mode} style={{ '--acc': accent }}>
       <a href="#tarife" style={{ display: 'block', background: accent, color: '#121212', textDecoration: 'none' }}>
         <div className="wrap k" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, minHeight: 44, fontSize: 15, textAlign: 'center' }}>
           <span className="live" aria-hidden="true" />

@@ -39,7 +39,4 @@
 .dsk .sb:hover{color:var(--hi)}
 .dsk .sb svg{transition:transform .5s cubic-bezier(.34,1.4,.64,1)}
 .dsk .sb.on svg{transform:rotate(-20deg) scale(1.1)}
-@supports (animation-timeline: view()){
- .dsk .rv{animation:fadeup linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
-}
 @media (max-width:900px){.dsk .hs{display:none !important}}

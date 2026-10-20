@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import heroImg from '../../assets/hero.jpg'
+import { useRef, useState } from 'react'
+import { useReveal } from '../../hooks/useReveal.js'
+import heroImg from '../../assets/hero.webp'
 import Logo from '../Logo.jsx'
 import Marquee from '../Marquee.jsx'
 import FaqList from '../FaqList.jsx'
@@ -23,11 +24,13 @@ export default function MobileSite({ theme, accent, accentText }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [plan, setPlan] = useState(12)
   const closeMenu = () => setMenuOpen(false)
+  const rootRef = useRef(null)
+  useReveal(rootRef)
 
   const menuLink = { fontSize: 56, color: 'var(--hi)', textDecoration: 'none', padding: '10px 0', borderBottom: '1px solid var(--line)' }
 
   return (
-    <div className={'root mob tt ' + theme.mode} style={{ '--acc': accent }}>
+    <div ref={rootRef} className={'root mob tt ' + theme.mode} style={{ '--acc': accent }}>
       {/* Announcement */}
       <a href="#tarife" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 40, padding: '0 16px', background: accent, color: '#121212', textDecoration: 'none' }}>
         <span className="live" aria-hidden="true" />
@@ -78,7 +81,7 @@ export default function MobileSite({ theme, accent, accentText }) {
 
           <div className="in2" style={{ position: 'relative', margin: '28px 20px 0' }}>
             <div style={{ aspectRatio: '4 / 5', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
-              <img className="zoom" src={heroImg} alt="Langhantel mit orangen und schwarzen Hantelscheiben auf dem Studioboden" style={imgFill} />
+              <img className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={imgFill} />
             </div>
             <div
               className="plate"
@@ -100,8 +103,8 @@ export default function MobileSite({ theme, accent, accentText }) {
           </div>
 
           <div className="snap" style={{ marginTop: 36, paddingBottom: 36 }}>
-            {facts.map((f) => (
-              <div key={f.value} style={{ width: 210, padding: 18, borderRadius: 4, background: 'var(--surface)' }}>
+            {facts.map((f, i) => (
+              <div key={f.value} className="rv" style={{ '--d': i * 0.08 + 's', width: 210, padding: 18, borderRadius: 4, background: 'var(--surface)' }}>
                 <div className="d" style={{ fontSize: 40, color: 'var(--hi)' }}>{f.value}</div>
                 <div style={{ color: 'var(--muted)', fontSize: 15, marginTop: 6 }}>{f.label}</div>
               </div>
@@ -115,11 +118,11 @@ export default function MobileSite({ theme, accent, accentText }) {
         <section id="tarife" className="tt" style={{ background: 'var(--alt-bg)', color: 'var(--alt-fg)', padding: '64px 0' }}>
           <div className="px">
             <h2 className="d rv" style={h2}>Gründer-<br />Tarife</h2>
-            <p style={{ margin: '14px 0 0', color: 'var(--alt-muted)' }}>
+            <p className="rv" style={{ margin: '14px 0 0', color: 'var(--alt-muted)' }}>
               Zur Eröffnung die besten Konditionen sichern. <strong style={{ color: 'var(--alt-fg)' }}>Nur für kurze Zeit.</strong>
             </p>
 
-            <div role="group" aria-label="Laufzeit wählen" style={{ marginTop: 28, display: 'flex', gap: 4, padding: 4, borderRadius: 999, background: 'var(--alt-surface)' }}>
+            <div className="rv" role="group" aria-label="Laufzeit wählen" style={{ marginTop: 28, display: 'flex', gap: 4, padding: 4, borderRadius: 999, background: 'var(--alt-surface)' }}>
               <button type="button" className={plan === 12 ? 'pill on' : 'pill'} onClick={() => setPlan(12)} aria-pressed={plan === 12}>12 Monate</button>
               <button type="button" className={plan === 3 ? 'pill on' : 'pill'} onClick={() => setPlan(3)} aria-pressed={plan === 3}>3 Monate</button>
             </div>
@@ -147,7 +150,7 @@ export default function MobileSite({ theme, accent, accentText }) {
               />
             )}
 
-            <div className="tt" style={{ marginTop: 12, borderRadius: 4, background: 'var(--alt-surface)', padding: '18px 20px', display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div className="tt rv" style={{ marginTop: 12, borderRadius: 4, background: 'var(--alt-surface)', padding: '18px 20px', display: 'flex', alignItems: 'center', gap: 16 }}>
               <span className="d" style={{ fontSize: 38, flex: 'none' }}>+ 49 €</span>
               <span style={{ fontSize: 15, lineHeight: 1.4 }}><strong>Startpaket</strong> einmalig bei Vertragsbeginn, gilt für beide Laufzeiten.</span>
             </div>
@@ -164,8 +167,8 @@ export default function MobileSite({ theme, accent, accentText }) {
           </div>
           <div className="snap" style={{ marginTop: 18 }}>
             {offers.map((o, i) => (
-              <article key={o.title} style={{ width: 'min(300px, 78vw)', marginRight: i === offers.length - 1 ? 20 : undefined }}>
-                <div style={{ aspectRatio: '5 / 4', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
+              <article key={o.title} className="rv" style={{ '--d': i * 0.1 + 's', width: 'min(300px, 78vw)', marginRight: i === offers.length - 1 ? 20 : undefined }}>
+                <div className="rv-img" style={{ '--d': i * 0.1 + 's', aspectRatio: '5 / 4', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
                   <img src={o.img} alt={o.alt} loading="lazy" style={imgFill} />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 16 }}>
@@ -181,7 +184,7 @@ export default function MobileSite({ theme, accent, accentText }) {
         {/* INSTAGRAM */}
         <section className="tt" style={{ padding: '0 0 64px' }}>
           <div className="px">
-            <div style={{ borderTop: '1px solid var(--line)', paddingTop: 36, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
+            <div className="rv" style={{ borderTop: '1px solid var(--line)', paddingTop: 36, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
               <div>
                 <div className="k" style={{ fontSize: 14, color: accentText }}>@mrsbrg_moves</div>
                 <h2 className="d" style={{ margin: '10px 0 0', fontSize: 44, color: 'var(--hi)' }}>News auf<br />Instagram</h2>
@@ -192,7 +195,7 @@ export default function MobileSite({ theme, accent, accentText }) {
             </div>
             <div style={{ marginTop: 22, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 8 }}>
               {instagramPosts.map((p, i) => (
-                <a key={p.img} href={INSTAGRAM_URL} aria-label={'Instagram-Beitrag ' + (i + 1)} style={{ display: 'block', aspectRatio: '1', borderRadius: 4, overflow: 'hidden' }}>
+                <a key={p.img} className="rv rv-img" href={INSTAGRAM_URL} aria-label={'Instagram-Beitrag ' + (i + 1)} style={{ '--d': (i % 2) * 0.1 + 's', display: 'block', aspectRatio: '1', borderRadius: 4, overflow: 'hidden' }}>
                   <img src={p.img} alt={p.alt} loading="lazy" style={imgFill} />
                 </a>
               ))}
@@ -213,7 +216,7 @@ export default function MobileSite({ theme, accent, accentText }) {
           <div className="px">
             <h2 className="d rv" style={{ ...h2, color: 'var(--hi)' }}>Zeiten &amp;<br />Anfahrt</h2>
 
-            <div className="tt" style={{ marginTop: 28, background: 'var(--surface)', borderRadius: 4, padding: 20 }}>
+            <div className="tt rv" style={{ marginTop: 28, background: 'var(--surface)', borderRadius: 4, padding: 20 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
                 <h3 className="k" style={{ margin: 0, fontSize: 20, color: 'var(--hi)' }}>Betreuungszeiten</h3>
                 <span style={{ color: 'var(--muted)', fontSize: 14 }}>{hoursRange}</span>
@@ -224,7 +227,7 @@ export default function MobileSite({ theme, accent, accentText }) {
               <a href={INSTAGRAM_URL} style={{ display: 'inline-block', marginTop: 14, color: 'var(--muted)', fontSize: 14 }}>Änderungen auf Instagram</a>
             </div>
 
-            <div style={{ marginTop: 12, background: accent, color: '#121212', borderRadius: 4, padding: '22px 20px', display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div className="rv" style={{ marginTop: 12, background: accent, color: '#121212', borderRadius: 4, padding: '22px 20px', display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div>
                 <div className="k" style={{ fontSize: 14 }}>So findest du uns</div>
                 <div className="d" style={{ fontSize: 40, marginTop: 8 }}>Mönchstraße 50<br />34431 Marsberg</div>
@@ -234,7 +237,7 @@ export default function MobileSite({ theme, accent, accentText }) {
                 Route planen
               </a>
             </div>
-            <div className="slot tt" style={{ marginTop: 12, height: 200, borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="slot tt rv" style={{ marginTop: 12, height: 200, borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span className="k" style={{ fontSize: 12, color: 'var(--faint)' }}>[ Google-Maps-Karte ]</span>
             </div>
           </div>

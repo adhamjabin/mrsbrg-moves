@@ -1,4 +1,4 @@
-import heroImg from '../../assets/hero.jpg'
+import heroImg from '../../assets/hero.webp'
 import { ArrowIcon } from '../Icons.jsx'
 
 const facts = [
@@ -28,7 +28,7 @@ export default function Hero({ accent, accentText }) {
 
         <div className="in3" style={{ position: 'relative' }}>
           <div style={{ aspectRatio: '4 / 5', maxHeight: 640, width: '100%', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
-            <img className="zoom" src={heroImg} alt="Langhantel mit orangen und schwarzen Hantelscheiben auf dem Studioboden" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
           <div
             className="plate"
@@ -48,7 +48,7 @@ export default function Hero({ accent, accentText }) {
       <div className="wrap" style={{ marginTop: 96 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', borderTop: '1px solid var(--line)' }}>
           {facts.map((f, i) => (
-            <div key={f.value} style={{ padding: i === 0 ? '28px 24px 32px 0' : '28px 24px 32px', borderLeft: i === 0 ? undefined : '1px solid var(--line)' }}>
+            <div key={f.value} className="rv" style={{ '--d': i * 0.1 + 's', padding: i === 0 ? '28px 24px 32px 0' : '28px 24px 32px', borderLeft: i === 0 ? undefined : '1px solid var(--line)' }}>
               <div className="d" style={{ fontSize: 52, color: 'var(--hi)' }}>{f.value}</div>
               <div style={{ color: 'var(--muted)', marginTop: 8 }}>{f.label}</div>
             </div>

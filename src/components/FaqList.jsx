@@ -9,7 +9,7 @@ export default function FaqList({ items, mobile = false }) {
       {items.map((f, i) => {
         const isOpen = open === i
         return (
-          <div key={f.q} className={isOpen ? 'op' : ''} style={{ borderBottom: '1px solid var(--alt-line)' }}>
+          <div key={f.q} className={isOpen ? 'rv op' : 'rv'} style={{ '--d': i * 0.06 + 's', borderBottom: '1px solid var(--alt-line)' }}>
             <button className="fq" type="button" onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen}>
               <span>{f.q}</span>
               <span className="pm" style={{ width: pm, height: pm, borderRadius: '50%', boxShadow: 'inset 0 0 0 2px #121212', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -20,7 +20,7 @@ export default function Besuch({ accent }) {
               <HoursList accent={accent} />
             </div>
           </div>
-          <div className="rv" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div className="rv" style={{ '--d': '.1s', display: 'flex', flexDirection: 'column', gap: 20 }}>
             <div className="slot tt" style={{ flex: 1, minHeight: 300, borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
                 <PinIcon fill={accent} />

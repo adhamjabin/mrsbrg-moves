@@ -1,10 +1,10 @@
-import krafttraining from './assets/krafttraining.jpg'
-import cardio from './assets/cardio.jpg'
-import betreuung from './assets/betreuung.jpg'
-import insta1 from './assets/insta-1.jpg'
-import insta2 from './assets/insta-2.jpg'
-import insta3 from './assets/insta-3.jpg'
-import insta4 from './assets/insta-4.jpg'
+import krafttraining from './assets/krafttraining.webp'
+import cardio from './assets/cardio.webp'
+import betreuung from './assets/betreuung.webp'
+import insta1 from './assets/insta-1.webp'
+import insta2 from './assets/insta-2.webp'
+import insta3 from './assets/insta-3.webp'
+import insta4 from './assets/insta-4.webp'
 
 // Akzentfarbe der Seite. Alternativen aus dem Design: #D4FF3A, #FFC21A, #4DA3FF
 export const ACCENT = '#FF5A1F'
@@ -17,31 +17,31 @@ export const offers = [
   {
     title: 'Krafttraining',
     img: krafttraining,
-    alt: 'Kurzhanteln und Hantelscheibe auf dem Studioboden',
+    alt: 'Kreuzheben mit der Langhantel',
     text: 'Freihanteln und Geräte – für Muskelaufbau, Kraft und Stabilität. Egal ob Einsteiger oder erfahren.',
     short: 'Freihanteln und Geräte – für Muskelaufbau, Kraft und Stabilität.',
   },
   {
     title: 'Cardio',
     img: cardio,
-    alt: 'Battle Ropes und Kettlebell',
+    alt: 'Laufbänder im Cardiobereich',
     text: 'Ausdauer aufbauen, warm werden oder nach einem langen Tag einfach abschalten.',
     short: 'Ausdauer aufbauen, warm werden oder einfach abschalten.',
   },
   {
     title: 'Betreuung',
     img: betreuung,
-    alt: 'Trainingsplan auf Klemmbrett, Stoppuhr und Kurzhantel',
+    alt: 'Training mit der Langhantel',
     text: 'Einweisung und Tipps, wenn jemand vor Ort ist – damit du sicher und mit Plan startest.',
     short: 'Einweisung und Tipps, wenn jemand vor Ort ist.',
   },
 ]
 
 export const instagramPosts = [
-  { img: insta1, alt: 'Gestapelte Hantelscheiben' },
-  { img: insta2, alt: 'Kettlebells in Schwarz und Orange' },
-  { img: insta3, alt: 'Kurzhantel-Ablage' },
-  { img: insta4, alt: 'Langhantel mit oranger Hantelscheibe' },
+  { img: insta1, alt: 'Heller Trainingsbereich mit Geräten' },
+  { img: insta2, alt: 'Training mit Kurzhanteln' },
+  { img: insta3, alt: 'Bauchtraining auf der Matte' },
+  { img: insta4, alt: 'Kurzhantelreihe im Studio' },
 ]
 
 export const faqsDesktop = [
