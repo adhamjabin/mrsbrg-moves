@@ -13,7 +13,12 @@ img{max-width:100%}
  --slot:#1E1E1E; --slotgrid:#262626;
  --alt-bg:#EFEDE8; --alt-fg:#121212; --alt-muted:#55534F; --alt-line:#CFCBC3; --alt-surface:#E2DFD8;
  --ink:#121212; --onink:#EFEDE8;
- background:var(--bg);color:var(--fg);font-family:'Barlow',system-ui,sans-serif;overflow-x:hidden;min-height:100vh
+ background:var(--bg);color:var(--fg);font-family:'Barlow',system-ui,sans-serif;min-height:100vh;
+ /* clip statt hidden: macht .root nicht zum Scroll-Container (flüssiges Scrollen, sticky funktioniert) */
+ overflow-x:clip
+}
+@supports not (overflow-x:clip){
+ html,body{overflow-x:hidden}
 }
 .root.light{
  color-scheme:light;

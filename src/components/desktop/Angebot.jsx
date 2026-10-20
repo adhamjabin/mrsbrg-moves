@@ -27,7 +27,7 @@ export default function Angebot({ accent, accentText }) {
           <div style={{ position: 'sticky', top: 110 }}>
             <div style={{ position: 'relative', aspectRatio: '5 / 4', width: '100%', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
               {offers.map((o, i) => (
-                <img key={o.title} className={active === i ? 'offer-img on' : 'offer-img'} src={o.img} alt={o.alt} aria-hidden={active !== i} />
+                <img decoding="async" key={o.title} className={active === i ? 'offer-img on' : 'offer-img'} src={o.img} alt={o.alt} aria-hidden={active !== i} />
               ))}
               <span className="k" style={{ position: 'absolute', left: 20, bottom: 18, fontSize: 15, color: '#EFEDE8', background: '#121212', padding: '6px 12px', borderRadius: 2 }}>{current.title}</span>
             </div>

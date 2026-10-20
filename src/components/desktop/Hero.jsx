@@ -28,7 +28,7 @@ export default function Hero({ accent, accentText }) {
 
         <div className="in3" style={{ position: 'relative' }}>
           <div style={{ aspectRatio: '4 / 5', maxHeight: 640, width: '100%', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
-            <img className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img decoding="async" className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
           <div
             className="plate"

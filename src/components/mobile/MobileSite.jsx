@@ -81,7 +81,7 @@ export default function MobileSite({ theme, accent, accentText }) {
 
           <div className="in2" style={{ position: 'relative', margin: '28px 20px 0' }}>
             <div style={{ aspectRatio: '4 / 5', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
-              <img className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={imgFill} />
+              <img decoding="async" className="zoom" src={heroImg} alt="Kurzhanteln im Studio" fetchpriority="high" style={imgFill} />
             </div>
             <div
               className="plate"
@@ -169,7 +169,7 @@ export default function MobileSite({ theme, accent, accentText }) {
             {offers.map((o, i) => (
               <article key={o.title} className="rv" style={{ '--d': i * 0.1 + 's', width: 'min(300px, 78vw)', marginRight: i === offers.length - 1 ? 20 : undefined }}>
                 <div className="rv-img" style={{ '--d': i * 0.1 + 's', aspectRatio: '5 / 4', borderRadius: 4, overflow: 'hidden', background: '#1A1A1A' }}>
-                  <img src={o.img} alt={o.alt} loading="lazy" style={imgFill} />
+                  <img decoding="async" src={o.img} alt={o.alt} loading="lazy" style={imgFill} />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginTop: 16 }}>
                   <span className="k" style={{ fontSize: 15, color: accentText }}>{'0' + (i + 1)}</span>
@@ -196,7 +196,7 @@ export default function MobileSite({ theme, accent, accentText }) {
             <div style={{ marginTop: 22, display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 8 }}>
               {instagramPosts.map((p, i) => (
                 <a key={p.img} className="rv rv-img" href={INSTAGRAM_URL} aria-label={'Instagram-Beitrag ' + (i + 1)} style={{ '--d': (i % 2) * 0.1 + 's', display: 'block', aspectRatio: '1', borderRadius: 4, overflow: 'hidden' }}>
-                  <img src={p.img} alt={p.alt} loading="lazy" style={imgFill} />
+                  <img decoding="async" src={p.img} alt={p.alt} loading="lazy" style={imgFill} />
                 </a>
               ))}
             </div>

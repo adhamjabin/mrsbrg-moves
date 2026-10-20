@@ -18,7 +18,7 @@ export default function Instagram({ accentText }) {
         <div style={{ marginTop: 40, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 12 }}>
           {instagramPosts.map((p, i) => (
             <a key={p.img} className="ig rv" href={INSTAGRAM_URL} aria-label={'Instagram-Beitrag ' + (i + 1)} style={{ '--d': i * 0.08 + 's', aspectRatio: '1', borderRadius: 4, textDecoration: 'none' }}>
-              <img src={p.img} alt={p.alt} loading="lazy" />
+              <img decoding="async" src={p.img} alt={p.alt} loading="lazy" />
               <span className="ov k" style={{ fontSize: 14 }}>Auf Instagram ansehen</span>
             </a>
           ))}
