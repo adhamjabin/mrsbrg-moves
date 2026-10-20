@@ -8,32 +8,39 @@ img{max-width:100%}
 /* ---------- Theme tokens ---------- */
 .root{
  color-scheme:dark;
- --bg:#121212; --fg:#EFEDE8; --hi:#FFFFFF; --muted:#A8A6A1; --muted2:#C9C6C0; --faint:#8E8C88; --dim:#6E6C68;
+ --bg:#121212; --fg:#EEEFEC; --hi:#FFFFFF; --muted:#A6A9A3; --muted2:#C7CAC4; --faint:#8C8F8A; --dim:#6C6F6A;
  --line:#2E2E2E; --line2:#262626; --surface:#1A1A1A; --nav:rgba(18,18,18,.9);
  --slot:#1E1E1E; --slotgrid:#262626;
- --alt-bg:#EFEDE8; --alt-fg:#121212; --alt-muted:#55534F; --alt-line:#CFCBC3; --alt-surface:#E2DFD8;
- --ink:#121212; --onink:#EFEDE8;
+ --alt-bg:#EEEFEC; --alt-fg:#121212; --alt-muted:#535851; --alt-line:#CDD0CA; --alt-surface:#E1E3DE;
+ --ink:#121212; --onink:#EEEFEC;
+ /* Markenfarben aus Instagram */
+ --sage:#5F6A5F;
+ --grad:linear-gradient(90deg,#B5DC56 0%,#62BB93 30%,#3A7FF0 62%,#E86A2C 100%);
  background:var(--bg);color:var(--fg);font-family:'Barlow',system-ui,sans-serif;min-height:100vh;
  /* clip statt hidden: macht .root nicht zum Scroll-Container (flüssiges Scrollen, sticky funktioniert) */
  overflow-x:clip
+}
+/* Verlauf im OKLab-Farbraum: Blau → Orange ohne trübe Mitte */
+@supports (background:linear-gradient(in oklab, red, blue)){
+ .root{--grad:linear-gradient(in oklab 90deg,#B5DC56 0%,#62BB93 30%,#3A7FF0 62%,#E86A2C 100%)}
 }
 @supports not (overflow-x:clip){
  html,body{overflow-x:hidden}
 }
 .root.light{
  color-scheme:light;
- --bg:#F4F1EA; --fg:#1A1A1A; --hi:#0E0E0E; --muted:#5C5954; --muted2:#3E3C38; --faint:#6B6862; --dim:#9A968E;
- --line:#D9D4CA; --line2:#E2DDD3; --surface:#EAE6DD; --nav:rgba(244,241,234,.88);
- --slot:#E6E2D9; --slotgrid:#DAD5CB;
- --alt-bg:#FFFFFF; --alt-fg:#121212; --alt-muted:#55534F; --alt-line:#E2DED5; --alt-surface:#F1EEE7;
+ --bg:#F5F5F3; --fg:#1A1A1A; --hi:#0E0E0E; --muted:#5A5E58; --muted2:#3C3F3A; --faint:#6A6E68; --dim:#9A9E98;
+ --line:#D9DBD6; --line2:#E3E4E0; --surface:#ECEDEA; --nav:rgba(245,245,243,.88);
+ --slot:#E9EAE7; --slotgrid:#DCDED9;
+ --alt-bg:#FFFFFF; --alt-fg:#121212; --alt-muted:#535851; --alt-line:#E1E3DE; --alt-surface:#F2F1EF;
 }
 @media (prefers-color-scheme: light){
  .root.auto{
   color-scheme:light;
-  --bg:#F4F1EA; --fg:#1A1A1A; --hi:#0E0E0E; --muted:#5C5954; --muted2:#3E3C38; --faint:#6B6862; --dim:#9A968E;
-  --line:#D9D4CA; --line2:#E2DDD3; --surface:#EAE6DD; --nav:rgba(244,241,234,.88);
-  --slot:#E6E2D9; --slotgrid:#DAD5CB;
-  --alt-bg:#FFFFFF; --alt-fg:#121212; --alt-muted:#55534F; --alt-line:#E2DED5; --alt-surface:#F1EEE7;
+  --bg:#F5F5F3; --fg:#1A1A1A; --hi:#0E0E0E; --muted:#5A5E58; --muted2:#3C3F3A; --faint:#6A6E68; --dim:#9A9E98;
+   --line:#D9DBD6; --line2:#E3E4E0; --surface:#ECEDEA; --nav:rgba(245,245,243,.88);
+   --slot:#E9EAE7; --slotgrid:#DCDED9;
+   --alt-bg:#FFFFFF; --alt-fg:#121212; --alt-muted:#535851; --alt-line:#E1E3DE; --alt-surface:#F2F1EF;
  }
 }
 .tt{transition:background-color .45s ease,color .45s ease,border-color .45s ease}
@@ -43,19 +50,20 @@ img{max-width:100%}
 .k{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 
 /* ---------- Gemeinsame Elemente ---------- */
-.b-acc{background:var(--acc);color:#121212}
-.b-ink{background:#121212;color:#EFEDE8}
+.b-acc{background:var(--grad);color:#121212}
+.b-ink{background:#121212;color:#EEEFEC}
 .b-line{box-shadow:inset 0 0 0 2px currentColor;background:transparent}
 .mask{display:block;overflow:hidden;padding-bottom:.04em}
 .mask>span{display:block;animation:up 1s cubic-bezier(.16,1,.3,1) both}
 .m2>span{animation-delay:.12s}
 .zoom{animation:kb 2.6s cubic-bezier(.16,1,.3,1) both}
 .fq .pm{transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .25s ease;flex:none}
-.op .pm{transform:rotate(45deg);background:var(--acc)}
+.op .pm{transform:rotate(45deg);background:var(--grad)}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;width:fit-content}
 .ans{animation:fadeup .4s ease both}
 .slot{background-color:var(--slot);background-image:linear-gradient(var(--slotgrid) 1px,transparent 1px),linear-gradient(90deg,var(--slotgrid) 1px,transparent 1px)}
 .sb{align-items:center;gap:8px;min-height:44px;border-radius:999px;border:0;background:transparent;color:var(--muted);font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;cursor:pointer;transition:background-color .3s ease,color .3s ease}
-.sb.on{background:var(--acc);color:#121212}
+.sb.on{background:var(--grad);color:#121212}
 .seg{gap:4px;padding:4px;border-radius:999px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
 
 /* ---------- Scroll-Übergänge ---------- */

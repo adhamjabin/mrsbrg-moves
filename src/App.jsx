@@ -8,7 +8,7 @@ export default function App() {
   const isMobile = useMediaQuery('(max-width: 640px)')
   const theme = useTheme()
   // small accent text needs more contrast on light backgrounds
-  const accentText = theme.isLight ? '#C2410C' : ACCENT
+  const accentText = theme.isLight ? '#4F5A4F' : '#B5DC56'
   const props = { theme, accent: ACCENT, accentText }
   return isMobile ? <MobileSite {...props} /> : <DesktopSite {...props} />
 }

@@ -16,7 +16,7 @@ export default function DesktopSite({ theme, accent, accentText }) {
   useReveal(rootRef)
   return (
     <div ref={rootRef} className={'root dsk tt ' + theme.mode} style={{ '--acc': accent }}>
-      <a href="#tarife" style={{ display: 'block', background: accent, color: '#121212', textDecoration: 'none' }}>
+      <a href="#tarife" style={{ display: 'block', background: 'var(--grad)', color: '#121212', textDecoration: 'none' }}>
         <div className="wrap k" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, minHeight: 44, fontSize: 15, textAlign: 'center' }}>
           <span className="live" aria-hidden="true" />
           <span>Neueröffnung in Marsberg · Gründer-Tarife nur für kurze Zeit</span>

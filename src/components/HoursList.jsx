@@ -20,7 +20,7 @@ export default function HoursList({ accent, mobile = false }) {
           <span style={{ fontWeight: 700, color: 'var(--fg)', fontSize: mobile ? 16 : undefined }}>{mobile ? d.short : d.day}</span>
           <span style={{ color: 'var(--muted)', fontSize: mobile ? 14 : 15, fontVariantNumeric: 'tabular-nums' }}>{d.date}</span>
           {today && (
-            <span className="k" style={{ fontSize: mobile ? 11 : 12, background: accent, color: '#121212', padding: mobile ? '2px 6px' : '2px 8px', borderRadius: 2 }}>Heute</span>
+            <span className="k" style={{ fontSize: mobile ? 11 : 12, background: 'var(--grad)', color: '#121212', padding: mobile ? '2px 6px' : '2px 8px', borderRadius: 2 }}>Heute</span>
           )}
         </div>
         <span style={timeStyle}>{mobile ? d.timeShort : d.time}</span>

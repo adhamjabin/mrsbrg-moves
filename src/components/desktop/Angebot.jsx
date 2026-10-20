@@ -29,10 +29,10 @@ export default function Angebot({ accent, accentText }) {
               {offers.map((o, i) => (
                 <img decoding="async" key={o.title} className={active === i ? 'offer-img on' : 'offer-img'} src={o.img} alt={o.alt} aria-hidden={active !== i} />
               ))}
-              <span className="k" style={{ position: 'absolute', left: 20, bottom: 18, fontSize: 15, color: '#EFEDE8', background: '#121212', padding: '6px 12px', borderRadius: 2 }}>{current.title}</span>
+              <span className="k" style={{ position: 'absolute', left: 20, bottom: 18, fontSize: 15, color: '#EEEFEC', background: '#121212', padding: '6px 12px', borderRadius: 2 }}>{current.title}</span>
             </div>
             <div style={{ marginTop: 24, display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-              <span style={{ flex: 'none', width: 48, height: 3, background: accent, marginTop: 14 }} />
+              <span style={{ flex: 'none', width: 48, height: 3, background: 'var(--grad)', marginTop: 14 }} />
               <p key={active} className="ans" style={{ margin: 0, fontSize: 21, color: 'var(--muted2)', maxWidth: 520 }}>{current.text}</p>
             </div>
           </div>

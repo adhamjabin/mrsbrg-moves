@@ -6,8 +6,8 @@ import insta2 from './assets/insta-2.webp'
 import insta3 from './assets/insta-3.webp'
 import insta4 from './assets/insta-4.webp'
 
-// Akzentfarbe der Seite. Alternativen aus dem Design: #D4FF3A, #FFC21A, #4DA3FF
-export const ACCENT = '#FF5A1F'
+// Markenfarben aus dem Instagram-Auftritt (Verlauf im "moves"-Schriftzug, Salbeigrün der Tabellenköpfe)
+export const ACCENT = '#3A7FF0'
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/mrsbrg_moves/'
 export const ROUTE_URL =

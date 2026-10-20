@@ -15,7 +15,7 @@ export default function Hero({ accent, accentText }) {
           <div className="k in1" style={{ fontSize: 16, color: accentText }}>Fitnessstudio · Mönchstraße 50 · Marsberg</div>
           <h1 className="d" style={{ margin: '22px 0 0', fontSize: 'clamp(76px, 11.5vw, 188px)', color: 'var(--hi)' }}>
             <span className="mask"><span>Neuer Start.</span></span>
-            <span className="mask m2"><span style={{ color: accent }}>Neue Energie.</span></span>
+            <span className="mask m2"><span className="gt">Neue Energie.</span></span>
           </h1>
           <p className="in2" style={{ margin: '32px 0 0', maxWidth: 520, fontSize: 21, color: 'var(--muted2)' }}>
             Neues Konzept, faire Preise und persönliche Betreuung – dein Studio mitten in Marsberg.
@@ -33,14 +33,15 @@ export default function Hero({ accent, accentText }) {
           <div
             className="plate"
             style={{
-              position: 'absolute', left: 'clamp(-8px, -2vw, -36px)', bottom: -44, width: 210, height: 210, borderRadius: '50%', background: '#121212',
-              boxShadow: `inset 0 0 0 10px ${accent}, inset 0 0 0 14px #121212, inset 0 0 0 16px #3A3A3A, 0 30px 50px -20px rgba(0,0,0,.6)`,
+              position: 'absolute', left: 'clamp(-8px, -2vw, -36px)', bottom: -44, width: 210, height: 210, borderRadius: '50%',
+              border: '10px solid transparent', background: 'linear-gradient(#121212, #121212) padding-box, var(--grad) border-box',
+              boxShadow: 'inset 0 0 0 4px #121212, inset 0 0 0 6px #3A3A3A, 0 30px 50px -20px rgba(0,0,0,.6)',
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', transform: 'rotate(-8deg)',
             }}
           >
             <span className="k" style={{ fontSize: 13, color: '#A8A6A1' }}>Gründer-Tarif ab</span>
             <span className="d" style={{ fontSize: 62, color: '#ffffff', marginTop: 4 }}>29,90</span>
-            <span className="k" style={{ fontSize: 14, color: accent, marginTop: 6 }}>€ / Monat</span>
+            <span className="k gt" style={{ fontSize: 14, marginTop: 6 }}>€ / Monat</span>
           </div>
         </div>
       </div>

@@ -8,13 +8,13 @@ export default function Marquee({ accent, words = WORDS, fontSize = 46, gap = 36
       {words.map((w) => (
         <Fragment key={w}>
           <span>{w}</span>
-          <span style={{ color: accent }}>/</span>
+          <span className="gt">/</span>
         </Fragment>
       ))}
     </div>
   )
   return (
-    <div className="tt" style={{ background: 'var(--alt-bg)', color: 'var(--alt-fg)', overflow: 'hidden', borderTop: '1px solid var(--alt-fg)', borderBottom: '1px solid var(--alt-fg)' }} aria-hidden="true">
+    <div className="tt" style={{ background: 'var(--sage)', color: '#FFFFFF', overflow: 'hidden', borderTop: '1px solid var(--sage)', borderBottom: '1px solid var(--sage)' }} aria-hidden="true">
       <div className="mq">{[strip('a'), strip('b')]}</div>
     </div>
   )

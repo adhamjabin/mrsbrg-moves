@@ -27,7 +27,7 @@ export default function Besuch({ accent }) {
                 <span className="k" style={{ fontSize: 13, color: 'var(--faint)' }}>[ Google-Maps-Karte ]</span>
               </div>
             </div>
-            <div style={{ background: accent, color: '#121212', borderRadius: 4, padding: 'clamp(24px, 3vw, 36px)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap' }}>
+            <div style={{ background: 'var(--grad)', color: '#121212', borderRadius: 4, padding: 'clamp(24px, 3vw, 36px)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 20, flexWrap: 'wrap' }}>
               <div>
                 <div className="k" style={{ fontSize: 15 }}>So findest du uns</div>
                 <div className="d" style={{ fontSize: 44, marginTop: 10 }}>Mönchstraße 50<br />34431 Marsberg</div>

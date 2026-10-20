@@ -32,7 +32,7 @@ export default function MobileSite({ theme, accent, accentText }) {
   return (
     <div ref={rootRef} className={'root mob tt ' + theme.mode} style={{ '--acc': accent }}>
       {/* Announcement */}
-      <a href="#tarife" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 40, padding: '0 16px', background: accent, color: '#121212', textDecoration: 'none' }}>
+      <a href="#tarife" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, minHeight: 40, padding: '0 16px', background: 'var(--grad)', color: '#121212', textDecoration: 'none' }}>
         <span className="live" aria-hidden="true" />
         <span className="k" style={{ fontSize: 13 }}>Neueröffnung · Gründer-Tarife</span>
       </a>
@@ -72,7 +72,7 @@ export default function MobileSite({ theme, accent, accentText }) {
             <div className="k in1" style={{ fontSize: 14, color: accentText }}>Fitnessstudio · Marsberg</div>
             <h1 className="d" style={{ margin: '14px 0 0', fontSize: 'min(76px, 19.5vw)', color: 'var(--hi)' }}>
               <span className="mask"><span>Neuer Start.</span></span>
-              <span className="mask m2"><span style={{ color: accent }}>Neue Energie.</span></span>
+              <span className="mask m2"><span className="gt">Neue Energie.</span></span>
             </h1>
             <p className="in2" style={{ margin: '20px 0 0', fontSize: 18, color: 'var(--muted2)' }}>
               Neues Konzept, faire Preise und persönliche Betreuung – mitten in Marsberg.
@@ -86,14 +86,15 @@ export default function MobileSite({ theme, accent, accentText }) {
             <div
               className="plate"
               style={{
-                position: 'absolute', right: -6, bottom: -30, width: 150, height: 150, borderRadius: '50%', background: '#121212',
-                boxShadow: `inset 0 0 0 8px ${accent}, inset 0 0 0 11px #121212, inset 0 0 0 13px #3A3A3A, 0 20px 40px -16px rgba(0,0,0,.6)`,
+                position: 'absolute', right: -6, bottom: -30, width: 150, height: 150, borderRadius: '50%',
+                border: '8px solid transparent', background: 'linear-gradient(#121212, #121212) padding-box, var(--grad) border-box',
+                boxShadow: 'inset 0 0 0 3px #121212, inset 0 0 0 5px #3A3A3A, 0 20px 40px -16px rgba(0,0,0,.6)',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', transform: 'rotate(-8deg)',
               }}
             >
               <span className="k" style={{ fontSize: 11, color: '#A8A6A1' }}>Gründer-Tarif ab</span>
               <span className="d" style={{ fontSize: 44, color: '#ffffff', marginTop: 2 }}>29,90</span>
-              <span className="k" style={{ fontSize: 12, color: accent, marginTop: 4 }}>€ / Monat</span>
+              <span className="k gt" style={{ fontSize: 12, marginTop: 4 }}>€ / Monat</span>
             </div>
           </div>
 
@@ -227,7 +228,7 @@ export default function MobileSite({ theme, accent, accentText }) {
               <a href={INSTAGRAM_URL} style={{ display: 'inline-block', marginTop: 14, color: 'var(--muted)', fontSize: 14 }}>Änderungen auf Instagram</a>
             </div>
 
-            <div className="rv" style={{ marginTop: 12, background: accent, color: '#121212', borderRadius: 4, padding: '22px 20px', display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <div className="rv" style={{ marginTop: 12, background: 'var(--grad)', color: '#121212', borderRadius: 4, padding: '22px 20px', display: 'flex', flexDirection: 'column', gap: 18 }}>
               <div>
                 <div className="k" style={{ fontSize: 14 }}>So findest du uns</div>
                 <div className="d" style={{ fontSize: 40, marginTop: 8 }}>Mönchstraße 50<br />34431 Marsberg</div>
@@ -244,7 +245,7 @@ export default function MobileSite({ theme, accent, accentText }) {
         </section>
 
         {/* CTA */}
-        <section style={{ background: accent, color: '#121212', padding: '56px 20px' }}>
+        <section style={{ background: 'var(--grad)', color: '#121212', padding: '56px 20px' }}>
           <h2 className="d rv" style={h2}>Bereit für deinen Neustart?</h2>
           <a className="btn b-ink" href="#tarife" style={{ marginTop: 28 }}>Jetzt Mitglied werden</a>
         </section>
@@ -254,8 +255,8 @@ export default function MobileSite({ theme, accent, accentText }) {
       <footer className="tt" style={{ padding: '44px 20px 120px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span className="d" style={{ fontSize: 30, color: 'var(--hi)' }}>MRSBRG</span>
-          <span style={{ width: 8, height: 8, background: accent }} />
-          <span className="k" style={{ fontSize: 15, letterSpacing: '.2em' }}>moves</span>
+          <span style={{ width: 8, height: 8, background: 'var(--grad)' }} />
+          <span className="k gt" style={{ fontSize: 15, letterSpacing: '.2em' }}>moves</span>
         </div>
         <p style={{ margin: '10px 0 0', color: 'var(--muted)', fontSize: 16 }}>Mönchstraße 50 · 34431 Marsberg</p>
 
@@ -288,10 +289,10 @@ export default function MobileSite({ theme, accent, accentText }) {
 
 function PlanCard({ dark = false, accent, months, badge, price, rows, cta }) {
   const style = dark
-    ? { background: '#121212', color: '#EFEDE8' }
+    ? { background: '#121212', color: '#EEEFEC' }
     : { background: 'var(--alt-bg)', color: 'var(--alt-fg)', boxShadow: 'inset 0 0 0 2px #121212' }
   const badgeStyle = dark
-    ? { background: accent, color: '#121212' }
+    ? { background: 'var(--grad)', color: '#121212' }
     : { boxShadow: 'inset 0 0 0 1.5px #121212' }
   return (
     <article className={dark ? 'swap' : 'swap tt'} style={{ ...style, marginTop: 14, borderRadius: 4, padding: '26px 22px', display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -300,7 +301,7 @@ function PlanCard({ dark = false, accent, months, badge, price, rows, cta }) {
         <span className="k" style={{ ...badgeStyle, fontSize: 13, padding: '5px 10px', borderRadius: 2 }}>{badge}</span>
       </div>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 10 }}>
-        <span className="d" style={{ fontSize: 'min(104px, 26vw)', color: dark ? accent : undefined }}>{price}</span>
+        <span className={dark ? 'd gt' : 'd'} style={{ fontSize: 'min(104px, 26vw)' }}>{price}</span>
         <span className="k" style={{ fontSize: 17, paddingBottom: 10 }}>€ / Monat</span>
       </div>
       <div style={{ borderTop: `1px solid ${dark ? '#333333' : 'var(--alt-line)'}`, paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 8, color: dark ? '#C9C6C0' : 'var(--alt-muted)', fontSize: 16 }}>

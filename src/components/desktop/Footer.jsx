@@ -12,7 +12,7 @@ export default function Footer({ accent, theme }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 40 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <Logo accent={accent} color="inherit" />
+              <Logo accent={accent} />
             </div>
             <p style={{ margin: '14px 0 0', color: 'var(--muted)', maxWidth: 280 }}>Dein Fitnessstudio in Marsberg.</p>
           </div>
