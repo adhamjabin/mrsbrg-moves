@@ -5,11 +5,13 @@ export default function FaqList({ items, mobile = false }) {
   const [open, setOpen] = useState(0)
   const pm = mobile ? 36 : 40
   return (
-    <div style={{ marginTop: mobile ? 28 : 0, borderTop: '2px solid var(--alt-fg)' }}>
+    // Die Einblendung (.rv) sitzt auf der Liste, nicht auf den einzelnen Fragen: Safari zeichnet
+    // animierte Elemente sonst nach dem Aufklappen teils nicht neu, und sie verschwinden.
+    <div className="rv" style={{ marginTop: mobile ? 28 : 0, borderTop: '2px solid var(--alt-fg)' }}>
       {items.map((f, i) => {
         const isOpen = open === i
         return (
-          <div key={f.q} className={isOpen ? 'rv op' : 'rv'} style={{ '--d': i * 0.06 + 's', borderBottom: '1px solid var(--alt-line)' }}>
+          <div key={f.q} className={isOpen ? 'op' : undefined} style={{ borderBottom: '1px solid var(--alt-line)' }}>
             <button className="fq" type="button" onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen}>
               <span>{f.q}</span>
               <span className="pm" style={{ width: pm, height: pm, borderRadius: '50%', boxShadow: 'inset 0 0 0 2px #121212', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
