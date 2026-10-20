@@ -5,24 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MRSBRG moves – Fitnessstudio Marsberg</title>
   <meta name="description" content="MRSBRG moves – dein Fitnessstudio in Marsberg. Jetzt neu eröffnet. Mönchstraße 50, 34431 Marsberg.">
-  <link rel="icon" href="logo.png">
+  <link rel="icon" href="logo-dark.png">
+  <meta name="theme-color" content="#f7f7f4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0c;
-      --bg-2: #111115;
-      --card: #16161b;
-      --line: rgba(255, 255, 255, 0.09);
-      --text: #f4f4f6;
-      --muted: #9a9aa6;
+      --bg: #f7f7f4;
+      --bg-2: #efefea;
+      --card: #ffffff;
+      --line: rgba(20, 20, 22, 0.09);
+      --text: #141416;
+      --muted: #5f5f69;
+      --shadow: 0 1px 2px rgba(20, 20, 22, 0.04), 0 14px 34px -18px rgba(20, 20, 22, 0.18);
       --olive: #6b7a5c;
       --lime: #c6e84a;
       --cyan: #4fd8e0;
       --blue: #3b7bf0;
       --orange: #ff7a3d;
       --grad: linear-gradient(90deg, var(--lime), var(--cyan), var(--blue), var(--orange));
+      /* kräftigere Variante für Schrift auf hellem Grund, wie im Logo auf Weiß */
+      --grad-ink: linear-gradient(90deg, #5ba82e, #1d9bb0, #3b6fe0, #e8602c);
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --head: "Barlow Condensed", Impact, sans-serif;
     }
@@ -64,13 +68,13 @@
       border-bottom: 1px solid transparent;
     }
     .nav.scrolled {
-      background: rgba(10, 10, 12, 0.96);
+      background: rgba(247, 247, 244, 0.96);
       padding: 12px 0;
       border-color: var(--line);
     }
     @media (hover: hover) and (min-width: 961px) {
       .nav.scrolled {
-        background: rgba(10, 10, 12, 0.8);
+        background: rgba(247, 247, 244, 0.8);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
       }
@@ -119,14 +123,14 @@
       opacity: 0; transition: opacity 0.4s;
     }
     .btn-primary:hover::before { opacity: 1; }
-    .btn-primary:hover { box-shadow: 0 10px 30px -10px rgba(79, 216, 224, 0.55); }
-    .btn-ghost { border: 1px solid var(--line); }
-    .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.35); }
+    .btn-primary:hover { color: var(--text); box-shadow: 0 10px 30px -10px rgba(59, 123, 240, 0.45); }
+    .btn-ghost { border: 1px solid rgba(20, 20, 22, 0.16); background: var(--card); }
+    .btn-ghost:hover { border-color: rgba(20, 20, 22, 0.4); }
     .btn svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
     .btn:hover svg { transform: translateX(3px); }
 
     .grad-text {
-      background: var(--grad); background-size: 200% 100%;
+      background: var(--grad-ink); background-size: 200% 100%;
       -webkit-background-clip: text; background-clip: text; color: transparent;
       animation: gradShift 8s linear infinite;
     }
@@ -143,8 +147,8 @@
       position: absolute; border-radius: 50%; pointer-events: none;
       background: radial-gradient(circle, var(--c) 0%, transparent 65%);
     }
-    .orb.o1 { --c: var(--blue); width: 760px; height: 760px; top: -300px; right: -280px; opacity: 0.3; }
-    .orb.o2 { --c: var(--lime); width: 620px; height: 620px; bottom: -320px; left: -280px; opacity: 0.16; }
+    .orb.o1 { --c: var(--blue); width: 760px; height: 760px; top: -300px; right: -280px; opacity: 0.16; }
+    .orb.o2 { --c: var(--lime); width: 620px; height: 620px; bottom: -320px; left: -280px; opacity: 0.35; }
     @media (hover: hover) and (min-width: 961px) {
       .orb { animation: float 20s ease-in-out infinite; will-change: transform; }
       .orb.o2 { animation-delay: -8s; }
@@ -159,11 +163,11 @@
     .badge {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 7px 16px 7px 10px; border-radius: 100px;
-      border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line); background: rgba(255, 255, 255, 0.75);
       font-size: 0.85rem; color: var(--muted); margin-bottom: 26px;
     }
     .badge .dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--lime);
+      width: 8px; height: 8px; border-radius: 50%; background: #5ba82e;
       animation: pulse 2s infinite;
     }
     @keyframes pulse {
@@ -203,7 +207,7 @@
     .info {
       display: grid; grid-template-columns: repeat(3, 1fr);
       border: 1px solid var(--line); border-radius: 20px;
-      background: var(--card); overflow: hidden;
+      background: var(--card); overflow: hidden; box-shadow: var(--shadow);
       margin-top: -40px; position: relative; z-index: 2;
     }
     .info > a, .info > div {
@@ -212,26 +216,26 @@
       transition: background 0.3s;
     }
     .info > :last-child { border-right: 0; }
-    .info > a:hover { background: rgba(255, 255, 255, 0.03); }
+    .info > a:hover { background: rgba(20, 20, 22, 0.025); }
     .info .ico {
       flex: none; width: 44px; height: 44px; border-radius: 12px;
-      display: grid; place-items: center; background: rgba(255, 255, 255, 0.05);
+      display: grid; place-items: center; background: rgba(107, 122, 92, 0.12);
     }
-    .info svg { width: 22px; height: 22px; stroke: var(--lime); }
+    .info svg { width: 22px; height: 22px; stroke: var(--olive); }
     .info small { display: block; color: var(--muted); font-size: 0.8rem; }
     .info b { font-weight: 600; }
     .status-dot {
       display: inline-block; width: 8px; height: 8px; border-radius: 50%;
       background: var(--muted); margin-right: 6px; vertical-align: 1px;
     }
-    .status-dot.on { background: var(--lime); animation: pulse 2s infinite; }
+    .status-dot.on { background: #5ba82e; animation: pulse 2s infinite; }
 
     /* ---------- Sektionen ---------- */
     .section { padding: 120px 0; }
     .eyebrow {
       display: inline-block;
       font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--lime); margin-bottom: 14px;
+      text-transform: uppercase; color: var(--olive); margin-bottom: 14px;
     }
     h2 {
       font-family: var(--head); font-weight: 800; text-transform: uppercase;
@@ -246,11 +250,12 @@
     .plan {
       border-radius: 24px; background: var(--card); border: 1px solid var(--line);
       overflow: hidden; display: flex; flex-direction: column; position: relative;
+      box-shadow: var(--shadow);
       transition: transform 0.4s var(--ease), box-shadow 0.4s, opacity 0.9s var(--ease);
     }
-    .plan.visible:hover { transform: translateY(-6px); box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9); }
+    .plan.visible:hover { transform: translateY(-6px); box-shadow: 0 2px 4px rgba(20, 20, 22, 0.04), 0 30px 60px -28px rgba(20, 20, 22, 0.3); }
     .plan-top {
-      background: var(--olive); padding: 14px; text-align: center;
+      background: var(--olive); color: #fff; padding: 14px; text-align: center;
       font-family: var(--head); font-weight: 700; font-size: 1.25rem;
       letter-spacing: 0.08em; text-transform: uppercase;
     }
@@ -267,7 +272,7 @@
     .plan li { display: flex; gap: 12px; color: var(--muted); font-size: 0.95rem; }
     .plan li::before {
       content: ""; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%;
-      background: rgba(198, 232, 74, 0.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c6e84a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat;
+      background: rgba(107, 122, 92, 0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7a5c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat;
     }
     .plan .btn { margin-top: auto; }
     .plan.featured { border-color: transparent; }
@@ -281,7 +286,7 @@
     .tag {
       position: absolute; top: 62px; right: 16px;
       padding: 4px 10px; border-radius: 100px; font-size: 0.7rem; font-weight: 600;
-      background: var(--lime); color: var(--bg);
+      background: var(--lime); color: var(--text);
       letter-spacing: 0.05em; text-transform: uppercase;
     }
     .pricing-note { text-align: center; color: var(--muted); font-size: 0.88rem; margin-top: 28px; }
@@ -291,7 +296,7 @@
     .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .feature {
       padding: 32px 28px; border-radius: 22px; border: 1px solid var(--line);
-      background: var(--card); position: relative; overflow: hidden;
+      background: var(--card); position: relative; overflow: hidden; box-shadow: var(--shadow);
       transition: transform 0.4s var(--ease), border-color 0.4s, opacity 0.9s var(--ease);
     }
     .feature::after {
@@ -299,13 +304,13 @@
       background: var(--grad); transform: scaleX(0); transform-origin: left;
       transition: transform 0.5s var(--ease);
     }
-    .feature.visible:hover { transform: translateY(-6px); border-color: rgba(255, 255, 255, 0.16); }
+    .feature.visible:hover { transform: translateY(-6px); border-color: rgba(20, 20, 22, 0.16); }
     .feature:hover::after { transform: scaleX(1); }
     .feature .ico {
       width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
-      background: rgba(198, 232, 74, 0.1); margin-bottom: 22px;
+      background: rgba(107, 122, 92, 0.12); margin-bottom: 22px;
     }
-    .feature .ico svg { width: 26px; height: 26px; stroke: var(--lime); }
+    .feature .ico svg { width: 26px; height: 26px; stroke: var(--olive); }
     .feature h3 {
       font-family: var(--head); font-weight: 700; font-size: 1.6rem;
       text-transform: uppercase; margin-bottom: 8px;
@@ -316,6 +321,7 @@
     .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
     .panel {
       border: 1px solid var(--line); border-radius: 24px; background: var(--card); overflow: hidden;
+      box-shadow: var(--shadow);
     }
     .panel-head {
       display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -334,21 +340,21 @@
     .hours-row .day { font-weight: 600; }
     .hours-row .time { font-variant-numeric: tabular-nums; text-align: right; }
     .hours-row.off .time { color: var(--muted); }
-    .hours-row.today { background: rgba(198, 232, 74, 0.07); box-shadow: inset 3px 0 0 var(--lime); }
+    .hours-row.today { background: rgba(198, 232, 74, 0.2); box-shadow: inset 3px 0 0 var(--lime); }
     .hours-row.today .day::after {
       content: "Heute"; margin-left: 10px;
       font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 100px;
-      background: var(--lime); color: var(--bg); text-transform: uppercase; letter-spacing: 0.05em;
+      background: var(--lime); color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;
     }
     .map { height: 280px; background: var(--bg-2); }
     .map iframe { width: 100%; height: 100%; border: 0; display: block; }
     .map-load {
       width: 100%; height: 100%; border: 0; cursor: pointer;
       display: grid; place-items: center; align-content: center; gap: 10px;
-      background: radial-gradient(circle at 50% 40%, rgba(79, 216, 224, 0.1), transparent 60%), var(--bg-2);
+      background: radial-gradient(circle at 50% 40%, rgba(79, 216, 224, 0.18), transparent 60%), var(--bg-2);
       color: var(--text); font: inherit;
     }
-    .map-load svg { width: 34px; height: 34px; stroke: var(--cyan); }
+    .map-load svg { width: 34px; height: 34px; stroke: var(--blue); }
     .map-load b { font-weight: 600; }
     .map-load small { color: var(--muted); font-size: 0.78rem; max-width: 260px; text-align: center; }
     .contact-body { padding: 24px 26px; display: grid; gap: 18px; }
@@ -387,7 +393,7 @@
       .nav-links {
         position: fixed; inset: 0; z-index: -1;
         flex-direction: column; justify-content: center; align-items: center; gap: 26px;
-        background: rgba(10, 10, 12, 0.97);
+        background: rgba(247, 247, 244, 0.98);
         opacity: 0; visibility: hidden;
         transition: opacity 0.4s, visibility 0.4s;
       }
@@ -413,13 +419,13 @@
 <body>
 
   <div class="loader" id="loader" aria-hidden="true">
-    <img src="logo.png" alt="">
+    <img src="logo-dark.png" alt="">
   </div>
 
   <!-- Navigation -->
   <header class="nav" id="nav">
     <div class="wrap">
-      <a href="#top" class="nav-logo"><img src="logo.png" alt="MRSBRG moves"></a>
+      <a href="#top" class="nav-logo"><img src="logo-dark.png" alt="MRSBRG moves"></a>
       <ul class="nav-links">
         <li><a href="#tarife">Tarife</a></li>
         <li><a href="#angebot">Angebot</a></li>
@@ -446,7 +452,7 @@
           <a href="#besuch" class="btn btn-ghost">Zeiten &amp; Anfahrt</a>
         </div>
       </div>
-      <img src="logo.png" alt="MRSBRG moves Logo" class="hero-logo fade" style="--d:.3s">
+      <img src="logo-dark.png" alt="MRSBRG moves Logo" class="hero-logo fade" style="--d:.3s">
     </div>
   </section>
 
@@ -599,7 +605,7 @@
 
   <footer>
     <div class="wrap">
-      <img src="logo.png" alt="MRSBRG moves">
+      <img src="logo-dark.png" alt="MRSBRG moves">
       <small>© <span id="year"></span> MRSBRG moves · Mönchstraße 50, 34431 Marsberg</small>
       <nav>
         <a href="#">Impressum</a>
