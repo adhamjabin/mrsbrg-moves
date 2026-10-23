@@ -385,6 +385,82 @@
     .map-consent small { font-size: 0.78rem; }
     .map-consent .btn { height: 44px; padding: 0 18px; font-size: 1rem; }
 
+    /* ---------- Probetraining ---------- */
+    .trial { --error: #b42318; }
+    .trial [hidden] { display: none !important; }
+    .trial-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 24px; align-items: stretch; }
+    .trial-info { border-radius: 16px; overflow: hidden; background: var(--olive); color: var(--white); display: flex; flex-direction: column; }
+    .trial-info figure { aspect-ratio: 4 / 3; background: var(--olive-dark); }
+    .trial-info figure img { width: 100%; height: 100%; object-fit: cover; }
+    .trial-info-body { padding: 28px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+    .trial-info h3 { font-family: var(--head); font-weight: 800; font-size: 2rem; text-transform: uppercase; line-height: 0.95; }
+    .trial-points { list-style: none; }
+    .trial-points li { display: flex; gap: 12px; padding: 11px 0; border-top: 1px solid rgba(255, 255, 255, 0.22); }
+    .trial-points li::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: 0.55em; border-radius: 50%; background: var(--lime); }
+    .trial-info .trial-note { margin-top: auto; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; }
+    .trial-info a { color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
+    .trial-card { padding: 32px; }
+    .trial-form { display: grid; gap: 22px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .field { display: grid; gap: 7px; align-content: start; min-width: 0; border: 0; }
+    .field > label, .field legend { font-family: var(--head); font-weight: 600; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .field legend { padding: 0; margin-bottom: 7px; }
+    .opt { font-family: "Barlow", system-ui, sans-serif; font-weight: 400; font-size: 0.9rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+    .field input, .field textarea {
+      width: 100%; min-height: 52px; padding: 12px 14px;
+      font: inherit; font-size: 1.05rem; color: var(--ink);
+      background: var(--paper); border: 1.5px solid var(--grid); border-radius: 10px;
+      -webkit-appearance: none; appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .field input::-webkit-date-and-time-value { text-align: left; }
+    .field input:hover, .field textarea:hover { border-color: #b4b3ab; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--ink); background: var(--white); box-shadow: 0 0 0 4px rgba(198, 232, 74, 0.6); }
+    .field textarea { min-height: 120px; resize: vertical; line-height: 1.45; }
+    .field.invalid input, .field.invalid textarea { border-color: var(--error); background: #fff6f4; }
+    .field.invalid input:focus, .field.invalid textarea:focus { box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.16); }
+    .field-hint { color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
+    .field-error { display: flex; gap: 8px; align-items: flex-start; color: var(--error); font-size: 0.92rem; font-weight: 500; line-height: 1.4; }
+    .field-error::before {
+      content: "!"; flex: none; display: grid; place-items: center; width: 18px; height: 18px; margin-top: 1px;
+      border-radius: 50%; background: var(--error); color: var(--white); font-size: 0.75rem; font-weight: 600;
+    }
+    .dayparts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .daypart { position: relative; }
+    .daypart input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+    .daypart span {
+      display: grid; place-content: center; min-height: 62px; padding: 8px 6px; text-align: center;
+      background: var(--paper); border: 1.5px solid var(--grid); border-radius: 10px;
+      font-family: var(--head); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .daypart small { margin-top: 3px; font-family: "Barlow", system-ui, sans-serif; font-weight: 400; font-size: 0.82rem; letter-spacing: 0; text-transform: none; color: var(--muted); }
+    .daypart input:hover + span { border-color: #b4b3ab; }
+    .daypart input:checked + span { background: var(--lime); border-color: var(--ink); }
+    .daypart input:checked + span small { color: var(--ink); }
+    .daypart input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 2px; }
+    .daypart input:disabled { cursor: not-allowed; }
+    .daypart input:disabled + span { opacity: 0.4; border-style: dashed; }
+    .field.invalid .daypart span { border-color: var(--error); }
+    .counter { justify-self: end; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+    .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    .form-error { padding: 14px 16px; border-radius: 10px; background: #fff1ee; border: 1.5px solid var(--error); color: var(--error); font-weight: 500; }
+    .form-error a { text-decoration: underline; text-underline-offset: 3px; }
+    .trial-submit { width: 100%; height: 58px; font-size: 1.2rem; }
+    .trial-submit[disabled] { cursor: progress; opacity: 0.8; }
+    .spinner { display: none; width: 18px; height: 18px; border: 2.5px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    .trial-submit[aria-busy="true"] .spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .trial-privacy { color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+    .trial-privacy a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+    .trial-done { min-height: 100%; display: grid; justify-items: center; align-content: center; gap: 16px; padding: 24px 0; text-align: center; }
+    .trial-done:focus { outline: none; }
+    .done-icon { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; background: var(--lime); border: 2px solid var(--ink); }
+    .done-icon svg { width: 30px; height: 30px; }
+    .trial-done h3 { font-family: var(--head); font-weight: 800; font-size: clamp(2.2rem, 4vw, 3rem); text-transform: uppercase; line-height: 0.95; }
+    .trial-done p { max-width: 440px; color: var(--muted); }
+    .trial-done .done-summary { padding: 12px 18px; border-radius: 10px; background: var(--paper-2); color: var(--ink); font-weight: 600; }
+
     /* ---------- CTA + Footer ---------- */
     .cta {
       color: var(--paper); padding: 140px 0 120px;
@@ -409,18 +485,7 @@
 
     /* ---------- Responsive ---------- */
     @media (max-width: 980px) {
-      .hero-grid, .visit-grid { grid-template-columns: 1fr; }
-      .poster-wrap { max-width: 520px; padding-left: 20px; }
-      .hero-photo { aspect-ratio: 4 / 3.4; }
-      .poster { width: 90%; margin: -28% 0 0 -20px; }
-      .pricing { grid-template-columns: 1fr; gap: 16px; }
-      .plans { grid-template-columns: 1fr; gap: 16px; }
-      .plan, .plan:first-child, .plan:last-child { border: 1px solid var(--line); border-radius: 16px; }
-      .plan .plan-top, .plan:first-child .plan-top, .plan:last-child .plan-top { border-radius: 15px 15px 0 0; }
-      .plan.featured { margin: 0; order: -1; border: 0; }
-      .section { padding: 84px 0; }
-    }
-    @media (max-width: 760px) {
+      /* Menü einklappen, sobald die vier Menüpunkte nicht mehr nebeneinander passen */
       .nav-links {
         position: absolute; top: 100%; left: 0; right: 0;
         flex-direction: column; gap: 0; padding: 8px 16px 16px;
@@ -435,6 +500,21 @@
       .nav-links .nav-cta a:hover { background: var(--olive-dark); }
       .burger { display: block; }
       .nav .btn { display: none; }
+      .hero-grid, .visit-grid { grid-template-columns: 1fr; }
+      .poster-wrap { max-width: 520px; padding-left: 20px; }
+      .hero-photo { aspect-ratio: 4 / 3.4; }
+      .poster { width: 90%; margin: -28% 0 0 -20px; }
+      .pricing { grid-template-columns: 1fr; gap: 16px; }
+      .plans { grid-template-columns: 1fr; gap: 16px; }
+      .plan, .plan:first-child, .plan:last-child { border: 1px solid var(--line); border-radius: 16px; }
+      .plan .plan-top, .plan:first-child .plan-top, .plan:last-child .plan-top { border-radius: 15px 15px 0 0; }
+      .plan.featured { margin: 0; order: -1; border: 0; }
+      .section { padding: 84px 0; }
+      .trial-grid { grid-template-columns: 1fr; }
+      .trial-info { display: grid; grid-template-columns: 0.8fr 1fr; }
+      .trial-info figure { aspect-ratio: auto; min-height: 100%; }
+    }
+    @media (max-width: 760px) {
       /* Schnellzugriff unten am Handy */
       .mobile-bar {
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
@@ -497,6 +577,14 @@
       .plan ul { margin: 16px 0 20px; }
       .plan li { padding: 9px 0; }
       .plans-info { padding: 22px; }
+      /* Probetraining: Bild weglassen, damit das Formular schneller erreicht wird */
+      .trial-info { display: flex; }
+      .trial-info figure { display: none; }
+      .trial-info-body { padding: 22px; gap: 14px; }
+      .trial-info h3 { font-size: 1.7rem; }
+      .trial-card { padding: 22px 18px; }
+      .field-row { grid-template-columns: 1fr; }
+      .daypart span { font-size: 1rem; padding: 8px 4px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -525,6 +613,7 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="#angebot">Angebot</a></li>
         <li><a href="#tarife">Tarife</a></li>
+        <li><a href="#probetraining">Probetraining</a></li>
         <li><a href="#besuch">Zeiten &amp; Anfahrt</a></li>
         <li class="nav-cta"><a href="#tarife" class="btn btn-dark">Mitglied werden</a></li>
       </ul>
@@ -670,6 +759,111 @@
             </div>
             <p class="plans-note">Fragen zu den Tarifen? Komm vorbei oder schreib uns auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Probetraining -->
+    <section class="section trial" id="probetraining" style="padding-top:0" aria-labelledby="trial-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2 id="trial-title">Kostenloses Probetraining vereinbaren</h2>
+          </div>
+          <p>Lerne unser Studio kennen und starte dein Training.</p>
+        </div>
+
+        <div class="trial-grid">
+          <aside class="trial-info">
+            <figure><img src="images/hanteln.webp" alt="Bauchtraining auf der Matte" width="800" height="600" loading="lazy" decoding="async"></figure>
+            <div class="trial-info-body">
+              <h3>So läuft's ab</h3>
+              <ul class="trial-points">
+                <li>Kostenlos und unverbindlich</li>
+                <li>Wunschtermin auswählen und Anfrage senden</li>
+                <li>Wir melden uns und bestätigen deinen Termin</li>
+                <li>Vor Ort zeigen wir dir die Geräte und das Studio</li>
+              </ul>
+              <p class="trial-note">Probetrainings finden zu unseren <a href="#besuch">Betreuungszeiten</a> statt.</p>
+            </div>
+          </aside>
+
+          <div class="card trial-card">
+            <form class="trial-form" id="trial-form" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-vorname">Vorname</label>
+                  <input id="t-vorname" name="vorname" type="text" autocomplete="given-name" maxlength="60" required aria-describedby="err-vorname">
+                  <p class="field-error" id="err-vorname" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="t-nachname">Nachname</label>
+                  <input id="t-nachname" name="nachname" type="text" autocomplete="family-name" maxlength="60" required aria-describedby="err-nachname">
+                  <p class="field-error" id="err-nachname" hidden></p>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-email">E-Mail-Adresse</label>
+                  <input id="t-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" spellcheck="false" required aria-describedby="err-email">
+                  <p class="field-error" id="err-email" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="t-telefon">Telefon <span class="opt">(optional)</span></label>
+                  <input id="t-telefon" name="telefon" type="tel" autocomplete="tel" maxlength="30" aria-describedby="err-telefon">
+                  <p class="field-error" id="err-telefon" hidden></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="t-termin">Wunschtermin</label>
+                <input id="t-termin" name="wunschtermin" type="date" required aria-describedby="hint-termin err-wunschtermin">
+                <p class="field-hint" id="hint-termin">Mögliche Tage: Montag bis Donnerstag.</p>
+                <p class="field-error" id="err-wunschtermin" hidden></p>
+              </div>
+
+              <fieldset class="field" aria-describedby="hint-tageszeit err-tageszeit">
+                <legend>Bevorzugte Tageszeit</legend>
+                <div class="dayparts">
+                  <label class="daypart"><input type="radio" name="tageszeit" value="Vormittag" required><span>Vormittag<small>bis 12 Uhr</small></span></label>
+                  <label class="daypart"><input type="radio" name="tageszeit" value="Nachmittag"><span>Nachmittag<small>12–17 Uhr</small></span></label>
+                  <label class="daypart"><input type="radio" name="tageszeit" value="Abend"><span>Abend<small>ab 17 Uhr</small></span></label>
+                </div>
+                <p class="field-hint" id="hint-tageszeit" hidden></p>
+                <p class="field-error" id="err-tageszeit" hidden></p>
+              </fieldset>
+
+              <div class="field">
+                <label for="t-nachricht">Nachricht <span class="opt">(optional)</span></label>
+                <textarea id="t-nachricht" name="nachricht" rows="4" maxlength="1000" placeholder="z. B. Ziele, Vorerfahrung oder Fragen" aria-describedby="t-counter err-nachricht"></textarea>
+                <span class="counter" id="t-counter" aria-live="polite">0 / 1000</span>
+                <p class="field-error" id="err-nachricht" hidden></p>
+              </div>
+
+              <!-- Falle für Spam-Bots: für Menschen unsichtbar, bitte leer lassen -->
+              <div class="hp" aria-hidden="true">
+                <label for="t-website">Website</label>
+                <input id="t-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <p class="form-error" id="trial-error" role="alert" hidden></p>
+
+              <button class="btn btn-dark trial-submit" id="trial-submit" type="submit">
+                <span class="spinner" aria-hidden="true"></span>
+                <span data-label>Probetraining anfragen</span>
+              </button>
+              <p class="trial-privacy">Wir verwenden deine Angaben nur, um dein Probetraining zu planen und dich dazu zu kontaktieren. Mehr dazu in der <a href="#">Datenschutzerklärung</a>.</p>
+              <noscript><p class="form-error">Bitte aktiviere JavaScript, um das Formular zu senden, oder schreib uns auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p></noscript>
+            </form>
+
+            <div class="trial-done" id="trial-done" tabindex="-1" hidden>
+              <span class="done-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              <h3>Danke<span id="done-name"></span>!</h3>
+              <p>Deine Anfrage ist bei uns angekommen. Wir melden uns bei dir, um den Termin für dein Probetraining zu bestätigen.</p>
+              <p class="done-summary" id="done-summary"></p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -874,7 +1068,7 @@
 
     // ---------- Aktiven Menüpunkt markieren (im Startbereich keiner) ----------
     const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
-    const sections = ["top", "angebot", "tarife", "besuch"].map(id => document.getElementById(id));
+    const sections = ["top", "angebot", "tarife", "probetraining", "besuch"].map(id => document.getElementById(id));
     function markNav() {
       const line = innerHeight * 0.45;
       let current = sections[0];
@@ -930,6 +1124,197 @@
     }
     mapRevoke.addEventListener("click", () => { mapChoice.set(false); showConsent(); });
     mapChoice.get() ? showMap() : showConsent();
+
+    // ---------- Probetraining-Formular ----------
+    // Zugang zur Supabase-Datenbank. Der "Publishable key" ist absichtlich öffentlich: Er erlaubt nur das
+    // Eintragen neuer Anfragen, nicht das Lesen (siehe supabase/probetraining.sql).
+    // NIEMALS den "Secret key" (beginnt mit sb_secret_) hier eintragen!
+    const SUPABASE_URL = "https://gksmmhlgywasaatmcwar.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_pm0SS3a2jb2JZCr9QnKylQ_Ns6htKPf";
+    const TRIAL_TABLE = "probetraining_anfragen";
+    const TRIAL_MAX_DAYS = 60;
+    // Tageszeiten; eine Option ist wählbar, wenn sie sich mit den Betreuungszeiten des Tages überschneidet
+    const DAYPARTS = { Vormittag: ["6:00", "12:00"], Nachmittag: ["12:00", "17:00"], Abend: ["17:00", "22:00"] };
+    const INSTA = '<a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>';
+
+    const trialForm = document.getElementById("trial-form");
+    const field = name => trialForm.elements[name];
+    const valueOf = name => (field(name).value || "").trim();
+    const dateInput = field("wunschtermin");
+    const dayparts = [...trialForm.querySelectorAll('input[name="tageszeit"]')];
+    const submitBtn = document.getElementById("trial-submit");
+    const formError = document.getElementById("trial-error");
+
+    const pad = n => String(n).padStart(2, "0");
+    const isoDate = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+    const longDate = d => d.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    function berlinToday() {
+      try {
+        const p = {};
+        new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", year: "numeric", month: "numeric", day: "numeric" })
+          .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+        if (p.year && p.month && p.day) return new Date(+p.year, p.month - 1, +p.day);
+      } catch (e) { /* älterer Browser: Gerätedatum verwenden */ }
+      const d = new Date();
+      return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    }
+    // Akzeptiert JJJJ-MM-TT (Datumsauswahl) und TT.MM.JJJJ (falls der Browser keine Datumsauswahl hat)
+    function parseDate(v) {
+      let m = v.match(/^(\d{4})-(\d{2})-(\d{2})$/), y, mo, d;
+      if (m) [, y, mo, d] = m;
+      else if ((m = v.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/))) [, d, mo, y] = m;
+      else return null;
+      const date = new Date(+y, mo - 1, +d);
+      return date.getMonth() === mo - 1 && date.getDate() === +d ? date : null;
+    }
+    const hoursOn = date => HOURS.find(h => h.idx === date.getDay());
+    const partOpen = (slots, [a, b]) => slots.some(([s, e]) => toMin(s) < toMin(b) && toMin(e) > toMin(a));
+    const openDays = HOURS.filter(h => h.slots.length).map(h => h.day);
+    const openDaysText = openDays.length > 1 ? openDays.slice(0, -1).join(", ") + " und " + openDays.at(-1) : openDays.join("");
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const PHONE_RE = /^[0-9 +()/.-]{6,30}$/;
+    const checks = {
+      vorname: v => !v ? "Bitte gib deinen Vornamen ein." : "",
+      nachname: v => !v ? "Bitte gib deinen Nachnamen ein." : "",
+      email: v => !v ? "Bitte gib deine E-Mail-Adresse ein."
+        : !EMAIL_RE.test(v) ? "Bitte prüfe deine E-Mail-Adresse. Beispiel: name@beispiel.de" : "",
+      telefon: v => v && !PHONE_RE.test(v) ? "Bitte gib eine gültige Telefonnummer ein. Erlaubt sind Ziffern, Leerzeichen und + - / ( )." : "",
+      wunschtermin: v => {
+        if (!v) return "Bitte wähle einen Wunschtermin.";
+        const d = parseDate(v), today = berlinToday();
+        if (!d) return "Bitte gib das Datum im Format TT.MM.JJJJ ein.";
+        if (d <= today) return "Bitte wähle einen Termin ab morgen.";
+        if (d > addDays(today, TRIAL_MAX_DAYS)) return `Bitte wähle einen Termin innerhalb der nächsten ${TRIAL_MAX_DAYS} Tage.`;
+        if (!hoursOn(d).slots.length) return `Am ${hoursOn(d).day} ist leider keine Betreuung. Möglich sind ${openDaysText}.`;
+        return "";
+      },
+      tageszeit: v => !v ? "Bitte wähle eine Tageszeit." : "",
+      nachricht: () => "",
+    };
+
+    function setError(name, msg) {
+      const err = document.getElementById("err-" + name);
+      err.textContent = msg;
+      err.hidden = !msg;
+      err.closest(".field").classList.toggle("invalid", !!msg);
+      (name === "tageszeit" ? dayparts : [field(name)]).forEach(el => el.setAttribute("aria-invalid", !!msg));
+    }
+    const validate = name => { const msg = checks[name](valueOf(name)); setError(name, msg); return !msg; };
+
+    // Datumsauswahl: frühestens morgen, höchstens TRIAL_MAX_DAYS Tage im Voraus
+    dateInput.min = isoDate(addDays(berlinToday(), 1));
+    dateInput.max = isoDate(addDays(berlinToday(), TRIAL_MAX_DAYS));
+    if (dateInput.type !== "date") dateInput.placeholder = "TT.MM.JJJJ";
+    document.getElementById("hint-termin").textContent = `Mögliche Tage: ${openDaysText}.`;
+
+    // Tageszeiten ohne Betreuung am gewählten Tag ausgrauen
+    const daypartHint = document.getElementById("hint-tageszeit");
+    function updateDayparts() {
+      const d = parseDate(valueOf("wunschtermin"));
+      const entry = d && hoursOn(d);
+      const open = dayparts.filter(r => {
+        r.disabled = !!(entry && entry.slots.length && !partOpen(entry.slots, DAYPARTS[r.value]));
+        if (r.disabled) r.checked = false;
+        return !r.disabled;
+      });
+      daypartHint.hidden = !(entry && entry.slots.length && open.length < dayparts.length);
+      if (!daypartHint.hidden) daypartHint.textContent = `Am ${entry.day} ist nur ${open.map(r => r.value).join(" oder ")} möglich.`;
+    }
+
+    // Fehler erst nach dem Verlassen eines Feldes zeigen, danach beim Tippen sofort aktualisieren
+    Object.keys(checks).forEach(name => {
+      const els = name === "tageszeit" ? dayparts : [field(name)];
+      els.forEach(el => {
+        el.addEventListener("blur", () => { if (valueOf(name) || el.getAttribute("aria-invalid") === "true") validate(name); });
+        el.addEventListener(name === "tageszeit" ? "change" : "input", () => { if (el.getAttribute("aria-invalid") === "true") validate(name); });
+      });
+    });
+    dateInput.addEventListener("change", () => { updateDayparts(); validate("wunschtermin"); });
+    const counter = document.getElementById("t-counter");
+    field("nachricht").addEventListener("input", e => { counter.textContent = `${e.target.value.length} / 1000`; });
+
+    function showFormError(html) { formError.innerHTML = html; formError.hidden = !html; }
+    function setBusy(busy) {
+      submitBtn.disabled = busy;
+      submitBtn.setAttribute("aria-busy", busy);
+      submitBtn.querySelector("[data-label]").textContent = busy ? "Wird gesendet …" : "Probetraining anfragen";
+    }
+    function showDone(data) {
+      document.getElementById("done-name").textContent = data.vorname ? ", " + data.vorname : "";
+      document.getElementById("done-summary").textContent = data.wunschtermin
+        ? `Wunschtermin: ${longDate(parseDate(data.wunschtermin))}, ${data.tageszeit}` : "";
+      trialForm.hidden = true;
+      const done = document.getElementById("trial-done");
+      done.hidden = false;
+      done.focus({ preventScroll: true });
+      done.closest(".trial-card").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    }
+    // Schutz: Ein geheimer Schlüssel darf nie auf der Website landen
+    function keyIsSecret(key) {
+      if (/^sb_secret_/.test(key)) return true;
+      try { return JSON.parse(atob(key.split(".")[1].replace(/-/g, "+").replace(/_/g, "/"))).role === "service_role"; }
+      catch (e) { return false; }
+    }
+
+    // Jede Anfrage bekommt eine feste ID. Kommt sie doppelt an (z. B. nach Verbindungsabbruch), lehnt die
+    // Datenbank die zweite ab – so entstehen keine doppelten Einträge.
+    let sending = false, requestId = null;
+    trialForm.addEventListener("input", () => { if (!sending) requestId = null; });
+    trialForm.addEventListener("submit", async e => {
+      e.preventDefault();
+      if (sending) return;
+      showFormError("");
+      const invalid = Object.keys(checks).filter(name => !validate(name));
+      if (invalid.length) {
+        (invalid[0] === "tageszeit" ? dayparts.find(r => !r.disabled) : field(invalid[0])).focus();
+        return;
+      }
+      const data = {
+        vorname: valueOf("vorname"),
+        nachname: valueOf("nachname"),
+        email: valueOf("email"),
+        telefon: valueOf("telefon") || null,
+        wunschtermin: isoDate(parseDate(valueOf("wunschtermin"))),
+        tageszeit: valueOf("tageszeit"),
+        nachricht: valueOf("nachricht") || null,
+      };
+      // Spam-Bot hat das unsichtbare Feld ausgefüllt: so tun, als ob alles geklappt hat
+      if (valueOf("website")) { showDone(data); return; }
+      if (!SUPABASE_URL || !SUPABASE_KEY || keyIsSecret(SUPABASE_KEY)) {
+        if (keyIsSecret(SUPABASE_KEY)) console.error("Probetraining-Formular: Hier darf nur der Publishable key stehen, nicht der Secret key!");
+        showFormError(`Das Formular ist gerade nicht erreichbar. Bitte schreib uns auf ${INSTA} oder komm zu den Betreuungszeiten vorbei.`);
+        return;
+      }
+
+      sending = true;
+      setBusy(true);
+      if (!requestId && window.crypto) requestId = crypto.randomUUID ? crypto.randomUUID()
+        : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+      try {
+        const res = await fetch(`${SUPABASE_URL.replace(/\/+$/, "")}/rest/v1/${TRIAL_TABLE}`, {
+          method: "POST",
+          headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+          body: JSON.stringify(requestId ? { id: requestId, ...data } : data),
+          signal: controller.signal,
+        });
+        // 409 = diese Anfrage ist schon gespeichert (doppelt gesendet)
+        if (res.ok || res.status === 409) { showDone(data); return; }
+        const info = await res.json().catch(() => ({}));
+        showFormError(/Zu viele Anfragen mit dieser/.test(info.message || "")
+          ? "Mit dieser E-Mail-Adresse wurden heute schon mehrere Anfragen gesendet. Wir melden uns bei dir!"
+          : `Leider ist etwas schiefgelaufen. Bitte versuche es später noch einmal oder schreib uns auf ${INSTA}.`);
+      } catch (err) {
+        showFormError("Die Anfrage konnte nicht gesendet werden. Bitte prüfe deine Internetverbindung und versuche es noch einmal.");
+      } finally {
+        clearTimeout(timer);
+        sending = false;
+        setBusy(false);
+      }
+    });
 
   </script>
 </body>
