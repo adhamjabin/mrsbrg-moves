@@ -7,6 +7,30 @@
   <meta name="description" content="MRSBRG moves – dein Fitnessstudio in Marsberg. Jetzt neu eröffnet. Mönchstraße 50, 34431 Marsberg.">
   <meta name="theme-color" content="#121212">
   <link rel="icon" href="logo-dark.png">
+  <link rel="apple-touch-icon" href="logo-dark.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="MRSBRG moves – Fitnessstudio Marsberg">
+  <meta property="og:description" content="Dein Fitnessstudio in Marsberg. Jetzt neu eröffnet. Gründer-Tarife ab 29,90 € im Monat.">
+  <meta property="og:image" content="images/hero.webp">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExerciseGym",
+      "name": "MRSBRG moves",
+      "description": "Fitnessstudio in Marsberg – Krafttraining, Cardio und persönliche Betreuung.",
+      "image": "images/hero.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mönchstraße 50",
+        "postalCode": "34431",
+        "addressLocality": "Marsberg",
+        "addressCountry": "DE"
+      },
+      "sameAs": ["https://www.instagram.com/mrsbrg_moves/"]
+    }
+  </script>
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,8 +65,21 @@
       line-height: 1.55;
       overflow-x: clip;
     }
-    a { color: inherit; text-decoration: none; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
     img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    ::selection { background: var(--lime); color: var(--ink); }
+
+    /* Tastatur-Fokus sichtbar machen */
+    :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+    .cta :focus-visible, footer :focus-visible, .plan.featured :focus-visible, .poster :focus-visible { outline-color: var(--lime); }
+    .skip {
+      position: fixed; top: 10px; left: 10px; z-index: 100;
+      background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 8px;
+      transform: translateY(-160%); transition: transform 0.25s var(--ease);
+    }
+    .skip:focus { transform: none; }
     .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
     .label {
       font-family: var(--head); font-weight: 600; font-size: 0.9rem;
@@ -54,6 +91,7 @@
     .ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
     .ticker span { white-space: nowrap; padding-right: 28px; display: flex; align-items: center; gap: 28px; }
     .ticker span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
     @keyframes ticker { to { transform: translateX(-50%); } }
 
     /* ---------- Navigation ---------- */
@@ -75,6 +113,7 @@
     }
     .nav-links a:hover { background: var(--paper-2); }
     .nav-links a.active { background: var(--lime); }
+    .nav-links .nav-cta { display: none; }
     .burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
     .burger span { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); transition: transform 0.35s var(--ease); }
     .burger span:nth-child(1) { top: 17px; }
@@ -114,16 +153,18 @@
       font-size: clamp(3.6rem, 9.5vw, 8.6rem); line-height: 0.86; letter-spacing: -0.01em;
     }
     .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
-    .line > span { display: inline-block; transform: translateY(105%); transition: transform 1s var(--ease); }
+    .line > span { display: inline-block; transition: transform 1s var(--ease); }
+    .js .line > span { transform: translateY(105%); }
     .line:nth-child(2) > span { transition-delay: 0.08s; }
     .line:nth-child(3) > span { transition-delay: 0.16s; }
     .ready .line > span { transform: none; }
     .hl { position: relative; z-index: 0; }
     .hl::before {
       content: ""; position: absolute; z-index: -1; left: -0.04em; right: -0.06em; top: 0.42em; bottom: 0.06em;
-      background: var(--lime); transform: scaleX(0); transform-origin: left;
+      background: var(--lime); transform-origin: left;
       transition: transform 0.7s var(--ease) 0.75s;
     }
+    .js .hl::before { transform: scaleX(0); }
     .ready .hl::before { transform: scaleX(1); }
     .hero .lead { max-width: 500px; margin: 28px 0 34px; font-size: 1.2rem; color: var(--muted); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -132,8 +173,9 @@
     .poster-wrap { position: relative; padding: 0 0 8px 28px; }
     .hero-photo {
       border-radius: 18px; overflow: hidden; aspect-ratio: 10 / 11; background: var(--paper-2);
-      opacity: 0; transform: scale(0.96); transition: opacity 0.9s var(--ease) 0.15s, transform 1.2s var(--ease) 0.15s;
+      transition: opacity 0.9s var(--ease) 0.15s, transform 1.2s var(--ease) 0.15s;
     }
+    .js .hero-photo { opacity: 0; transform: scale(0.96); }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
     .ready .hero-photo { opacity: 1; transform: none; }
     .poster {
@@ -142,9 +184,9 @@
       border-radius: 18px; padding: 26px 26px 24px;
       transform: rotate(-2deg);
       box-shadow: 0 30px 60px -30px rgba(40, 50, 30, 0.6);
-      opacity: 0; translate: 0 40px; rotate: 3deg;
       transition: opacity 0.8s var(--ease) 0.35s, translate 1s var(--ease) 0.35s, rotate 1s var(--ease) 0.35s;
     }
+    .js .poster { opacity: 0; translate: 0 40px; rotate: 3deg; }
     .ready .poster { opacity: 1; translate: 0 0; rotate: 0deg; }
     .poster-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
     .poster-price {
@@ -166,9 +208,10 @@
       background: var(--lime); color: var(--ink); border: 2px solid var(--ink);
       display: grid; place-items: center; text-align: center;
       font-family: var(--head); font-weight: 800; font-size: 1.15rem; line-height: 0.95; text-transform: uppercase;
-      transform: scale(0) rotate(-90deg);
+      transform: rotate(12deg);
       transition: transform 0.7s var(--back) 0.9s;
     }
+    .js .sticker { transform: scale(0) rotate(-90deg); }
     .ready .sticker { transform: scale(1) rotate(12deg); }
 
     /* Fakten-Leiste */
@@ -210,10 +253,12 @@
     .sec-head p { color: var(--muted); max-width: 440px; justify-self: end; }
 
     /* Einblenden beim Scrollen */
-    .fade { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0s); }
+    .fade { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0s); }
+    .js .fade { opacity: 0; transform: translateY(28px); }
     .fade.visible { opacity: 1; transform: none; }
     .mask { display: block; overflow: hidden; padding-bottom: 0.04em; }
-    .mask > span { display: inline-block; transform: translateY(105%); transition: transform 0.9s var(--ease); transition-delay: calc(var(--d, 0s) + 0.1s); }
+    .mask > span { display: inline-block; transition: transform 0.9s var(--ease); transition-delay: calc(var(--d, 0s) + 0.1s); }
+    .js .mask > span { transform: translateY(105%); }
     .mask.visible > span { transform: none; }
 
     /* ---------- Tarife ---------- */
@@ -225,7 +270,7 @@
     .plan:first-child .plan-top { border-radius: 15px 0 0 0; }
     .plan:last-child .plan-top { border-radius: 0 15px 0 0; }
     .plan-body { padding: 30px 26px 28px; display: flex; flex-direction: column; flex: 1; }
-    .price { font-family: var(--head); font-weight: 800; font-size: clamp(3.6rem, 6vw, 5rem); line-height: 0.9; }
+    .price { font-family: var(--head); font-weight: 800; font-size: clamp(3.6rem, 6vw, 5rem); line-height: 0.9; font-variant-numeric: tabular-nums; }
     .price small { font-size: 0.42em; }
     .price-sub { color: var(--muted); margin-top: 6px; }
     .plan ul { list-style: none; margin: 26px 0 30px; }
@@ -255,14 +300,17 @@
       content: ""; position: absolute; inset: 0; z-index: -1; background: var(--lime);
       transform: scaleY(0); transform-origin: bottom; transition: transform 0.45s var(--ease);
     }
-    .offer-row:hover::before { transform: scaleY(1); }
     .offer-row .num { color: var(--muted); }
     .offer-row h3 { font-family: var(--head); font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 3.8rem); text-transform: uppercase; line-height: 0.95; }
     .offer-row p { color: var(--muted); transition: color 0.3s; }
-    .offer-row:hover p, .offer-row:hover .num { color: var(--ink); }
     .thumb { overflow: hidden; border-radius: 10px; aspect-ratio: 16 / 10.5; background: var(--paper-2); }
     .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
-    .offer-row:hover .thumb img { transform: scale(1.08); }
+    /* Hover-Effekte nur mit Maus, damit sie auf dem Handy nicht "hängen bleiben" */
+    @media (hover: hover) {
+      .offer-row:hover::before { transform: scaleY(1); }
+      .offer-row:hover p, .offer-row:hover .num { color: var(--ink); }
+      .offer-row:hover .thumb img { transform: scale(1.08); }
+    }
 
     /* ---------- Zeiten & Anfahrt ---------- */
     .visit { background: var(--paper-2); }
@@ -357,6 +405,9 @@
       }
       .nav.open .nav-links { opacity: 1; visibility: visible; transform: none; }
       .nav-links a { font-size: 1.5rem; padding: 12px 8px; }
+      .nav-links .nav-cta { display: block; margin-top: 10px; }
+      .nav-links .nav-cta a { display: flex; height: 52px; padding: 0 24px; border-radius: 10px; font-size: 1.1rem; }
+      .nav-links .nav-cta a:hover { background: var(--olive-dark); }
       .burger { display: block; }
       .nav .btn { display: none; }
       .hero { padding-top: 40px; }
@@ -382,17 +433,19 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .fade { opacity: 1; transform: none; }
-      .line > span, .mask > span { transform: none; }
-      .hl::before, .bar { transform: none; }
-      .reveal-img { clip-path: none; }
-      .poster, .hero-photo { opacity: 1; translate: 0 0; rotate: 0deg; transform: none; }
-      .sticker { transform: rotate(12deg); }
+      .js .fade { opacity: 1; transform: none; }
+      .js .line > span, .js .mask > span { transform: none; }
+      .js .hl::before, .js .bar { transform: none; }
+      .js .reveal-img { clip-path: none; }
+      .js .poster, .js .hero-photo { opacity: 1; translate: 0 0; rotate: 0deg; transform: none; }
+      .js .sticker { transform: rotate(12deg); }
     }
   </style>
 </head>
 <body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
 
   <div class="ticker label" aria-hidden="true">
     <div class="ticker-track">
@@ -404,17 +457,18 @@
   <header class="nav" id="nav">
     <div class="wrap">
       <a href="#top" class="nav-logo"><img src="logo-dark.png" alt="MRSBRG moves" width="846" height="265"></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#tarife">Tarife</a></li>
         <li><a href="#angebot">Angebot</a></li>
         <li><a href="#besuch">Zeiten &amp; Anfahrt</a></li>
+        <li class="nav-cta"><a href="#tarife" class="btn btn-dark">Mitglied werden</a></li>
       </ul>
       <a href="#tarife" class="btn btn-dark">Mitglied werden</a>
-      <button class="burger" id="burger" aria-label="Menü"><span></span><span></span></button>
+      <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- Hero -->
     <section class="hero" id="top">
       <div class="wrap">
@@ -636,8 +690,6 @@
   </footer>
 
   <script>
-    document.documentElement.classList.add("js");
-
     // Betreuungszeiten pro Wochentag (0 = Sonntag). Leeres Array = keine Betreuung.
     const HOURS = [
       { day: "Montag",     idx: 1, slots: [["9:00", "20:00"]] },
@@ -685,19 +737,32 @@
 
     // ---------- Navigation ----------
     const nav = document.getElementById("nav");
-    document.getElementById("burger").addEventListener("click", () => nav.classList.toggle("open"));
-    nav.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+    const burger = document.getElementById("burger");
+    const setMenu = open => {
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open);
+    };
+    burger.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+    nav.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); burger.focus(); } });
+    document.addEventListener("click", e => { if (!nav.contains(e.target)) setMenu(false); });
     const onScroll = () => nav.classList.toggle("scrolled", scrollY > 40);
     addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    const navLinks = [...nav.querySelectorAll(".nav-links a")];
+    // Aktiven Menüpunkt markieren (im Startbereich keiner)
+    const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
     const sectionIO = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id));
+        if (!e.isIntersecting) return;
+        navLinks.forEach(a => {
+          const on = a.getAttribute("href") === "#" + e.target.id;
+          a.classList.toggle("active", on);
+          on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current");
+        });
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
-    navLinks.forEach(a => sectionIO.observe(document.querySelector(a.getAttribute("href"))));
+    ["top", "tarife", "angebot", "besuch"].forEach(id => sectionIO.observe(document.getElementById(id)));
 
     // ---------- Preise hochzählen ----------
     function countUp(el) {
@@ -726,7 +791,7 @@
     // ---------- Karte erst auf Wunsch laden ----------
     document.getElementById("map-load").addEventListener("click", () => {
       document.getElementById("map").innerHTML =
-        '<iframe title="Karte: Mönchstraße 50, 34431 Marsberg" referrerpolicy="no-referrer-when-downgrade" ' +
+        '<iframe title="Karte: Mönchstraße 50, 34431 Marsberg" referrerpolicy="no-referrer-when-downgrade" allowfullscreen ' +
         'src="https://maps.google.com/maps?q=M%C3%B6nchstra%C3%9Fe%2050%2C%2034431%20Marsberg&z=16&output=embed"></iframe>';
     });
   </script>
