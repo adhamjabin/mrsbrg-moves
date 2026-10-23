@@ -466,6 +466,36 @@
       .address h3 { font-size: 2.2rem; }
       .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding-top: 44px; }
       .foot-brand { grid-column: 1 / -1; }
+
+      /* ----- Feinschliff Handy ----- */
+      .section { padding: 64px 0; }
+      .hero h1 { font-size: 16.5vw; }
+      .hero-grid { gap: 32px; }
+      .hero .lead { margin: 20px 0 24px; }
+      .hero-actions { flex-wrap: nowrap; gap: 10px; }
+      .hero-actions .btn { flex: 1 1 0; padding: 0 10px; font-size: 1rem; letter-spacing: 0.04em; }
+      /* Foto flacher und Preiskarte weiter hoch, damit der Preis früher zu sehen ist */
+      .poster-wrap { padding-left: 0; }
+      .hero-photo { aspect-ratio: 16 / 11; }
+      .poster { width: auto; margin: -64px 14px 0; transform: none; padding: 22px 22px 20px; }
+      .poster-price { font-size: 3.6rem; margin-top: 14px; }
+      /* Infozeilen kompakter */
+      .facts { margin-top: 40px; }
+      .fact, .fact + .fact { padding: 12px 0; }
+      .fact b { font-size: 1.3rem; }
+      /* Angebot: kleines Bild neben dem Text statt bildschirmbreit */
+      .offer-list { gap: 0; }
+      .offer-row { display: grid; grid-template-columns: 108px 1fr; column-gap: 16px; align-items: start; padding: 18px 0; }
+      .offer-row + .offer-row { border-top: 1px solid var(--line); }
+      .offer-row .thumb { grid-row: span 2; aspect-ratio: 1; border-radius: 12px; }
+      .offer-row h3 { font-size: 1.75rem; margin: 2px 0 4px; padding: 0; border: 0; }
+      .offer-row p { font-size: 1rem; line-height: 1.45; }
+      /* Tarife kompakter */
+      .plan-body, .plan.featured .plan-body { padding: 22px 22px 22px; }
+      .price { font-size: 3.4rem; }
+      .plan ul { margin: 16px 0 20px; }
+      .plan li { padding: 9px 0; }
+      .plans-info { padding: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
