@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marsberg-moves.github.io/mrsbrg-moves/sitemap.xml
