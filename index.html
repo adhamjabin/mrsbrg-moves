@@ -1,19 +1,1027 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="MRSBRG moves – dein Fitnessstudio in Marsberg. Krafttraining, Cardio und Betreuung zu fairen Preisen. Gründer-Tarife ab 29,90 € im Monat." />
-    <meta name="theme-color" content="#121212" />
-    <title>MRSBRG moves – Fitnessstudio Marsberg</title>
-    <link rel="icon" type="image/png" href="./logo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" />
-    <script type="module" crossorigin src="./assets/index-zsuRioqi.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CVq-UG1g.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRSBRG moves – Fitnessstudio Marsberg</title>
+  <meta name="description" content="MRSBRG moves – dein Fitnessstudio in Marsberg. Jetzt neu eröffnet. Mönchstraße 50, 34431 Marsberg.">
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" href="logo-dark-sm.png">
+  <link rel="apple-touch-icon" href="logo-dark-sm.png">
+  <link rel="canonical" href="https://marsberg-moves.github.io/mrsbrg-moves/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marsberg-moves.github.io/mrsbrg-moves/">
+  <meta property="og:site_name" content="MRSBRG moves">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="MRSBRG moves – Fitnessstudio Marsberg">
+  <meta property="og:description" content="Dein Fitnessstudio in Marsberg. Jetzt neu eröffnet. Gründer-Tarife ab 29,90 € im Monat.">
+  <meta property="og:image" content="https://marsberg-moves.github.io/mrsbrg-moves/images/hero.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1100">
+  <meta property="og:image:alt" content="Kurzhantelreihe im Studio">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ExerciseGym",
+      "name": "MRSBRG moves",
+      "description": "Fitnessstudio in Marsberg – Krafttraining, Cardio und persönliche Betreuung.",
+      "image": "https://marsberg-moves.github.io/mrsbrg-moves/images/hero.webp",
+      "url": "https://marsberg-moves.github.io/mrsbrg-moves/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Mönchstraße 50",
+        "postalCode": "34431",
+        "addressLocality": "Marsberg",
+        "addressCountry": "DE"
+      },
+      "sameAs": ["https://www.instagram.com/mrsbrg_moves/"]
+    }
+  </script>
+  <meta name="color-scheme" content="light">
+  <script>
+    // Animationen nur, wenn das Skript sicher durchläuft. Bei alten Browsern, Fehlern oder
+    // langsamen Geräten wird nach spätestens 3 Sekunden einfach alles sofort angezeigt.
+    (function (root) {
+      root.className += " js";
+      function showAll() { root.className = root.className.replace(/(^|\s)js(?=\s|$)/g, " "); }
+      window.addEventListener("error", showAll);
+      setTimeout(function () { if (!/(^|\s)js-ok(\s|$)/.test(root.className)) showAll(); }, 3000);
+    })(document.documentElement);
+  </script>
+  <!-- Schriften liegen lokal im Ordner fonts/ (kein Abruf bei Google, DSGVO-freundlich) -->
+  <link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* Barlow & Barlow Condensed (SIL Open Font License, siehe fonts/OFL.txt) */
+    @font-face {
+      font-family: "Barlow"; font-style: normal; font-weight: 400; font-display: swap;
+      src: url("fonts/barlow-400.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow"; font-style: normal; font-weight: 500; font-display: swap;
+      src: url("fonts/barlow-500.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow"; font-style: normal; font-weight: 600; font-display: swap;
+      src: url("fonts/barlow-600.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow Condensed"; font-style: normal; font-weight: 500; font-display: swap;
+      src: url("fonts/barlow-condensed-500.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow Condensed"; font-style: normal; font-weight: 600; font-display: swap;
+      src: url("fonts/barlow-condensed-600.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow Condensed"; font-style: normal; font-weight: 700; font-display: swap;
+      src: url("fonts/barlow-condensed-700.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: "Barlow Condensed"; font-style: normal; font-weight: 800; font-display: swap;
+      src: url("fonts/barlow-condensed-800.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    :root {
+      --paper: #f3f2ee;
+      --paper-2: #e8e7e1;
+      --white: #ffffff;
+      --ink: #121212;
+      --muted: #5b5b57;
+      --line: rgba(18, 18, 18, 0.13);
+      --grid: #d8d7d0;
+      --olive: #6b7a5c;
+      --olive-dark: #55623f;
+      --lime: #c6e84a;
+      --cyan: #4fd8e0;
+      --blue: #3b7bf0;
+      --orange: #ff7a3d;
+      --grad: linear-gradient(90deg, var(--lime), var(--cyan), var(--blue), var(--orange));
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --back: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --head: "Barlow Condensed", Impact, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    body {
+      font-family: "Barlow", system-ui, sans-serif;
+      font-size: 1.05rem;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    img { max-width: 100%; height: auto; display: block; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    ::selection { background: var(--lime); color: var(--ink); }
+
+    /* Tastatur-Fokus sichtbar machen */
+    :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+    .cta :focus-visible, footer :focus-visible, .plan.featured :focus-visible, .poster :focus-visible { outline-color: var(--lime); }
+    .skip {
+      position: fixed; top: 10px; left: 10px; z-index: 100;
+      background: var(--ink); color: var(--paper); padding: 10px 16px; border-radius: 8px;
+      transform: translateY(-160%); transition: transform 0.25s var(--ease);
+    }
+    .skip:focus { transform: none; }
+    .wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+    .label {
+      font-family: var(--head); font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+
+    /* ---------- Laufschrift oben ---------- */
+    .ticker { background: var(--ink); color: var(--paper); overflow: hidden; height: 38px; display: flex; align-items: center; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
+    .ticker span { white-space: nowrap; padding-right: 28px; display: flex; align-items: center; gap: 28px; }
+    .ticker span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--paper);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .nav.scrolled { border-color: var(--line); box-shadow: 0 8px 24px -18px rgba(0, 0, 0, 0.35); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
+    .nav-logo img { height: 40px; width: auto; }
+    .nav-links { display: flex; gap: 6px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 14px; border-radius: 8px;
+      font-family: var(--head); font-weight: 600; font-size: 1.05rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: background 0.25s;
+    }
+    .nav-links a:hover { background: var(--paper-2); }
+    .nav-links a.active { background: var(--lime); }
+    .nav-links .nav-cta { display: none; }
+    .progress {
+      position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+      background: var(--grad); transform: scaleX(0); transform-origin: left;
+      pointer-events: none;
+    }
+    .burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
+    .burger span { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); transition: transform 0.35s var(--ease); }
+    .burger span:nth-child(1) { top: 17px; }
+    .burger span:nth-child(2) { top: 25px; }
+    .nav.open .burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    .nav.open .burger span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      height: 52px; padding: 0 24px; border-radius: 10px;
+      font-family: var(--head); font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: 2px solid transparent; cursor: pointer;
+      transition: transform 0.25s var(--ease), background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn svg { width: 20px; height: 20px; transition: transform 0.3s var(--ease); }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-dark { background: var(--ink); color: var(--paper); }
+    .btn-dark:hover { background: var(--olive-dark); }
+    .btn-line { border-color: var(--ink); }
+    .btn-line:hover { background: var(--ink); color: var(--paper); }
+    .btn-lime { background: var(--lime); color: var(--ink); }
+    .btn-lime:hover { background: var(--white); }
+    .btn-light-line { border-color: rgba(243, 242, 238, 0.5); color: var(--paper); }
+    .btn-light-line:hover { border-color: var(--paper); background: var(--paper); color: var(--ink); }
+    .nav .btn { height: 44px; font-size: 1rem; padding: 0 18px; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 64px 0 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
+    .kicker { display: flex; align-items: center; gap: 10px; color: var(--olive-dark); margin-bottom: 22px; }
+    .kicker::before { content: ""; width: 10px; height: 10px; background: var(--lime); border: 2px solid var(--ink); border-radius: 50%; }
+    .hero h1 {
+      font-family: var(--head); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(3.6rem, 9.5vw, 8.6rem); line-height: 0.86; letter-spacing: -0.01em;
+    }
+    .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
+    .line > span { display: inline-block; transition: transform 1s var(--ease); }
+    .js .line > span { transform: translateY(105%); }
+    .line:nth-child(2) > span { transition-delay: 0.08s; }
+    .line:nth-child(3) > span { transition-delay: 0.16s; }
+    .ready .line > span { transform: none; }
+    .hl { position: relative; z-index: 0; }
+    .hl::before {
+      content: ""; position: absolute; z-index: -1; left: -0.04em; right: -0.06em; top: 0.42em; bottom: 0.06em;
+      background: var(--lime); transform-origin: left;
+      transition: transform 0.7s var(--ease) 0.75s;
+    }
+    .js .hl::before { transform: scaleX(0); }
+    .ready .hl::before { transform: scaleX(1); }
+    .hero .lead { max-width: 500px; margin: 28px 0 34px; font-size: 1.2rem; color: var(--muted); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* Plakat-Karte */
+    .poster-wrap { position: relative; padding: 0 0 8px 28px; }
+    .hero-photo {
+      border-radius: 18px; overflow: hidden; aspect-ratio: 10 / 11; background: var(--paper-2);
+      transition: opacity 0.9s var(--ease) 0.15s, transform 1.2s var(--ease) 0.15s;
+    }
+    .js .hero-photo { opacity: 0; transform: scale(0.96); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .ready .hero-photo { opacity: 1; transform: none; }
+    .poster {
+      position: relative; width: 84%; margin: -46% 0 0 -28px;
+      background: var(--olive); color: var(--white);
+      border-radius: 18px; padding: 26px 26px 24px;
+      transform: rotate(-2deg);
+      box-shadow: 0 30px 60px -30px rgba(40, 50, 30, 0.6);
+      transition: opacity 0.8s var(--ease) 0.35s, translate 1s var(--ease) 0.35s, rotate 1s var(--ease) 0.35s;
+    }
+    .js .poster { opacity: 0; translate: 0 40px; rotate: 3deg; }
+    .ready .poster { opacity: 1; translate: 0 0; rotate: 0deg; }
+    .poster-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+    .poster-price {
+      font-family: var(--head); font-weight: 800; line-height: 0.9;
+      font-size: clamp(4rem, 6.5vw, 5.6rem); margin: 18px 0 4px;
+    }
+    .poster-price small { font-size: 0.38em; font-weight: 700; }
+    .poster p { opacity: 0.85; }
+    .poster-row {
+      display: flex; justify-content: space-between; gap: 12px;
+      margin: 22px 0 24px; padding-top: 18px;
+      border-top: 2px dashed rgba(255, 255, 255, 0.35);
+      font-family: var(--head); font-weight: 600; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .poster .btn { width: 100%; }
+    .sticker {
+      position: absolute; top: -10px; right: -14px; z-index: 2;
+      width: 108px; height: 108px; border-radius: 50%;
+      background: var(--lime); color: var(--ink); border: 2px solid var(--ink);
+      display: grid; place-items: center; text-align: center;
+      font-family: var(--head); font-weight: 800; font-size: 1.15rem; line-height: 0.95; text-transform: uppercase;
+      transform: rotate(12deg);
+      transition: transform 0.7s var(--back) 0.9s;
+    }
+    .js .sticker { transform: scale(0) rotate(-90deg); }
+    .ready .sticker { transform: scale(1) rotate(12deg); }
+
+    /* Fakten-Leiste */
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 72px; border-top: 2px solid var(--ink); }
+    .fact { padding: 22px 24px 26px 0; display: grid; gap: 4px; align-content: start; }
+    .fact + .fact { padding-left: 24px; border-left: 1px solid var(--line); }
+    .fact .label { color: var(--muted); font-size: 0.8rem; }
+    .fact b { font-family: var(--head); font-weight: 700; font-size: 1.55rem; text-transform: uppercase; line-height: 1.1; transition: color 0.2s; }
+    .fact:hover b { color: var(--olive-dark); }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #b3b3ad; margin-right: 8px; vertical-align: 2px; }
+    .dot.on { background: #5ba82e; box-shadow: 0 0 0 4px rgba(91, 168, 46, 0.2); }
+    .brand-stripe { height: 6px; background: var(--grad); }
+
+    /* ---------- So wirst du Mitglied ---------- */
+    .steps { padding: 72px 0 0; }
+    .steps-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px 32px; margin-bottom: 28px; }
+    .steps-head .label { display: block; color: var(--olive-dark); margin-bottom: 12px; }
+    .steps-head h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    .steps-head p { color: var(--muted); max-width: 420px; }
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; list-style: none; }
+    .step {
+      background: var(--white); border: 1px solid var(--line); border-radius: 16px;
+      padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .step-num { font-family: var(--head); font-weight: 800; font-size: 3.4rem; line-height: 0.9; color: var(--olive); }
+    .step h3 { font-family: var(--head); font-weight: 800; font-size: 1.9rem; line-height: 1; text-transform: uppercase; }
+    .step p { color: var(--muted); }
+    .step-status { font-weight: 600; color: var(--ink); }
+    .step-link {
+      margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+      font-family: var(--head); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase;
+      border-bottom: 2px solid var(--lime);
+    }
+    .step-link svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
+    .step-link:hover svg { transform: translateX(4px); }
+
+    /* ---------- Sektionen ---------- */
+    .section { padding: 110px 0; }
+    .sec-head {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end;
+      padding-top: 22px; border-top: 2px solid var(--ink); margin-bottom: 56px;
+    }
+    .sec-num { display: block; color: var(--olive-dark); margin-bottom: 14px; }
+    h2 {
+      font-family: var(--head); font-weight: 800; text-transform: uppercase;
+      font-size: clamp(2.8rem, 6.5vw, 5.6rem); line-height: 0.88;
+    }
+    .sec-head p { color: var(--muted); max-width: 440px; justify-self: end; }
+
+    /* Einblenden beim Scrollen */
+    .fade { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0s); }
+    .js .fade { opacity: 0; transform: translateY(28px); }
+    .fade.visible { opacity: 1; transform: none; }
+    .mask { display: block; overflow: hidden; padding-bottom: 0.04em; }
+    .mask > span { display: inline-block; transition: transform 0.9s var(--ease); transition-delay: calc(var(--d, 0s) + 0.1s); }
+    .js .mask > span { transform: translateY(105%); }
+    .mask.visible > span { transform: none; }
+
+    /* ---------- Tarife ---------- */
+    .plans { display: grid; grid-template-columns: 1fr 1.1fr 1fr; align-items: stretch; }
+    .plan { background: var(--white); border: 1px solid var(--line); display: flex; flex-direction: column; }
+    .plan:first-child { border-radius: 16px 0 0 16px; border-right: 0; }
+    .plan:last-child { border-radius: 0 16px 16px 0; border-left: 0; }
+    .plan-top { background: var(--olive); color: var(--white); padding: 12px 26px; }
+    .plan:first-child .plan-top { border-radius: 15px 0 0 0; }
+    .plan:last-child .plan-top { border-radius: 0 15px 0 0; }
+    .plan-body { padding: 30px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+    .price { font-family: var(--head); font-weight: 800; font-size: clamp(3.6rem, 6vw, 5rem); line-height: 0.9; font-variant-numeric: tabular-nums; }
+    .price small { font-size: 0.42em; }
+    .price-sub { color: var(--muted); margin-top: 6px; }
+    .plan ul { list-style: none; margin: 26px 0 30px; }
+    .plan li { padding: 11px 0; border-top: 1px solid var(--line); display: flex; gap: 12px; align-items: baseline; }
+    .plan li::before { content: "→"; color: var(--olive); font-weight: 600; }
+    .plan .btn { margin-top: auto; }
+    .plan.featured {
+      background: var(--ink); color: var(--paper); border: 0;
+      border-radius: 16px; margin: -18px 0; position: relative; z-index: 1;
+      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+    }
+    .plan.featured .plan-top { background: var(--lime); color: var(--ink); border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; }
+    .plan.featured .plan-body { padding-top: 40px; padding-bottom: 46px; }
+    .plan.featured .price-sub { color: rgba(243, 242, 238, 0.7); }
+    .plan.featured li { border-color: rgba(243, 242, 238, 0.15); }
+    .plan.featured li::before { color: var(--lime); }
+    .plans-note { margin-top: 44px; color: var(--muted); }
+    .plans-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ---------- Angebot (Liste) ---------- */
+    .offer-list { list-style: none; border-bottom: 1px solid var(--line); }
+    .offer-row {
+      position: relative; display: grid; grid-template-columns: 70px 1fr 1.1fr 200px; gap: 24px; align-items: center;
+      padding: 30px 12px; border-top: 1px solid var(--line); isolation: isolate;
+    }
+    .offer-row::before {
+      content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; background: var(--lime);
+      transform: scaleY(0); transform-origin: bottom; transition: transform 0.45s var(--ease);
+    }
+    .offer-row .num { color: var(--muted); }
+    .offer-row h3 { font-family: var(--head); font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 3.8rem); text-transform: uppercase; line-height: 0.95; }
+    .offer-row p { color: var(--muted); transition: color 0.3s; }
+    .thumb { overflow: hidden; border-radius: 10px; aspect-ratio: 16 / 10.5; background: var(--paper-2); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+    /* Hover-Effekte nur mit Maus, damit sie auf dem Handy nicht "hängen bleiben" */
+    @media (hover: hover) {
+      .offer-row:hover::before { transform: scaleY(1); }
+      .offer-row:hover p, .offer-row:hover .num { color: var(--ink); }
+      .offer-row:hover .thumb img { transform: scale(1.08); }
+    }
+
+    /* ---------- Zeiten & Anfahrt ---------- */
+    .visit { background: var(--paper-2); }
+    .visit-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: stretch; }
+    .card { background: var(--white); border-radius: 16px; border: 1px solid var(--line); }
+    .hours { padding: 28px 28px 22px; }
+    .hours-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+    .hours-head h3 { font-family: var(--head); font-weight: 800; font-size: 1.9rem; text-transform: uppercase; }
+    .hours-head small { color: var(--muted); }
+    .axis, .h-row { display: grid; grid-template-columns: 104px 1fr 112px; gap: 16px; align-items: center; }
+    .axis-track { position: relative; height: 18px; color: var(--muted); font-size: 0.78rem; }
+    .axis-track span { position: absolute; translate: -50% 0; }
+    .h-row { padding: 12px 0; border-top: 1px solid var(--line); }
+    .h-row .day { font-family: var(--head); font-weight: 700; font-size: 1.2rem; text-transform: uppercase; }
+    .h-row .time { text-align: right; font-variant-numeric: tabular-nums; font-size: 0.95rem; }
+    .h-row.off .day, .h-row.off .time { color: var(--muted); }
+    .track {
+      position: relative; height: 12px; border-radius: 6px;
+      background: repeating-linear-gradient(90deg, var(--paper-2) 0 calc(25% - 1px), var(--grid) calc(25% - 1px) 25%);
+    }
+    .bar {
+      position: absolute; top: 0; bottom: 0; border-radius: 6px; background: var(--olive);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.9s var(--ease); transition-delay: var(--bd, 0s);
+    }
+    .hours.visible .bar { transform: scaleX(1); }
+    .h-row.today .bar { background: var(--ink); }
+    .h-row.today .day::after {
+      content: "Heute"; margin-left: 8px; padding: 1px 7px; border-radius: 5px; vertical-align: 2px;
+      background: var(--lime); font-size: 0.72rem; letter-spacing: 0.06em;
+    }
+    .now { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-left: -1px; background: var(--orange); border-radius: 2px; }
+
+    .address { padding: 28px; display: flex; flex-direction: column; gap: 22px; }
+    .address h3 { font-family: var(--head); font-weight: 800; font-size: 2.6rem; line-height: 0.95; text-transform: uppercase; margin-top: 6px; }
+    .address .actions { display: grid; gap: 10px; }
+    .map { border-radius: 12px; overflow: hidden; min-height: 240px; margin-top: auto; border: 1px solid var(--line); background: var(--paper-2); }
+    .map iframe { width: 100%; height: 240px; border: 0; display: block; }
+    /* Hinweis vor dem Laden der Karte (Zwei-Klick-Lösung) */
+    .map-consent {
+      min-height: 240px; padding: 20px 18px; text-align: center;
+      display: grid; place-items: center; align-content: center; gap: 10px;
+      background-color: var(--paper-2);
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .map-consent b { font-family: var(--head); font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .map-consent p, .map-consent small { max-width: 36ch; color: var(--muted); font-size: 0.9rem; line-height: 1.4; background: var(--paper-2); }
+    .map-consent small { font-size: 0.78rem; }
+    .map-consent .btn { height: 44px; padding: 0 18px; font-size: 1rem; }
+
+    /* ---------- CTA + Footer ---------- */
+    .cta {
+      color: var(--paper); padding: 140px 0 120px;
+      background: linear-gradient(180deg, rgba(18, 18, 18, 0.82), rgba(18, 18, 18, 0.95)), url("images/cta.webp") center / cover var(--ink);
+    }
+    .cta h2 { font-size: clamp(3.4rem, 11vw, 10rem); }
+    .cta .lime { color: var(--lime); }
+    .cta-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 28px; margin-top: 44px; }
+    .cta-row p { color: rgba(243, 242, 238, 0.7); max-width: 420px; }
+    .cta-row .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    footer { background: var(--ink); color: rgba(243, 242, 238, 0.65); }
+    .mobile-bar { display: none; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 0 34px; border-top: 1px solid rgba(243, 242, 238, 0.14); }
+    footer img { height: 34px; width: auto; }
+    footer nav { display: flex; gap: 22px; }
+    footer a:hover, .link-btn:hover { color: var(--paper); }
+    .link-btn { background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; cursor: pointer; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .hero-grid, .visit-grid { grid-template-columns: 1fr; }
+      .poster-wrap { max-width: 520px; padding-left: 20px; }
+      .hero-photo { aspect-ratio: 4 / 3.4; }
+      .poster { width: 90%; margin: -28% 0 0 -20px; }
+      .plans { grid-template-columns: 1fr; gap: 16px; }
+      .plan, .plan:first-child, .plan:last-child { border: 1px solid var(--line); border-radius: 16px; }
+      .plan .plan-top, .plan:first-child .plan-top, .plan:last-child .plan-top { border-radius: 15px 15px 0 0; }
+      .plan.featured { margin: 0; order: -1; border: 0; }
+      .sec-head { grid-template-columns: 1fr; gap: 18px; }
+      .sec-head p { justify-self: start; }
+      .section { padding: 84px 0; }
+    }
+    @media (max-width: 760px) {
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0; padding: 8px 16px 16px;
+        background: var(--paper); border-bottom: 1px solid var(--line);
+        opacity: 0; visibility: hidden; transform: translateY(-8px);
+        transition: opacity 0.25s, transform 0.3s var(--ease), visibility 0.25s;
+      }
+      .nav.open .nav-links { opacity: 1; visibility: visible; transform: none; }
+      .nav-links a { font-size: 1.5rem; padding: 12px 8px; }
+      .nav-links .nav-cta { display: block; margin-top: 10px; }
+      .nav-links .nav-cta a { display: flex; height: 52px; padding: 0 24px; border-radius: 10px; font-size: 1.1rem; }
+      .nav-links .nav-cta a:hover { background: var(--olive-dark); }
+      .burger { display: block; }
+      .nav .btn { display: none; }
+      /* Schnellzugriff unten am Handy */
+      .mobile-bar {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+        display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+        background: var(--ink); box-shadow: 0 -10px 30px -12px rgba(0, 0, 0, 0.45);
+        transform: translateY(110%); visibility: hidden;
+        transition: transform 0.35s var(--ease), visibility 0.35s;
+      }
+      .mobile-bar.show { transform: none; visibility: visible; }
+      .mobile-bar .btn { height: 48px; padding: 0 12px; font-size: 1rem; }
+      .hero { padding-top: 40px; }
+      .sticker { right: 4px; width: 92px; height: 92px; font-size: 1rem; }
+      .facts { grid-template-columns: 1fr; margin-top: 56px; }
+      .fact, .fact + .fact { padding: 16px 0; border-left: 0; }
+      .fact + .fact { border-top: 1px solid var(--line); }
+      .offer-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 4px; }
+      .offer-row .num { grid-column: 1 / -1; }
+      .offer-row p { grid-column: 1 / -1; grid-row: 3; }
+      .thumb { grid-column: 1 / -1; grid-row: 4; margin-top: 8px; aspect-ratio: 16 / 9; }
+      .steps { padding-top: 56px; }
+      .step-grid { grid-template-columns: 1fr; gap: 12px; }
+      .step { padding: 22px 20px 20px; }
+      .hours { padding: 22px 18px 16px; }
+      .axis, .h-row { grid-template-columns: 78px 1fr; gap: 6px 12px; }
+      .axis > :last-child { display: none; }
+      .h-row .day { grid-row: span 2; align-self: start; font-size: 1.05rem; }
+      .h-row .time { grid-column: 2; text-align: left; font-size: 0.88rem; color: var(--muted); }
+      .h-row.today .day::after { display: block; width: max-content; margin: 4px 0 0; }
+      .address { padding: 22px 18px; }
+      .address h3 { font-size: 2.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .fade { opacity: 1; transform: none; }
+      .js .line > span, .js .mask > span { transform: none; }
+      .js .hl::before, .js .bar { transform: none; }
+      .js .poster, .js .hero-photo { opacity: 1; translate: 0 0; rotate: 0deg; transform: none; }
+      .js .sticker { transform: rotate(12deg); }
+    }
+    /* ---------- Drucken ---------- */
+    @media print {
+      .ticker, .nav, .skip, .burger, .mobile-bar, .hero-actions, .poster .btn, .step-link, .address .actions, .cta-row .actions, footer nav { display: none !important; }
+      .fade, .mask > span, .line > span, .hero-photo, .poster, .hl::before { opacity: 1 !important; transform: none !important; translate: none !important; rotate: none !important; }
+      .section, .cta { padding: 32px 0; }
+      .plan, .step, .card, .offer-row, .h-row { break-inside: avoid; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+
+  <div class="ticker label" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Jetzt neu eröffnet</span><span>Mönchstraße 50 · Marsberg</span><span>Gründer-Tarife ab 29,90 €</span><span>Krafttraining · Cardio · Betreuung</span>
+      <span>Jetzt neu eröffnet</span><span>Mönchstraße 50 · Marsberg</span><span>Gründer-Tarife ab 29,90 €</span><span>Krafttraining · Cardio · Betreuung</span>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="#top" class="nav-logo"><img src="logo-dark-sm.png" alt="MRSBRG moves" width="383" height="120"></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#tarife">Tarife</a></li>
+        <li><a href="#angebot">Angebot</a></li>
+        <li><a href="#besuch">Zeiten &amp; Anfahrt</a></li>
+        <li class="nav-cta"><a href="#tarife" class="btn btn-dark">Mitglied werden</a></li>
+      </ul>
+      <a href="#tarife" class="btn btn-dark">Mitglied werden</a>
+      <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+    </div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker label">Neu eröffnet · Mönchstraße 50</div>
+            <h1>
+              <span class="line"><span>Stark</span></span>
+              <span class="line"><span>werden in</span></span>
+              <span class="line"><span class="hl">Marsberg.</span></span>
+            </h1>
+            <p class="lead">Dein Fitnessstudio mitten in Marsberg. Ehrliche Preise, persönliche Betreuung und alles, was du für dein Training brauchst.</p>
+            <div class="hero-actions">
+              <a href="#tarife" class="btn btn-dark">Tarife ansehen
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#besuch" class="btn btn-line">Zeiten &amp; Anfahrt</a>
+            </div>
+          </div>
+
+          <div class="poster-wrap">
+            <div class="sticker">Neu<br>eröffnet</div>
+            <figure class="hero-photo"><img src="images/hero.webp" alt="Kurzhantelreihe im Studio" width="1000" height="1100" fetchpriority="high"></figure>
+            <div class="poster">
+              <div class="poster-top label"><span>Gründer-Tarif</span><span>12 Monate</span></div>
+              <div class="poster-price">29,90<small> €</small></div>
+              <p>pro Monat – nur für kurze Zeit zur Neueröffnung.</p>
+              <div class="poster-row"><span>Startpaket</span><span>49,00 € einmalig</span></div>
+              <a href="#tarife" class="btn btn-lime">Alle Tarife
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="facts">
+          <a class="fact" href="#besuch"><span class="label">Adresse</span><b>Mönchstraße 50, Marsberg</b></a>
+          <a class="fact" href="#besuch"><span class="label">Betreuung heute</span><b><span class="dot" data-status-dot></span><span data-status-text>–</span></b></a>
+          <a class="fact" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener"><span class="label">Instagram</span><b>@mrsbrg_moves</b></a>
+        </div>
+      </div>
+    </section>
+    <div class="brand-stripe"></div>
+
+    <!-- So wirst du Mitglied (bewusst ohne Einblend-Animation, damit es immer sichtbar ist) -->
+    <section class="steps" aria-labelledby="steps-title">
+      <div class="wrap">
+        <div class="steps-head">
+          <div>
+            <span class="label">In 3 Schritten zum Training</span>
+            <h2 id="steps-title">So wirst du Mitglied</h2>
+          </div>
+          <p>Einfach und transparent: Komm zu den Betreuungszeiten vorbei – Anmeldung und Einweisung gibt es direkt vor Ort.</p>
+        </div>
+        <ol class="step-grid">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Tarif wählen</h3>
+            <p>3 oder 12 Monate Laufzeit – die Gründer-Tarife gibt es ab 29,90 € im Monat.</p>
+            <a class="step-link" href="#tarife">Tarife ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Vorbeikommen</h3>
+            <p>Zu den Betreuungszeiten ist jemand vor Ort für deine Anmeldung – Mönchstraße 50, Marsberg.</p>
+            <p class="step-status"><span class="dot" data-status-dot></span>Betreuung: <span data-status-text>–</span></p>
+            <a class="step-link" href="#besuch">Zeiten &amp; Anfahrt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Loslegen</h3>
+            <p>Du bekommst eine Einweisung – und zu den Betreuungszeiten ist immer jemand da für Fragen und Tipps.</p>
+            <a class="step-link" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Fragen? Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Tarife -->
+    <section class="section" id="tarife">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div>
+            <span class="sec-num label">01 — Tarife</span>
+            <h2 class="mask"><span>Die Gründer-Tarife</span></h2>
+          </div>
+          <p>Zur Neueröffnung gibt es unsere Gründer-Konditionen. Einfach, transparent und nur für kurze Zeit.</p>
+        </div>
+
+        <div class="plans">
+          <div class="plan fade">
+            <div class="plan-top label">3 Monate</div>
+            <div class="plan-body">
+              <div class="price"><span data-count="34.90">34,90</span><small> €</small></div>
+              <div class="price-sub">pro Monat</div>
+              <ul>
+                <li>3 Monate Laufzeit</li>
+                <li>Ideal zum Reinschnuppern</li>
+                <li>Gründer-Konditionen</li>
+              </ul>
+              <a href="#besuch" class="btn btn-line">Jetzt sichern</a>
+            </div>
+          </div>
+          <div class="plan featured fade" style="--d:.1s">
+            <div class="plan-top label"><span>12 Monate</span><span>Bester Preis</span></div>
+            <div class="plan-body">
+              <div class="price"><span data-count="29.90">29,90</span><small> €</small></div>
+              <div class="price-sub">pro Monat</div>
+              <ul>
+                <li>12 Monate Laufzeit</li>
+                <li>Günstigster Monatsbeitrag</li>
+                <li>Gründer-Konditionen gesichert</li>
+              </ul>
+              <a href="#besuch" class="btn btn-lime">Jetzt sichern</a>
+            </div>
+          </div>
+          <div class="plan fade" style="--d:.2s">
+            <div class="plan-top label">+ Startpaket</div>
+            <div class="plan-body">
+              <div class="price"><span data-count="49.00">49,00</span><small> €</small></div>
+              <div class="price-sub">einmalig</div>
+              <ul>
+                <li>Einmalig zu Vertragsbeginn</li>
+                <li>Gilt für beide Laufzeiten</li>
+              </ul>
+              <a href="#besuch" class="btn btn-line">Mehr erfahren</a>
+            </div>
+          </div>
+        </div>
+        <p class="plans-note fade">Fragen zu den Tarifen? Komm vorbei oder schreib uns auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p>
+      </div>
+    </section>
+
+    <!-- Angebot -->
+    <section class="section" id="angebot" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div>
+            <span class="sec-num label">02 — Angebot</span>
+            <h2 class="mask"><span>Was dich erwartet</span></h2>
+          </div>
+          <p>Kein Schnickschnack – sondern alles, was du für ein gutes Training brauchst.</p>
+        </div>
+        <ul class="offer-list">
+          <li class="offer-row fade">
+            <span class="num label">01</span>
+            <h3>Krafttraining</h3>
+            <p>Freihantel, Geräte und alles, was du für deinen Muskelaufbau brauchst.</p>
+            <figure class="thumb"><img src="images/kraft.webp" alt="Langhantel beim Kreuzheben" width="640" height="420" loading="lazy" decoding="async"></figure>
+          </li>
+          <li class="offer-row fade">
+            <span class="num label">02</span>
+            <h3>Cardio</h3>
+            <p>Ausdauer verbessern, Kalorien verbrennen und den Kopf freibekommen.</p>
+            <figure class="thumb"><img src="images/cardio.webp" alt="Laufbänder im Cardiobereich" width="640" height="420" loading="lazy" decoding="async"></figure>
+          </li>
+          <li class="offer-row fade">
+            <span class="num label">03</span>
+            <h3>Betreuung</h3>
+            <p>Zu den Betreuungszeiten ist jemand vor Ort – für Einweisung, Fragen und Tipps.</p>
+            <figure class="thumb"><img src="images/betreuung.webp" alt="Training mit der Langhantel" width="640" height="420" loading="lazy" decoding="async"></figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Zeiten & Anfahrt -->
+    <section class="section visit" id="besuch">
+      <div class="wrap">
+        <div class="sec-head fade">
+          <div>
+            <span class="sec-num label">03 — Besuch</span>
+            <h2 class="mask"><span>Zeiten &amp; Anfahrt</span></h2>
+          </div>
+          <p>Zu den Betreuungszeiten ist jemand vor Ort für Anmeldung und Einweisung. Änderungen posten wir auf Instagram.</p>
+        </div>
+
+        <div class="visit-grid">
+          <div class="card hours fade" id="hours">
+            <div class="hours-head">
+              <h3>Betreuungszeiten</h3>
+              <small>06–22 Uhr</small>
+            </div>
+            <div class="axis" aria-hidden="true">
+              <span></span>
+              <div class="axis-track"><span style="left:0%">6</span><span style="left:25%">10</span><span style="left:50%">14</span><span style="left:75%">18</span><span style="left:100%">22</span></div>
+              <span></span>
+            </div>
+            <div id="hours-rows"></div>
+            <noscript>
+              <div class="h-row"><span class="day">Montag</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row"><span class="day">Dienstag</span><span></span><span class="time">9:00–13:00</span></div>
+              <div class="h-row"><span class="day">Mittwoch</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row"><span class="day">Donnerstag</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row off"><span class="day">Freitag</span><span></span><span class="time">Keine Betreuung</span></div>
+              <div class="h-row off"><span class="day">Samstag</span><span></span><span class="time">Keine Betreuung</span></div>
+              <div class="h-row off"><span class="day">Sonntag</span><span></span><span class="time">Keine Betreuung</span></div>
+            </noscript>
+          </div>
+
+          <div class="card address fade" style="--d:.1s">
+            <div>
+              <span class="label" style="color:var(--olive-dark)">Adresse</span>
+              <h3>Mönchstraße 50<br>34431 Marsberg</h3>
+            </div>
+            <div class="actions">
+              <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=M%C3%B6nchstra%C3%9Fe+50,+34431+Marsberg" target="_blank" rel="noopener">Route planen
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn-line" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="map" id="map">
+              <div class="map-consent">
+                <b>Karte von Google Maps</b>
+                <p>Beim Anzeigen der Karte werden Daten wie deine IP-Adresse an Google übertragen. Mehr dazu in der Datenschutzerklärung.</p>
+                <button class="btn btn-dark" id="map-accept" type="button">Karte anzeigen</button>
+                <small>Deine Wahl wird auf diesem Gerät gespeichert und lässt sich unten auf der Seite jederzeit widerrufen.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="wrap">
+        <h2>
+          <span class="mask"><span>Komm vorbei.</span></span>
+          <span class="mask" style="--d:.1s"><span class="lime">Trainier mit.</span></span>
+        </h2>
+        <div class="cta-row fade" style="--d:.2s">
+          <p>Sichere dir deinen Gründer-Tarif, solange er noch verfügbar ist. Wir freuen uns auf dich!</p>
+          <div class="actions">
+            <a href="#tarife" class="btn btn-lime">Mitglied werden
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#besuch" class="btn btn-light-line">Anfahrt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-bar" id="mobile-bar">
+    <a href="#tarife" class="btn btn-lime">Mitglied werden</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=M%C3%B6nchstra%C3%9Fe+50,+34431+Marsberg" class="btn btn-light-line" target="_blank" rel="noopener">Route planen</a>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <img src="logo-sm.png" alt="MRSBRG moves" width="301" height="102" loading="lazy" decoding="async">
+      <small>© <span id="year"></span> MRSBRG moves · Mönchstraße 50, 34431 Marsberg</small>
+      <nav class="label">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <button class="link-btn" id="map-revoke" type="button" hidden>Google-Maps-Einwilligung widerrufen</button>
+        <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Betreuungszeiten pro Wochentag (0 = Sonntag). Leeres Array = keine Betreuung.
+    const HOURS = [
+      { day: "Montag",     idx: 1, slots: [["9:00", "20:00"]] },
+      { day: "Dienstag",   idx: 2, slots: [["9:00", "13:00"]] },
+      { day: "Mittwoch",   idx: 3, slots: [["9:00", "20:00"]] },
+      { day: "Donnerstag", idx: 4, slots: [["9:00", "20:00"]] },
+      { day: "Freitag",    idx: 5, slots: [] },
+      { day: "Samstag",    idx: 6, slots: [] },
+      { day: "Sonntag",    idx: 0, slots: [] },
+    ];
+    // Zeitachse des Wochenplans: 6 bis 22 Uhr
+    const DAY_START = 6 * 60, DAY_END = 22 * 60;
+
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+    const pct = m => ((m - DAY_START) / (DAY_END - DAY_START)) * 100;
+
+    // Uhrzeit immer in Marsberger Zeit, egal wo der Besucher gerade ist
+    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    function berlinNow() {
+      try {
+        const fmt = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" });
+        const p = {};
+        fmt.formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+        const day = WEEKDAYS.indexOf(p.weekday), mins = (+p.hour % 24) * 60 + +p.minute;
+        if (day >= 0 && mins >= 0) return { day, mins };
+      } catch (e) { /* älterer Browser: Gerätezeit verwenden */ }
+      const d = new Date();
+      return { day: d.getDay(), mins: d.getHours() * 60 + d.getMinutes() };
+    }
+
+    // ---------- Wochenplan als Balken ----------
+    const rowsEl = document.getElementById("hours-rows");
+    const rows = HOURS.map(({ day, slots }, i) => {
+      const row = document.createElement("div");
+      row.className = "h-row" + (slots.length ? "" : " off");
+      const bars = slots.map(([a, b]) =>
+        `<span class="bar" style="left:${pct(toMin(a))}%;width:${pct(toMin(b)) - pct(toMin(a))}%;--bd:${0.2 + i * 0.07}s"></span>`).join("");
+      row.innerHTML = `<span class="day">${day}</span><div class="track">${bars}<span class="now" title="Jetzt" hidden></span></div><span class="time">${
+        slots.length ? slots.map(s => `${s[0]}–${s[1]}`).join(", ") : "Keine Betreuung"}</span>`;
+      rowsEl.appendChild(row);
+      return row;
+    });
+
+    // ---------- Status heute (aktualisiert sich jede Minute) ----------
+    function nextSlot(day, mins) {
+      for (let ahead = 0; ahead < 7; ahead++) {
+        const entry = HOURS.find(h => h.idx === (day + ahead) % 7);
+        const slot = entry.slots.find(([a]) => ahead > 0 || toMin(a) > mins);
+        if (slot) return { ahead, entry, slot };
+      }
+    }
+    function updateStatus() {
+      const { day, mins } = berlinNow();
+      HOURS.forEach((h, i) => {
+        const isToday = h.idx === day;
+        rows[i].classList.toggle("today", isToday);
+        const mark = rows[i].querySelector(".now");
+        mark.hidden = !(isToday && mins > DAY_START && mins < DAY_END);
+        mark.style.left = pct(mins) + "%";
+      });
+      const active = HOURS.find(h => h.idx === day).slots.find(([a, b]) => mins >= toMin(a) && mins < toMin(b));
+      const next = nextSlot(day, mins);
+      const text =
+        active ? `Jetzt bis ${active[1]} Uhr`
+        : !next ? "Heute keine mehr"
+        : next.ahead === 0 ? `Ab ${next.slot[0]} Uhr`
+        : next.ahead === 1 ? `Morgen ab ${next.slot[0]} Uhr`
+        : `${next.entry.day} ab ${next.slot[0]} Uhr`;
+      document.querySelectorAll("[data-status-dot]").forEach(d => d.classList.toggle("on", !!active));
+      document.querySelectorAll("[data-status-text]").forEach(t => t.textContent = text);
+    }
+    updateStatus();
+    setInterval(updateStatus, 30000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) updateStatus(); });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---------- Laufschrift: auch auf breiten Bildschirmen lückenlos ----------
+    const track = document.querySelector(".ticker-track");
+    const group = [...track.children].slice(0, track.children.length / 2).map(s => s.outerHTML).join("");
+    let tickerWidth = 0;
+    function fillTicker() {
+      if (innerWidth === tickerWidth) return;
+      tickerWidth = innerWidth;
+      track.innerHTML = group;
+      const n = Math.max(1, Math.ceil(innerWidth / track.scrollWidth));
+      track.innerHTML = group.repeat(n * 2);
+      track.style.animationDuration = 40 * n + "s";
+    }
+    fillTicker();
+    addEventListener("resize", fillTicker);
+
+    // ---------- Start-Animation ----------
+    requestAnimationFrame(() => setTimeout(() => document.body.classList.add("ready"), 60));
+
+    // ---------- Navigation ----------
+    const nav = document.getElementById("nav");
+    const burger = document.getElementById("burger");
+    const setMenu = open => {
+      nav.classList.toggle("open", open);
+      burger.setAttribute("aria-expanded", open);
+    };
+    burger.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+    nav.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+    addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); burger.focus(); } });
+    document.addEventListener("click", e => { if (!nav.contains(e.target)) setMenu(false); });
+
+    // ---------- Preise hochzählen ----------
+    function countUp(el) {
+      if (reduced) return;
+      const target = parseFloat(el.dataset.count);
+      const fmt = v => v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const t0 = performance.now(), dur = 1100;
+      (function step(t) {
+        const p = Math.max(0, Math.min((t - t0) / dur, 1));
+        el.textContent = fmt(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+
+    // ---------- Beim Scrollen einblenden ----------
+    // Bewusst ohne IntersectionObserver: Die Position wird direkt gemessen,
+    // das funktioniert in jedem Browser gleich zuverlässig.
+    let pending = [...document.querySelectorAll(".fade, .mask")];
+    function reveal() {
+      const limit = innerHeight * 0.92;
+      pending = pending.filter(el => {
+        if (el.getBoundingClientRect().top >= limit) return true;
+        el.classList.add("visible");
+        el.querySelectorAll("[data-count]").forEach(countUp);
+        return false;
+      });
+    }
+
+    // ---------- Aktiven Menüpunkt markieren (im Startbereich keiner) ----------
+    const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
+    const sections = ["top", "tarife", "angebot", "besuch"].map(id => document.getElementById(id));
+    function markNav() {
+      const line = innerHeight * 0.45;
+      let current = sections[0];
+      sections.forEach(sec => { if (sec.getBoundingClientRect().top <= line) current = sec; });
+      navLinks.forEach(a => {
+        const on = a.getAttribute("href") === "#" + current.id;
+        a.classList.toggle("active", on);
+        on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current");
+      });
+    }
+
+    // ---------- Beim Scrollen: Schatten, Fortschrittsleiste, Einblenden ----------
+    const progress = document.getElementById("progress");
+    const mobileBar = document.getElementById("mobile-bar");
+    const hero = document.getElementById("top"), cta = document.querySelector(".cta");
+    let ticking = false;
+    function update() {
+      nav.classList.toggle("scrolled", scrollY > 40);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+      reveal();
+      markNav();
+      // Handy-Leiste: nach dem Startbereich zeigen, vor dem Schlussbereich wieder ausblenden
+      mobileBar.classList.toggle("show", hero.getBoundingClientRect().bottom < 0 && cta.getBoundingClientRect().top > innerHeight);
+      ticking = false;
+    }
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    addEventListener("load", onScroll);
+    addEventListener("hashchange", onScroll);
+    update();
+
+    // ---------- Google Maps erst nach Einwilligung laden – die Wahl wird gemerkt ----------
+    const MAP_KEY = "mrsbrg-maps-ok";
+    const mapBox = document.getElementById("map");
+    const mapConsent = mapBox.innerHTML;
+    const mapRevoke = document.getElementById("map-revoke");
+    const mapChoice = {
+      get() { try { return localStorage.getItem(MAP_KEY) === "1"; } catch (e) { return false; } },
+      set(ok) { try { ok ? localStorage.setItem(MAP_KEY, "1") : localStorage.removeItem(MAP_KEY); } catch (e) { /* Speichern nicht möglich */ } },
+    };
+    function showMap() {
+      mapBox.innerHTML =
+        '<iframe title="Karte: Mönchstraße 50, 34431 Marsberg" referrerpolicy="no-referrer-when-downgrade" allowfullscreen ' +
+        'src="https://maps.google.com/maps?q=M%C3%B6nchstra%C3%9Fe%2050%2C%2034431%20Marsberg&z=16&output=embed"></iframe>';
+      mapRevoke.hidden = false;
+    }
+    function showConsent() {
+      mapBox.innerHTML = mapConsent;
+      mapRevoke.hidden = true;
+      document.getElementById("map-accept").addEventListener("click", () => { mapChoice.set(true); showMap(); });
+    }
+    mapRevoke.addEventListener("click", () => { mapChoice.set(false); showConsent(); });
+    mapChoice.get() ? showMap() : showConsent();
+
+    // Skript ist komplett durchgelaufen – Animationen dürfen bleiben
+    document.documentElement.classList.add("js-ok");
+  </script>
+</body>
 </html>
