@@ -40,17 +40,6 @@
     }
   </script>
   <meta name="color-scheme" content="light">
-  <script>
-    // Animationen nur, wenn das Skript sicher durchläuft. Bei alten Browsern, Fehlern oder
-    // langsamen Geräten wird nach spätestens 3 Sekunden einfach alles sofort angezeigt.
-    (function (root) {
-      root.className += " js";
-      function showAll() { root.className = root.className.replace(/(^|\s)js(?=\s|$)/g, " "); }
-      window.addEventListener("error", showAll);
-      setTimeout(function () { if (!/(^|\s)js-ok(\s|$)/.test(root.className)) showAll(); }, 3000);
-    })(document.documentElement);
-  </script>
-  <!-- Schriften liegen lokal im Ordner fonts/ (kein Abruf bei Google, DSGVO-freundlich) -->
   <link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -145,12 +134,9 @@
     }
 
     /* ---------- Laufschrift oben ---------- */
-    .ticker { background: var(--ink); color: var(--paper); overflow: hidden; height: 38px; display: flex; align-items: center; }
-    .ticker-track { display: flex; width: max-content; animation: ticker 40s linear infinite; }
-    .ticker span { white-space: nowrap; padding-right: 28px; display: flex; align-items: center; gap: 28px; }
-    .ticker span::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); }
-    .ticker:hover .ticker-track { animation-play-state: paused; }
-    @keyframes ticker { to { transform: translateX(-50%); } }
+    .ticker { background: var(--ink); color: var(--paper); }
+    .ticker .wrap { height: 38px; display: flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; }
+    .ticker b { color: var(--lime); font-weight: 600; }
 
     /* ---------- Navigation ---------- */
     .nav {
@@ -172,11 +158,6 @@
     .nav-links a:hover { background: var(--paper-2); }
     .nav-links a.active { background: var(--lime); }
     .nav-links .nav-cta { display: none; }
-    .progress {
-      position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
-      background: var(--grad); transform: scaleX(0); transform-origin: left;
-      pointer-events: none;
-    }
     .burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
     .burger span { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); transition: transform 0.35s var(--ease); }
     .burger span:nth-child(1) { top: 17px; }
@@ -215,42 +196,30 @@
       font-family: var(--head); font-weight: 800; text-transform: uppercase;
       font-size: clamp(3.6rem, 9.5vw, 8.6rem); line-height: 0.86; letter-spacing: -0.01em;
     }
-    .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
-    .line > span { display: inline-block; transition: transform 1s var(--ease); }
-    .js .line > span { transform: translateY(105%); }
-    .line:nth-child(2) > span { transition-delay: 0.08s; }
-    .line:nth-child(3) > span { transition-delay: 0.16s; }
-    .ready .line > span { transform: none; }
+    .line { display: block; }
     .hl { position: relative; z-index: 0; }
     .hl::before {
       content: ""; position: absolute; z-index: -1; left: -0.04em; right: -0.06em; top: 0.42em; bottom: 0.06em;
       background: var(--lime); transform-origin: left;
-      transition: transform 0.7s var(--ease) 0.75s;
+      animation: marker 0.7s var(--ease) 0.6s both;
     }
-    .js .hl::before { transform: scaleX(0); }
-    .ready .hl::before { transform: scaleX(1); }
-    .hero .lead { max-width: 500px; margin: 28px 0 34px; font-size: 1.2rem; color: var(--muted); }
+    @keyframes marker { from { transform: scaleX(0); } }
+    .hero .lead { max-width: 520px; margin: 28px 0 34px; font-size: 1.3rem; line-height: 1.45; color: var(--muted); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
     /* Plakat-Karte */
     .poster-wrap { position: relative; padding: 0 0 8px 28px; }
     .hero-photo {
       border-radius: 18px; overflow: hidden; aspect-ratio: 10 / 11; background: var(--paper-2);
-      transition: opacity 0.9s var(--ease) 0.15s, transform 1.2s var(--ease) 0.15s;
     }
-    .js .hero-photo { opacity: 0; transform: scale(0.96); }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .ready .hero-photo { opacity: 1; transform: none; }
     .poster {
       position: relative; width: 84%; margin: -46% 0 0 -28px;
       background: var(--olive); color: var(--white);
       border-radius: 18px; padding: 26px 26px 24px;
       transform: rotate(-2deg);
       box-shadow: 0 30px 60px -30px rgba(40, 50, 30, 0.6);
-      transition: opacity 0.8s var(--ease) 0.35s, translate 1s var(--ease) 0.35s, rotate 1s var(--ease) 0.35s;
     }
-    .js .poster { opacity: 0; translate: 0 40px; rotate: 3deg; }
-    .ready .poster { opacity: 1; translate: 0 0; rotate: 0deg; }
     .poster-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
     .poster-price {
       font-family: var(--head); font-weight: 800; line-height: 0.9;
@@ -258,6 +227,7 @@
     }
     .poster-price small { font-size: 0.38em; font-weight: 700; }
     .poster p { opacity: 0.85; }
+    .poster .poster-fee { margin: 6px 0 24px; font-size: 0.92rem; opacity: 0.75; }
     .poster-row {
       display: flex; justify-content: space-between; gap: 12px;
       margin: 22px 0 24px; padding-top: 18px;
@@ -265,18 +235,6 @@
       font-family: var(--head); font-weight: 600; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.04em;
     }
     .poster .btn { width: 100%; }
-    .sticker {
-      position: absolute; top: -10px; right: -14px; z-index: 2;
-      width: 108px; height: 108px; border-radius: 50%;
-      background: var(--lime); color: var(--ink); border: 2px solid var(--ink);
-      display: grid; place-items: center; text-align: center;
-      font-family: var(--head); font-weight: 800; font-size: 1.15rem; line-height: 0.95; text-transform: uppercase;
-      transform: rotate(12deg);
-      transition: transform 0.7s var(--back) 0.9s;
-    }
-    .js .sticker { transform: scale(0) rotate(-90deg); }
-    .ready .sticker { transform: scale(1) rotate(12deg); }
-
     /* Fakten-Leiste */
     .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 72px; border-top: 2px solid var(--ink); }
     .fact { padding: 22px 24px 26px 0; display: grid; gap: 4px; align-content: start; }
@@ -285,56 +243,44 @@
     .fact b { font-family: var(--head); font-weight: 700; font-size: 1.55rem; text-transform: uppercase; line-height: 1.1; transition: color 0.2s; }
     .fact:hover b { color: var(--olive-dark); }
     .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #b3b3ad; margin-right: 8px; vertical-align: 2px; }
-    .dot.on { background: #5ba82e; box-shadow: 0 0 0 4px rgba(91, 168, 46, 0.2); }
+    .dot.on { position: relative; background: #5ba82e; box-shadow: 0 0 0 4px rgba(91, 168, 46, 0.2); }
+    /* Pulsiert nur, wenn gerade Betreuung ist */
+    .dot.on::after {
+      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%;
+      background: #5ba82e; animation: pulse 2s ease-out infinite;
+    }
+    @keyframes pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(2.8); opacity: 0; } }
     .brand-stripe { height: 6px; background: var(--grad); }
 
-    /* ---------- So wirst du Mitglied ---------- */
-    .steps { padding: 72px 0 0; }
-    .steps-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px 32px; margin-bottom: 28px; }
-    .steps-head .label { display: block; color: var(--olive-dark); margin-bottom: 12px; }
-    .steps-head h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
-    .steps-head p { color: var(--muted); max-width: 420px; }
-    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; list-style: none; }
-    .step {
-      background: var(--white); border: 1px solid var(--line); border-radius: 16px;
-      padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px;
+    /* ---------- Mitglied werden ---------- */
+    .join { padding: 72px 0 0; }
+    .join-box {
+      display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: end;
+      background: var(--olive); color: var(--white); border-radius: 18px; padding: 36px 40px;
     }
-    .step-num { font-family: var(--head); font-weight: 800; font-size: 3.4rem; line-height: 0.9; color: var(--olive); }
-    .step h3 { font-family: var(--head); font-weight: 800; font-size: 1.9rem; line-height: 1; text-transform: uppercase; }
-    .step p { color: var(--muted); }
-    .step-status { font-weight: 600; color: var(--ink); }
-    .step-link {
-      margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
-      font-family: var(--head); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase;
-      border-bottom: 2px solid var(--lime);
-    }
-    .step-link svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
-    .step-link:hover svg { transform: translateX(4px); }
+    .join h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); margin-bottom: 12px; }
+    .join p { color: rgba(255, 255, 255, 0.85); max-width: 560px; font-size: 1.1rem; }
+    .join .join-status { margin-top: 14px; color: var(--white); font-weight: 600; }
+    .join-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
     /* ---------- Sektionen ---------- */
     .section { padding: 110px 0; }
-    .sec-head {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end;
-      padding-top: 22px; border-top: 2px solid var(--ink); margin-bottom: 56px;
-    }
-    .sec-num { display: block; color: var(--olive-dark); margin-bottom: 14px; }
+    .sec-head { padding-top: 22px; border-top: 2px solid var(--ink); margin-bottom: 48px; }
     h2 {
       font-family: var(--head); font-weight: 800; text-transform: uppercase;
       font-size: clamp(2.8rem, 6.5vw, 5.6rem); line-height: 0.88;
     }
-    .sec-head p { color: var(--muted); max-width: 440px; justify-self: end; }
+    .sec-head p { color: var(--muted); max-width: 560px; margin-top: 18px; font-size: 1.15rem; }
 
-    /* Einblenden beim Scrollen */
-    .fade { transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); transition-delay: var(--d, 0s); }
-    .js .fade { opacity: 0; transform: translateY(28px); }
-    .fade.visible { opacity: 1; transform: none; }
-    .mask { display: block; overflow: hidden; padding-bottom: 0.04em; }
-    .mask > span { display: inline-block; transition: transform 0.9s var(--ease); transition-delay: calc(var(--d, 0s) + 0.1s); }
-    .js .mask > span { transform: translateY(105%); }
-    .mask.visible > span { transform: none; }
+    .cta h2 > span { display: block; }
 
     /* ---------- Tarife ---------- */
-    .plans { display: grid; grid-template-columns: 1fr 1.1fr 1fr; align-items: stretch; }
+    .pricing { display: grid; grid-template-columns: 2fr 0.95fr; gap: 32px; align-items: stretch; }
+    .plans { display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; }
+    .plans-info { background: var(--paper-2); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 20px; margin: 0; }
+    .plans-info h3 { font-family: var(--head); font-weight: 800; font-size: 1.7rem; text-transform: uppercase; line-height: 1; }
+    .plans-info .label { display: block; color: var(--olive-dark); margin-bottom: 4px; }
+    .plans-info .fee { font-family: var(--head); font-weight: 700; font-size: 1.5rem; line-height: 1.1; }
     .plan { background: var(--white); border: 1px solid var(--line); display: flex; flex-direction: column; }
     .plan:first-child { border-radius: 16px 0 0 16px; border-right: 0; }
     .plan:last-child { border-radius: 0 16px 16px 0; border-left: 0; }
@@ -346,8 +292,7 @@
     .price small { font-size: 0.42em; }
     .price-sub { color: var(--muted); margin-top: 6px; }
     .plan ul { list-style: none; margin: 26px 0 30px; }
-    .plan li { padding: 11px 0; border-top: 1px solid var(--line); display: flex; gap: 12px; align-items: baseline; }
-    .plan li::before { content: "→"; color: var(--olive); font-weight: 600; }
+    .plan li { padding: 11px 0; border-top: 1px solid var(--line); }
     .plan .btn { margin-top: auto; }
     .plan.featured {
       background: var(--ink); color: var(--paper); border: 0;
@@ -359,30 +304,16 @@
     .plan.featured .price-sub { color: rgba(243, 242, 238, 0.7); }
     .plan.featured li { border-color: rgba(243, 242, 238, 0.15); }
     .plan.featured li::before { color: var(--lime); }
-    .plans-note { margin-top: 44px; color: var(--muted); }
+    .plans-note { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); }
     .plans-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
     /* ---------- Angebot (Liste) ---------- */
-    .offer-list { list-style: none; border-bottom: 1px solid var(--line); }
-    .offer-row {
-      position: relative; display: grid; grid-template-columns: 70px 1fr 1.1fr 200px; gap: 24px; align-items: center;
-      padding: 30px 12px; border-top: 1px solid var(--line); isolation: isolate;
-    }
-    .offer-row::before {
-      content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; background: var(--lime);
-      transform: scaleY(0); transform-origin: bottom; transition: transform 0.45s var(--ease);
-    }
-    .offer-row .num { color: var(--muted); }
-    .offer-row h3 { font-family: var(--head); font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 3.8rem); text-transform: uppercase; line-height: 0.95; }
-    .offer-row p { color: var(--muted); transition: color 0.3s; }
-    .thumb { overflow: hidden; border-radius: 10px; aspect-ratio: 16 / 10.5; background: var(--paper-2); }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
-    /* Hover-Effekte nur mit Maus, damit sie auf dem Handy nicht "hängen bleiben" */
-    @media (hover: hover) {
-      .offer-row:hover::before { transform: scaleY(1); }
-      .offer-row:hover p, .offer-row:hover .num { color: var(--ink); }
-      .offer-row:hover .thumb img { transform: scale(1.08); }
-    }
+    .offer-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .offer-row { display: flex; flex-direction: column; gap: 10px; }
+    .offer-row h3 { font-family: var(--head); font-weight: 800; font-size: clamp(2rem, 3vw, 2.6rem); text-transform: uppercase; line-height: 0.95; margin-top: 10px; padding-top: 14px; border-top: 2px solid var(--ink); }
+    .offer-row p { color: var(--muted); font-size: 1.08rem; }
+    .thumb { order: -1; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: var(--paper-2); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ---------- Zeiten & Anfahrt ---------- */
     .visit { background: var(--paper-2); }
@@ -391,7 +322,9 @@
     .hours { padding: 28px 28px 22px; }
     .hours-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
     .hours-head h3 { font-family: var(--head); font-weight: 800; font-size: 1.9rem; text-transform: uppercase; }
-    .hours-head small { color: var(--muted); }
+    .hours { display: flex; flex-direction: column; }
+    .hours-note { margin-top: auto; padding-top: 20px; color: var(--muted); font-size: 0.95rem; }
+    .hours-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
     .axis, .h-row { display: grid; grid-template-columns: 104px 1fr 112px; gap: 16px; align-items: center; }
     .axis-track { position: relative; height: 18px; color: var(--muted); font-size: 0.78rem; }
     .axis-track span { position: absolute; translate: -50% 0; }
@@ -405,15 +338,31 @@
     }
     .bar {
       position: absolute; top: 0; bottom: 0; border-radius: 6px; background: var(--olive);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.9s var(--ease); transition-delay: var(--bd, 0s);
     }
-    .hours.visible .bar { transform: scaleX(1); }
     .h-row.today .bar { background: var(--ink); }
     .h-row.today .day::after {
       content: "Heute"; margin-left: 8px; padding: 1px 7px; border-radius: 5px; vertical-align: 2px;
       background: var(--lime); font-size: 0.72rem; letter-spacing: 0.06em;
     }
-    .now { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-left: -1px; background: var(--orange); border-radius: 2px; }
+    .now { position: absolute; top: -5px; bottom: -5px; width: 2px; margin-left: -1px; background: var(--orange); border-radius: 2px; animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: 0.35; } }
+
+    /* Kleine Bewegungen, die nur reagieren, wenn man mit der Maus darüberfährt */
+    @media (hover: hover) {
+      .thumb img { transition: transform 0.8s var(--ease); }
+      .offer-row:hover .thumb img { transform: scale(1.05); }
+      .plan { transition: transform 0.3s var(--ease), box-shadow 0.3s; }
+      .plan:hover { transform: translateY(-4px); box-shadow: 0 26px 44px -30px rgba(0, 0, 0, 0.45); }
+    }
+
+    /* Startbereich gleitet beim Laden einmal ins Bild (reines CSS, kann nicht hängen bleiben) */
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+    @keyframes rise-tilt { from { opacity: 0; transform: translateY(28px) rotate(1deg); } }
+    .hero h1 { animation: rise 0.8s var(--ease) both; }
+    .hero .lead { animation: rise 0.8s var(--ease) 0.1s both; }
+    .hero-actions { animation: rise 0.8s var(--ease) 0.18s both; }
+    .hero-photo { animation: rise 0.9s var(--ease) 0.08s both; }
+    .poster { animation: rise-tilt 0.9s var(--ease) 0.3s both; }
 
     .address { padding: 28px; display: flex; flex-direction: column; gap: 22px; }
     .address h3 { font-family: var(--head); font-weight: 800; font-size: 2.6rem; line-height: 0.95; text-transform: uppercase; margin-top: 6px; }
@@ -443,13 +392,17 @@
     .cta h2 { font-size: clamp(3.4rem, 11vw, 10rem); }
     .cta .lime { color: var(--lime); }
     .cta-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 28px; margin-top: 44px; }
-    .cta-row p { color: rgba(243, 242, 238, 0.7); max-width: 420px; }
+    .cta-row p { color: rgba(243, 242, 238, 0.75); max-width: 440px; font-size: 1.15rem; }
     .cta-row .actions { display: flex; flex-wrap: wrap; gap: 12px; }
     footer { background: var(--ink); color: rgba(243, 242, 238, 0.65); }
     .mobile-bar { display: none; }
-    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding: 28px 0 34px; border-top: 1px solid rgba(243, 242, 238, 0.14); }
+    .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; padding: 56px 0 44px; border-top: 1px solid rgba(243, 242, 238, 0.14); }
+    .foot-grid .label { display: block; color: var(--paper); margin-bottom: 10px; }
+    .foot-grid a { color: var(--paper); text-decoration: underline; text-underline-offset: 3px; }
+    .foot-brand p { margin-top: 14px; max-width: 260px; }
     footer img { height: 34px; width: auto; }
-    footer nav { display: flex; gap: 22px; }
+    .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0 30px; border-top: 1px solid rgba(243, 242, 238, 0.14); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 22px; }
     footer a:hover, .link-btn:hover { color: var(--paper); }
     .link-btn { background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; cursor: pointer; }
 
@@ -459,12 +412,11 @@
       .poster-wrap { max-width: 520px; padding-left: 20px; }
       .hero-photo { aspect-ratio: 4 / 3.4; }
       .poster { width: 90%; margin: -28% 0 0 -20px; }
+      .pricing { grid-template-columns: 1fr; gap: 16px; }
       .plans { grid-template-columns: 1fr; gap: 16px; }
       .plan, .plan:first-child, .plan:last-child { border: 1px solid var(--line); border-radius: 16px; }
       .plan .plan-top, .plan:first-child .plan-top, .plan:last-child .plan-top { border-radius: 15px 15px 0 0; }
       .plan.featured { margin: 0; order: -1; border: 0; }
-      .sec-head { grid-template-columns: 1fr; gap: 18px; }
-      .sec-head p { justify-self: start; }
       .section { padding: 84px 0; }
     }
     @media (max-width: 760px) {
@@ -494,17 +446,16 @@
       .mobile-bar.show { transform: none; visibility: visible; }
       .mobile-bar .btn { height: 48px; padding: 0 12px; font-size: 1rem; }
       .hero { padding-top: 40px; }
-      .sticker { right: 4px; width: 92px; height: 92px; font-size: 1rem; }
+      .hero-actions .btn, .join-actions .btn { flex: 1 1 100%; }
       .facts { grid-template-columns: 1fr; margin-top: 56px; }
       .fact, .fact + .fact { padding: 16px 0; border-left: 0; }
       .fact + .fact { border-top: 1px solid var(--line); }
-      .offer-row { grid-template-columns: 1fr; gap: 8px; padding: 24px 4px; }
-      .offer-row .num { grid-column: 1 / -1; }
-      .offer-row p { grid-column: 1 / -1; grid-row: 3; }
-      .thumb { grid-column: 1 / -1; grid-row: 4; margin-top: 8px; aspect-ratio: 16 / 9; }
-      .steps { padding-top: 56px; }
-      .step-grid { grid-template-columns: 1fr; gap: 12px; }
-      .step { padding: 22px 20px 20px; }
+      .offer-list { grid-template-columns: 1fr; gap: 36px; }
+      .thumb { aspect-ratio: 16 / 10; }
+      .ticker .wrap { font-size: 0.78rem; }
+      .ticker .hide-sm { display: none; }
+      .join { padding-top: 56px; }
+      .join-box { grid-template-columns: 1fr; padding: 24px 20px; }
       .hours { padding: 22px 18px 16px; }
       .axis, .h-row { grid-template-columns: 78px 1fr; gap: 6px 12px; }
       .axis > :last-child { display: none; }
@@ -513,23 +464,19 @@
       .h-row.today .day::after { display: block; width: max-content; margin: 4px 0 0; }
       .address { padding: 22px 18px; }
       .address h3 { font-size: 2.2rem; }
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding-top: 44px; }
+      .foot-brand { grid-column: 1 / -1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition: none !important; }
-      .js .fade { opacity: 1; transform: none; }
-      .js .line > span, .js .mask > span { transform: none; }
-      .js .hl::before, .js .bar { transform: none; }
-      .js .poster, .js .hero-photo { opacity: 1; translate: 0 0; rotate: 0deg; transform: none; }
-      .js .sticker { transform: rotate(12deg); }
     }
     /* ---------- Drucken ---------- */
     @media print {
-      .ticker, .nav, .skip, .burger, .mobile-bar, .hero-actions, .poster .btn, .step-link, .address .actions, .cta-row .actions, footer nav { display: none !important; }
-      .fade, .mask > span, .line > span, .hero-photo, .poster, .hl::before { opacity: 1 !important; transform: none !important; translate: none !important; rotate: none !important; }
+      .ticker, .nav, .skip, .burger, .mobile-bar, .hero-actions, .poster .btn, .join-actions, .address .actions, .cta-row .actions, footer nav { display: none !important; }
       .section, .cta { padding: 32px 0; }
-      .plan, .step, .card, .offer-row, .h-row { break-inside: avoid; }
+      .plan, .plans-info, .join-box, .card, .offer-row, .h-row { break-inside: avoid; }
       a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
     }
   </style>
@@ -537,26 +484,22 @@
 <body>
   <a class="skip" href="#main">Zum Inhalt springen</a>
 
-  <div class="ticker label" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Jetzt neu eröffnet</span><span>Mönchstraße 50 · Marsberg</span><span>Gründer-Tarife ab 29,90 €</span><span>Krafttraining · Cardio · Betreuung</span>
-      <span>Jetzt neu eröffnet</span><span>Mönchstraße 50 · Marsberg</span><span>Gründer-Tarife ab 29,90 €</span><span>Krafttraining · Cardio · Betreuung</span>
-    </div>
+  <div class="ticker label">
+    <div class="wrap">Neu eröffnet <b>·</b> Mönchstraße 50, Marsberg<span class="hide-sm"> <b>·</b> Gründer-Tarife ab 29,90 €</span></div>
   </div>
 
   <header class="nav" id="nav">
     <div class="wrap">
       <a href="#top" class="nav-logo"><img src="logo-dark-sm.png" alt="MRSBRG moves" width="383" height="120"></a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#tarife">Tarife</a></li>
         <li><a href="#angebot">Angebot</a></li>
+        <li><a href="#tarife">Tarife</a></li>
         <li><a href="#besuch">Zeiten &amp; Anfahrt</a></li>
         <li class="nav-cta"><a href="#tarife" class="btn btn-dark">Mitglied werden</a></li>
       </ul>
       <a href="#tarife" class="btn btn-dark">Mitglied werden</a>
       <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
     </div>
-    <div class="progress" id="progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
@@ -565,32 +508,26 @@
       <div class="wrap">
         <div class="hero-grid">
           <div>
-            <div class="kicker label">Neu eröffnet · Mönchstraße 50</div>
             <h1>
               <span class="line"><span>Stark</span></span>
               <span class="line"><span>werden in</span></span>
               <span class="line"><span class="hl">Marsberg.</span></span>
             </h1>
-            <p class="lead">Dein Fitnessstudio mitten in Marsberg. Ehrliche Preise, persönliche Betreuung und alles, was du für dein Training brauchst.</p>
+            <p class="lead">Dein Fitnessstudio mitten in Marsberg, mit fairen Preisen und persönlicher Betreuung.</p>
             <div class="hero-actions">
-              <a href="#tarife" class="btn btn-dark">Tarife ansehen
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
+              <a href="#tarife" class="btn btn-dark">Tarife ansehen</a>
               <a href="#besuch" class="btn btn-line">Zeiten &amp; Anfahrt</a>
             </div>
           </div>
 
           <div class="poster-wrap">
-            <div class="sticker">Neu<br>eröffnet</div>
             <figure class="hero-photo"><img src="images/hero.webp" alt="Kurzhantelreihe im Studio" width="1000" height="1100" fetchpriority="high"></figure>
             <div class="poster">
               <div class="poster-top label"><span>Gründer-Tarif</span><span>12 Monate</span></div>
               <div class="poster-price">29,90<small> €</small></div>
-              <p>pro Monat – nur für kurze Zeit zur Neueröffnung.</p>
-              <div class="poster-row"><span>Startpaket</span><span>49,00 € einmalig</span></div>
-              <a href="#tarife" class="btn btn-lime">Alle Tarife
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
+              <p>pro Monat, nur zur Neueröffnung.</p>
+              <p class="poster-fee">zzgl. einmalig 49,00 € Startpaket</p>
+              <a href="#tarife" class="btn btn-lime">Alle Tarife</a>
             </div>
           </div>
         </div>
@@ -604,144 +541,122 @@
     </section>
     <div class="brand-stripe"></div>
 
-    <!-- So wirst du Mitglied (bewusst ohne Einblend-Animation, damit es immer sichtbar ist) -->
-    <section class="steps" aria-labelledby="steps-title">
+    <!-- Mitglied werden -->
+    <section class="join" aria-labelledby="join-title">
       <div class="wrap">
-        <div class="steps-head">
+        <div class="join-box">
           <div>
-            <span class="label">In 3 Schritten zum Training</span>
-            <h2 id="steps-title">So wirst du Mitglied</h2>
+            <h2 id="join-title">Mitglied werden</h2>
+            <p>Komm einfach zu den Betreuungszeiten vorbei. Anmeldung und Einweisung machen wir direkt vor Ort.</p>
+            <p class="join-status"><span class="dot" data-status-dot></span>Betreuung: <span data-status-text>–</span></p>
           </div>
-          <p>Einfach und transparent: Komm zu den Betreuungszeiten vorbei – Anmeldung und Einweisung gibt es direkt vor Ort.</p>
-        </div>
-        <ol class="step-grid">
-          <li class="step">
-            <span class="step-num">01</span>
-            <h3>Tarif wählen</h3>
-            <p>3 oder 12 Monate Laufzeit – die Gründer-Tarife gibt es ab 29,90 € im Monat.</p>
-            <a class="step-link" href="#tarife">Tarife ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </li>
-          <li class="step">
-            <span class="step-num">02</span>
-            <h3>Vorbeikommen</h3>
-            <p>Zu den Betreuungszeiten ist jemand vor Ort für deine Anmeldung – Mönchstraße 50, Marsberg.</p>
-            <p class="step-status"><span class="dot" data-status-dot></span>Betreuung: <span data-status-text>–</span></p>
-            <a class="step-link" href="#besuch">Zeiten &amp; Anfahrt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </li>
-          <li class="step">
-            <span class="step-num">03</span>
-            <h3>Loslegen</h3>
-            <p>Du bekommst eine Einweisung – und zu den Betreuungszeiten ist immer jemand da für Fragen und Tipps.</p>
-            <a class="step-link" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Fragen? Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Tarife -->
-    <section class="section" id="tarife">
-      <div class="wrap">
-        <div class="sec-head fade">
-          <div>
-            <span class="sec-num label">01 — Tarife</span>
-            <h2 class="mask"><span>Die Gründer-Tarife</span></h2>
-          </div>
-          <p>Zur Neueröffnung gibt es unsere Gründer-Konditionen. Einfach, transparent und nur für kurze Zeit.</p>
-        </div>
-
-        <div class="plans">
-          <div class="plan fade">
-            <div class="plan-top label">3 Monate</div>
-            <div class="plan-body">
-              <div class="price"><span data-count="34.90">34,90</span><small> €</small></div>
-              <div class="price-sub">pro Monat</div>
-              <ul>
-                <li>3 Monate Laufzeit</li>
-                <li>Ideal zum Reinschnuppern</li>
-                <li>Gründer-Konditionen</li>
-              </ul>
-              <a href="#besuch" class="btn btn-line">Jetzt sichern</a>
-            </div>
-          </div>
-          <div class="plan featured fade" style="--d:.1s">
-            <div class="plan-top label"><span>12 Monate</span><span>Bester Preis</span></div>
-            <div class="plan-body">
-              <div class="price"><span data-count="29.90">29,90</span><small> €</small></div>
-              <div class="price-sub">pro Monat</div>
-              <ul>
-                <li>12 Monate Laufzeit</li>
-                <li>Günstigster Monatsbeitrag</li>
-                <li>Gründer-Konditionen gesichert</li>
-              </ul>
-              <a href="#besuch" class="btn btn-lime">Jetzt sichern</a>
-            </div>
-          </div>
-          <div class="plan fade" style="--d:.2s">
-            <div class="plan-top label">+ Startpaket</div>
-            <div class="plan-body">
-              <div class="price"><span data-count="49.00">49,00</span><small> €</small></div>
-              <div class="price-sub">einmalig</div>
-              <ul>
-                <li>Einmalig zu Vertragsbeginn</li>
-                <li>Gilt für beide Laufzeiten</li>
-              </ul>
-              <a href="#besuch" class="btn btn-line">Mehr erfahren</a>
-            </div>
+          <div class="join-actions">
+            <a href="#tarife" class="btn btn-lime">Tarife ansehen</a>
+            <a href="#besuch" class="btn btn-light-line">Zeiten &amp; Anfahrt</a>
           </div>
         </div>
-        <p class="plans-note fade">Fragen zu den Tarifen? Komm vorbei oder schreib uns auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p>
       </div>
     </section>
 
     <!-- Angebot -->
-    <section class="section" id="angebot" style="padding-top:0">
+    <section class="section" id="angebot">
       <div class="wrap">
-        <div class="sec-head fade">
+        <div class="sec-head">
           <div>
-            <span class="sec-num label">02 — Angebot</span>
-            <h2 class="mask"><span>Was dich erwartet</span></h2>
+            <h2>Was dich erwartet</h2>
           </div>
-          <p>Kein Schnickschnack – sondern alles, was du für ein gutes Training brauchst.</p>
+          <p>Alles, was du für ein gutes Training brauchst.</p>
         </div>
         <ul class="offer-list">
-          <li class="offer-row fade">
-            <span class="num label">01</span>
+          <li class="offer-row">
             <h3>Krafttraining</h3>
             <p>Freihantel, Geräte und alles, was du für deinen Muskelaufbau brauchst.</p>
             <figure class="thumb"><img src="images/kraft.webp" alt="Langhantel beim Kreuzheben" width="640" height="420" loading="lazy" decoding="async"></figure>
           </li>
-          <li class="offer-row fade">
-            <span class="num label">02</span>
+          <li class="offer-row">
             <h3>Cardio</h3>
             <p>Ausdauer verbessern, Kalorien verbrennen und den Kopf freibekommen.</p>
             <figure class="thumb"><img src="images/cardio.webp" alt="Laufbänder im Cardiobereich" width="640" height="420" loading="lazy" decoding="async"></figure>
           </li>
-          <li class="offer-row fade">
-            <span class="num label">03</span>
+          <li class="offer-row">
             <h3>Betreuung</h3>
-            <p>Zu den Betreuungszeiten ist jemand vor Ort – für Einweisung, Fragen und Tipps.</p>
+            <p>Zu den Betreuungszeiten ist jemand vor Ort für Einweisung, Fragen und Tipps.</p>
             <figure class="thumb"><img src="images/betreuung.webp" alt="Training mit der Langhantel" width="640" height="420" loading="lazy" decoding="async"></figure>
           </li>
         </ul>
       </div>
     </section>
 
+    <!-- Tarife -->
+    <section class="section" id="tarife" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <div>
+            <h2>Die Gründer-Tarife</h2>
+          </div>
+          <p>Zur Neueröffnung gelten für kurze Zeit unsere Gründer-Konditionen.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="plans">
+            <div class="plan featured">
+              <div class="plan-top label"><span>12 Monate</span><span>Bester Preis</span></div>
+              <div class="plan-body">
+                <div class="price">29,90<small> €</small></div>
+                <div class="price-sub">pro Monat</div>
+                <ul>
+                  <li>12 Monate Laufzeit</li>
+                  <li>Günstigster Monatsbeitrag</li>
+                  <li>Gründer-Konditionen gesichert</li>
+                </ul>
+                <a href="#besuch" class="btn btn-lime">Jetzt sichern</a>
+              </div>
+            </div>
+            <div class="plan">
+              <div class="plan-top label">3 Monate</div>
+              <div class="plan-body">
+                <div class="price">34,90<small> €</small></div>
+                <div class="price-sub">pro Monat</div>
+                <ul>
+                  <li>3 Monate Laufzeit</li>
+                  <li>Ideal zum Reinschnuppern</li>
+                  <li>Gründer-Konditionen</li>
+                </ul>
+                <a href="#besuch" class="btn btn-line">Jetzt sichern</a>
+              </div>
+            </div>
+          </div>
+          <aside class="plans-info">
+            <h3>Gut zu wissen</h3>
+            <div>
+              <span class="label">Startpaket</span>
+              <p class="fee">49,00 €</p>
+              <p>Einmalig zu Vertragsbeginn. Gilt für beide Laufzeiten.</p>
+            </div>
+            <div>
+              <span class="label">Gründer-Konditionen</span>
+              <p>Nur zur Neueröffnung und nur für kurze Zeit.</p>
+            </div>
+            <p class="plans-note">Fragen zu den Tarifen? Komm vorbei oder schreib uns auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- Zeiten & Anfahrt -->
     <section class="section visit" id="besuch">
       <div class="wrap">
-        <div class="sec-head fade">
+        <div class="sec-head">
           <div>
-            <span class="sec-num label">03 — Besuch</span>
-            <h2 class="mask"><span>Zeiten &amp; Anfahrt</span></h2>
+            <h2>Zeiten &amp; Anfahrt</h2>
           </div>
-          <p>Zu den Betreuungszeiten ist jemand vor Ort für Anmeldung und Einweisung. Änderungen posten wir auf Instagram.</p>
+          <p>Wann jemand für dich vor Ort ist und wie du zu uns findest.</p>
         </div>
 
         <div class="visit-grid">
-          <div class="card hours fade" id="hours">
+          <div class="card hours" id="hours">
             <div class="hours-head">
               <h3>Betreuungszeiten</h3>
-              <small>06–22 Uhr</small>
             </div>
             <div class="axis" aria-hidden="true">
               <span></span>
@@ -758,17 +673,16 @@
               <div class="h-row off"><span class="day">Samstag</span><span></span><span class="time">Keine Betreuung</span></div>
               <div class="h-row off"><span class="day">Sonntag</span><span></span><span class="time">Keine Betreuung</span></div>
             </noscript>
+            <p class="hours-note">Änderungen an den Zeiten posten wir auf <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>.</p>
           </div>
 
-          <div class="card address fade" style="--d:.1s">
+          <div class="card address">
             <div>
               <span class="label" style="color:var(--olive-dark)">Adresse</span>
               <h3>Mönchstraße 50<br>34431 Marsberg</h3>
             </div>
             <div class="actions">
-              <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=M%C3%B6nchstra%C3%9Fe+50,+34431+Marsberg" target="_blank" rel="noopener">Route planen
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
+              <a class="btn btn-dark" href="https://www.google.com/maps/dir/?api=1&destination=M%C3%B6nchstra%C3%9Fe+50,+34431+Marsberg" target="_blank" rel="noopener">Route planen</a>
               <a class="btn btn-line" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>
             </div>
             <div class="map" id="map">
@@ -788,15 +702,13 @@
     <section class="cta">
       <div class="wrap">
         <h2>
-          <span class="mask"><span>Komm vorbei.</span></span>
-          <span class="mask" style="--d:.1s"><span class="lime">Trainier mit.</span></span>
+          <span>Wir sehen uns</span>
+          <span class="lime">im Studio.</span>
         </h2>
-        <div class="cta-row fade" style="--d:.2s">
-          <p>Sichere dir deinen Gründer-Tarif, solange er noch verfügbar ist. Wir freuen uns auf dich!</p>
+        <div class="cta-row">
+          <p>Die Gründer-Tarife gibt es nur zur Eröffnung. Komm einfach zu den Betreuungszeiten vorbei.</p>
           <div class="actions">
-            <a href="#tarife" class="btn btn-lime">Mitglied werden
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+            <a href="#tarife" class="btn btn-lime">Mitglied werden</a>
             <a href="#besuch" class="btn btn-light-line">Anfahrt</a>
           </div>
         </div>
@@ -810,20 +722,38 @@
   </div>
 
   <footer>
-    <div class="wrap">
-      <img src="logo-sm.png" alt="MRSBRG moves" width="301" height="102" loading="lazy" decoding="async">
-      <small>© <span id="year"></span> MRSBRG moves · Mönchstraße 50, 34431 Marsberg</small>
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <img src="logo-sm.png" alt="MRSBRG moves" width="301" height="102" loading="lazy" decoding="async">
+        <p>Dein Fitnessstudio mitten in Marsberg.</p>
+      </div>
+      <div>
+        <span class="label">Adresse</span>
+        <p>Mönchstraße 50<br>34431 Marsberg</p>
+        <p><a href="https://www.google.com/maps/dir/?api=1&destination=M%C3%B6nchstra%C3%9Fe+50,+34431+Marsberg" target="_blank" rel="noopener">Route planen</a></p>
+      </div>
+      <div>
+        <span class="label">Betreuung</span>
+        <p>Mo, Mi, Do 9:00–20:00<br>Di 9:00–13:00<br>Fr–So keine Betreuung</p>
+      </div>
+      <div>
+        <span class="label">Instagram</span>
+        <p><a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">@mrsbrg_moves</a></p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <small>© <span id="year"></span> MRSBRG moves</small>
       <nav class="label">
         <a href="#">Impressum</a>
         <a href="#">Datenschutz</a>
         <button class="link-btn" id="map-revoke" type="button" hidden>Google-Maps-Einwilligung widerrufen</button>
-        <a href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>
       </nav>
     </div>
   </footer>
 
   <script>
     // Betreuungszeiten pro Wochentag (0 = Sonntag). Leeres Array = keine Betreuung.
+    // Bei Änderungen bitte auch die Kurzfassung in der Fußzeile und den <noscript>-Block anpassen.
     const HOURS = [
       { day: "Montag",     idx: 1, slots: [["9:00", "20:00"]] },
       { day: "Dienstag",   idx: 2, slots: [["9:00", "13:00"]] },
@@ -836,7 +766,6 @@
     // Zeitachse des Wochenplans: 6 bis 22 Uhr
     const DAY_START = 6 * 60, DAY_END = 22 * 60;
 
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
     const pct = m => ((m - DAY_START) / (DAY_END - DAY_START)) * 100;
 
@@ -860,7 +789,7 @@
       const row = document.createElement("div");
       row.className = "h-row" + (slots.length ? "" : " off");
       const bars = slots.map(([a, b]) =>
-        `<span class="bar" style="left:${pct(toMin(a))}%;width:${pct(toMin(b)) - pct(toMin(a))}%;--bd:${0.2 + i * 0.07}s"></span>`).join("");
+        `<span class="bar" style="left:${pct(toMin(a))}%;width:${pct(toMin(b)) - pct(toMin(a))}%"></span>`).join("");
       row.innerHTML = `<span class="day">${day}</span><div class="track">${bars}<span class="now" title="Jetzt" hidden></span></div><span class="time">${
         slots.length ? slots.map(s => `${s[0]}–${s[1]}`).join(", ") : "Keine Betreuung"}</span>`;
       rowsEl.appendChild(row);
@@ -900,24 +829,6 @@
     document.addEventListener("visibilitychange", () => { if (!document.hidden) updateStatus(); });
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ---------- Laufschrift: auch auf breiten Bildschirmen lückenlos ----------
-    const track = document.querySelector(".ticker-track");
-    const group = [...track.children].slice(0, track.children.length / 2).map(s => s.outerHTML).join("");
-    let tickerWidth = 0;
-    function fillTicker() {
-      if (innerWidth === tickerWidth) return;
-      tickerWidth = innerWidth;
-      track.innerHTML = group;
-      const n = Math.max(1, Math.ceil(innerWidth / track.scrollWidth));
-      track.innerHTML = group.repeat(n * 2);
-      track.style.animationDuration = 40 * n + "s";
-    }
-    fillTicker();
-    addEventListener("resize", fillTicker);
-
-    // ---------- Start-Animation ----------
-    requestAnimationFrame(() => setTimeout(() => document.body.classList.add("ready"), 60));
-
     // ---------- Navigation ----------
     const nav = document.getElementById("nav");
     const burger = document.getElementById("burger");
@@ -930,36 +841,9 @@
     addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); burger.focus(); } });
     document.addEventListener("click", e => { if (!nav.contains(e.target)) setMenu(false); });
 
-    // ---------- Preise hochzählen ----------
-    function countUp(el) {
-      if (reduced) return;
-      const target = parseFloat(el.dataset.count);
-      const fmt = v => v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      const t0 = performance.now(), dur = 1100;
-      (function step(t) {
-        const p = Math.max(0, Math.min((t - t0) / dur, 1));
-        el.textContent = fmt(target * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(step);
-      })(t0);
-    }
-
-    // ---------- Beim Scrollen einblenden ----------
-    // Bewusst ohne IntersectionObserver: Die Position wird direkt gemessen,
-    // das funktioniert in jedem Browser gleich zuverlässig.
-    let pending = [...document.querySelectorAll(".fade, .mask")];
-    function reveal() {
-      const limit = innerHeight * 0.92;
-      pending = pending.filter(el => {
-        if (el.getBoundingClientRect().top >= limit) return true;
-        el.classList.add("visible");
-        el.querySelectorAll("[data-count]").forEach(countUp);
-        return false;
-      });
-    }
-
     // ---------- Aktiven Menüpunkt markieren (im Startbereich keiner) ----------
     const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
-    const sections = ["top", "tarife", "angebot", "besuch"].map(id => document.getElementById(id));
+    const sections = ["top", "angebot", "tarife", "besuch"].map(id => document.getElementById(id));
     function markNav() {
       const line = innerHeight * 0.45;
       let current = sections[0];
@@ -971,16 +855,12 @@
       });
     }
 
-    // ---------- Beim Scrollen: Schatten, Fortschrittsleiste, Einblenden ----------
-    const progress = document.getElementById("progress");
+    // ---------- Beim Scrollen: Schatten unter der Navigation, Menüpunkt, Handy-Leiste ----------
     const mobileBar = document.getElementById("mobile-bar");
     const hero = document.getElementById("top"), cta = document.querySelector(".cta");
     let ticking = false;
     function update() {
       nav.classList.toggle("scrolled", scrollY > 40);
-      const max = document.documentElement.scrollHeight - innerHeight;
-      progress.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
-      reveal();
       markNav();
       // Handy-Leiste: nach dem Startbereich zeigen, vor dem Schlussbereich wieder ausblenden
       mobileBar.classList.toggle("show", hero.getBoundingClientRect().bottom < 0 && cta.getBoundingClientRect().top > innerHeight);
@@ -1020,8 +900,6 @@
     mapRevoke.addEventListener("click", () => { mapChoice.set(false); showConsent(); });
     mapChoice.get() ? showMap() : showConsent();
 
-    // Skript ist komplett durchgelaufen – Animationen dürfen bleiben
-    document.documentElement.classList.add("js-ok");
   </script>
 </body>
 </html>
