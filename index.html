@@ -30,7 +30,17 @@
       "sameAs": ["https://www.instagram.com/mrsbrg_moves/"]
     }
   </script>
-  <script>document.documentElement.classList.add("js");</script>
+  <meta name="color-scheme" content="light">
+  <script>
+    // Animationen nur, wenn das Skript sicher durchläuft. Bei alten Browsern, Fehlern oder
+    // langsamen Geräten wird nach spätestens 3 Sekunden einfach alles sofort angezeigt.
+    (function (root) {
+      root.className += " js";
+      function showAll() { root.className = root.className.replace(/(^|\s)js(?=\s|$)/g, " "); }
+      window.addEventListener("error", showAll);
+      setTimeout(function () { if (!/(^|\s)js-ok(\s|$)/.test(root.className)) showAll(); }, 3000);
+    })(document.documentElement);
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -56,6 +66,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     html { scroll-behavior: smooth; scroll-padding-top: 76px; }
     body {
       font-family: "Barlow", system-ui, sans-serif;
@@ -63,6 +74,7 @@
       background: var(--paper);
       color: var(--ink);
       line-height: 1.55;
+      overflow-x: hidden;
       overflow-x: clip;
     }
     a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -114,6 +126,11 @@
     .nav-links a:hover { background: var(--paper-2); }
     .nav-links a.active { background: var(--lime); }
     .nav-links .nav-cta { display: none; }
+    .progress {
+      position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+      background: var(--grad); transform: scaleX(0); transform-origin: left;
+      pointer-events: none;
+    }
     .burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
     .burger span { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); transition: transform 0.35s var(--ease); }
     .burger span:nth-child(1) { top: 17px; }
@@ -225,19 +242,28 @@
     .dot.on { background: #5ba82e; box-shadow: 0 0 0 4px rgba(91, 168, 46, 0.2); }
     .brand-stripe { height: 6px; background: var(--grad); }
 
-    /* ---------- Bilder (Platzhalter von Unsplash) ---------- */
-    .gallery { padding-top: 24px; }
-    .gallery-grid { display: grid; grid-template-columns: 1.7fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: min(560px, 62vw); }
-    .gallery figure { position: relative; overflow: hidden; border-radius: 16px; background: var(--paper-2); }
-    .gallery figure:first-child { grid-row: span 2; }
-    .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-    .gallery figure:hover img { transform: scale(1.04); }
-    .gallery figcaption {
-      position: absolute; left: 14px; bottom: 14px;
-      background: var(--paper); color: var(--ink); padding: 6px 12px; border-radius: 8px;
+    /* ---------- So wirst du Mitglied ---------- */
+    .steps { padding: 72px 0 0; }
+    .steps-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 14px 32px; margin-bottom: 28px; }
+    .steps-head .label { display: block; color: var(--olive-dark); margin-bottom: 12px; }
+    .steps-head h2 { font-size: clamp(2.4rem, 5vw, 4rem); }
+    .steps-head p { color: var(--muted); max-width: 420px; }
+    .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; list-style: none; }
+    .step {
+      background: var(--white); border: 1px solid var(--line); border-radius: 16px;
+      padding: 26px 24px 24px; display: flex; flex-direction: column; gap: 10px;
     }
-    .js .reveal-img { clip-path: inset(100% 0 0 0 round 16px); transition: clip-path 1.1s var(--ease); transition-delay: var(--d, 0s); }
-    .reveal-img.visible { clip-path: inset(0 0 0 0 round 16px); }
+    .step-num { font-family: var(--head); font-weight: 800; font-size: 3.4rem; line-height: 0.9; color: var(--olive); }
+    .step h3 { font-family: var(--head); font-weight: 800; font-size: 1.9rem; line-height: 1; text-transform: uppercase; }
+    .step p { color: var(--muted); }
+    .step-status { font-weight: 600; color: var(--ink); }
+    .step-link {
+      margin-top: auto; padding-top: 12px; display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+      font-family: var(--head); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.06em; text-transform: uppercase;
+      border-bottom: 2px solid var(--lime);
+    }
+    .step-link svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
+    .step-link:hover svg { transform: translateX(4px); }
 
     /* ---------- Sektionen ---------- */
     .section { padding: 110px 0; }
@@ -297,7 +323,7 @@
       padding: 30px 12px; border-top: 1px solid var(--line); isolation: isolate;
     }
     .offer-row::before {
-      content: ""; position: absolute; inset: 0; z-index: -1; background: var(--lime);
+      content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -1; background: var(--lime);
       transform: scaleY(0); transform-origin: bottom; transition: transform 0.45s var(--ease);
     }
     .offer-row .num { color: var(--muted); }
@@ -346,24 +372,8 @@
     .address { padding: 28px; display: flex; flex-direction: column; gap: 22px; }
     .address h3 { font-family: var(--head); font-weight: 800; font-size: 2.6rem; line-height: 0.95; text-transform: uppercase; margin-top: 6px; }
     .address .actions { display: grid; gap: 10px; }
-    .map { border-radius: 12px; overflow: hidden; height: 200px; margin-top: auto; border: 1px solid var(--line); }
+    .map { border-radius: 12px; overflow: hidden; height: 240px; margin-top: auto; border: 1px solid var(--line); background: var(--paper-2); }
     .map iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .map-load {
-      width: 100%; height: 100%; border: 0; cursor: pointer; font: inherit; color: var(--ink);
-      display: grid; place-items: center; align-content: center; gap: 8px; padding: 16px;
-      background-color: var(--paper-2);
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .map-load b {
-      font-family: var(--head); font-weight: 700; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.05em;
-      background: var(--white); padding: 8px 16px; border-radius: 8px; border: 2px solid var(--ink);
-      transition: background 0.25s;
-    }
-    .map-load:hover b { background: var(--lime); }
-    .map-load small { color: var(--muted); font-size: 0.8rem; background: var(--paper-2); padding: 0 6px; }
 
     /* ---------- CTA + Footer ---------- */
     .cta {
@@ -419,9 +429,9 @@
       .offer-row .num { grid-column: 1 / -1; }
       .offer-row p { grid-column: 1 / -1; grid-row: 3; }
       .thumb { grid-column: 1 / -1; grid-row: 4; margin-top: 8px; aspect-ratio: 16 / 9; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; gap: 10px; }
-      .gallery figure:first-child { grid-row: auto; grid-column: 1 / -1; aspect-ratio: 4 / 3; }
-      .gallery figure { aspect-ratio: 1; border-radius: 12px; }
+      .steps { padding-top: 56px; }
+      .step-grid { grid-template-columns: 1fr; gap: 12px; }
+      .step { padding: 22px 20px 20px; }
       .hours { padding: 22px 18px 16px; }
       .axis, .h-row { grid-template-columns: 78px 1fr; gap: 6px 12px; }
       .axis > :last-child { display: none; }
@@ -438,9 +448,16 @@
       .js .fade { opacity: 1; transform: none; }
       .js .line > span, .js .mask > span { transform: none; }
       .js .hl::before, .js .bar { transform: none; }
-      .js .reveal-img { clip-path: none; }
       .js .poster, .js .hero-photo { opacity: 1; translate: 0 0; rotate: 0deg; transform: none; }
       .js .sticker { transform: rotate(12deg); }
+    }
+    /* ---------- Drucken ---------- */
+    @media print {
+      .ticker, .nav, .skip, .burger, .hero-actions, .poster .btn, .step-link, .address .actions, .cta-row .actions, footer nav { display: none !important; }
+      .fade, .mask > span, .line > span, .hero-photo, .poster, .hl::before { opacity: 1 !important; transform: none !important; translate: none !important; rotate: none !important; }
+      .section, .cta { padding: 32px 0; }
+      .plan, .step, .card, .offer-row, .h-row { break-inside: avoid; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
     }
   </style>
 </head>
@@ -466,6 +483,7 @@
       <a href="#tarife" class="btn btn-dark">Mitglied werden</a>
       <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
     </div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
@@ -506,19 +524,44 @@
 
         <div class="facts">
           <a class="fact" href="#besuch"><span class="label">Adresse</span><b>Mönchstraße 50, Marsberg</b></a>
-          <a class="fact" href="#besuch"><span class="label">Betreuung heute</span><b><span class="dot" id="status-dot"></span><span id="status-text">–</span></b></a>
+          <a class="fact" href="#besuch"><span class="label">Betreuung heute</span><b><span class="dot" data-status-dot></span><span data-status-text>–</span></b></a>
           <a class="fact" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener"><span class="label">Instagram</span><b>@mrsbrg_moves</b></a>
         </div>
       </div>
     </section>
     <div class="brand-stripe"></div>
 
-    <!-- Bilder: Platzhalter von Unsplash, später durch echte Studiofotos ersetzen -->
-    <section class="gallery" aria-label="Eindrücke">
-      <div class="wrap gallery-grid">
-        <figure class="reveal-img"><img src="images/studio.webp" alt="Heller Trainingsbereich mit Geräten" width="1400" height="1000" loading="lazy"><figcaption class="label">Trainingsfläche</figcaption></figure>
-        <figure class="reveal-img" style="--d:.12s"><img src="images/hanteln.webp" alt="Bauchtraining auf der Matte" width="800" height="600" loading="lazy"></figure>
-        <figure class="reveal-img" style="--d:.24s"><img src="images/kurzhantel.webp" alt="Training mit Kurzhanteln" width="800" height="600" loading="lazy"></figure>
+    <!-- So wirst du Mitglied (bewusst ohne Einblend-Animation, damit es immer sichtbar ist) -->
+    <section class="steps" aria-labelledby="steps-title">
+      <div class="wrap">
+        <div class="steps-head">
+          <div>
+            <span class="label">In 3 Schritten zum Training</span>
+            <h2 id="steps-title">So wirst du Mitglied</h2>
+          </div>
+          <p>Einfach und transparent: Komm zu den Betreuungszeiten vorbei – Anmeldung und Einweisung gibt es direkt vor Ort.</p>
+        </div>
+        <ol class="step-grid">
+          <li class="step">
+            <span class="step-num">01</span>
+            <h3>Tarif wählen</h3>
+            <p>3 oder 12 Monate Laufzeit – die Gründer-Tarife gibt es ab 29,90 € im Monat.</p>
+            <a class="step-link" href="#tarife">Tarife ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="step">
+            <span class="step-num">02</span>
+            <h3>Vorbeikommen</h3>
+            <p>Zu den Betreuungszeiten ist jemand vor Ort für deine Anmeldung – Mönchstraße 50, Marsberg.</p>
+            <p class="step-status"><span class="dot" data-status-dot></span>Betreuung: <span data-status-text>–</span></p>
+            <a class="step-link" href="#besuch">Zeiten &amp; Anfahrt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="step">
+            <span class="step-num">03</span>
+            <h3>Loslegen</h3>
+            <p>Du bekommst eine Einweisung – und zu den Betreuungszeiten ist immer jemand da für Fragen und Tipps.</p>
+            <a class="step-link" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Fragen? Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -633,6 +676,15 @@
               <span></span>
             </div>
             <div id="hours-rows"></div>
+            <noscript>
+              <div class="h-row"><span class="day">Montag</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row"><span class="day">Dienstag</span><span></span><span class="time">9:00–13:00</span></div>
+              <div class="h-row"><span class="day">Mittwoch</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row"><span class="day">Donnerstag</span><span></span><span class="time">9:00–20:00</span></div>
+              <div class="h-row off"><span class="day">Freitag</span><span></span><span class="time">Keine Betreuung</span></div>
+              <div class="h-row off"><span class="day">Samstag</span><span></span><span class="time">Keine Betreuung</span></div>
+              <div class="h-row off"><span class="day">Sonntag</span><span></span><span class="time">Keine Betreuung</span></div>
+            </noscript>
           </div>
 
           <div class="card address fade" style="--d:.1s">
@@ -646,11 +698,9 @@
               </a>
               <a class="btn btn-line" href="https://www.instagram.com/mrsbrg_moves/" target="_blank" rel="noopener">Instagram</a>
             </div>
-            <div class="map" id="map">
-              <button class="map-load" id="map-load" type="button">
-                <b>Karte anzeigen</b>
-                <small>Lädt Google Maps</small>
-              </button>
+            <div class="map">
+              <iframe title="Karte: Mönchstraße 50, 34431 Marsberg" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                src="https://maps.google.com/maps?q=M%C3%B6nchstra%C3%9Fe%2050%2C%2034431%20Marsberg&amp;z=16&amp;output=embed"></iframe>
             </div>
           </div>
         </div>
@@ -704,33 +754,83 @@
     const DAY_START = 6 * 60, DAY_END = 22 * 60;
 
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const now = new Date();
-    const mins = now.getHours() * 60 + now.getMinutes();
     const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
     const pct = m => ((m - DAY_START) / (DAY_END - DAY_START)) * 100;
 
+    // Uhrzeit immer in Marsberger Zeit, egal wo der Besucher gerade ist
+    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    function berlinNow() {
+      try {
+        const fmt = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Berlin", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23" });
+        const p = {};
+        fmt.formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+        const day = WEEKDAYS.indexOf(p.weekday), mins = (+p.hour % 24) * 60 + +p.minute;
+        if (day >= 0 && mins >= 0) return { day, mins };
+      } catch (e) { /* älterer Browser: Gerätezeit verwenden */ }
+      const d = new Date();
+      return { day: d.getDay(), mins: d.getHours() * 60 + d.getMinutes() };
+    }
+
     // ---------- Wochenplan als Balken ----------
     const rowsEl = document.getElementById("hours-rows");
-    HOURS.forEach(({ day, idx, slots }, i) => {
-      const isToday = idx === now.getDay();
+    const rows = HOURS.map(({ day, slots }, i) => {
       const row = document.createElement("div");
-      row.className = "h-row" + (slots.length ? "" : " off") + (isToday ? " today" : "");
+      row.className = "h-row" + (slots.length ? "" : " off");
       const bars = slots.map(([a, b]) =>
         `<span class="bar" style="left:${pct(toMin(a))}%;width:${pct(toMin(b)) - pct(toMin(a))}%;--bd:${0.2 + i * 0.07}s"></span>`).join("");
-      const nowMark = isToday && mins > DAY_START && mins < DAY_END ? `<span class="now" style="left:${pct(mins)}%" title="Jetzt"></span>` : "";
-      row.innerHTML = `<span class="day">${day}</span><div class="track">${bars}${nowMark}</div><span class="time">${
+      row.innerHTML = `<span class="day">${day}</span><div class="track">${bars}<span class="now" title="Jetzt" hidden></span></div><span class="time">${
         slots.length ? slots.map(s => `${s[0]}–${s[1]}`).join(", ") : "Keine Betreuung"}</span>`;
       rowsEl.appendChild(row);
+      return row;
     });
 
-    // ---------- Status heute ----------
-    const today = HOURS.find(h => h.idx === now.getDay());
-    const active = today.slots.find(([a, b]) => mins >= toMin(a) && mins < toMin(b));
-    const next = today.slots.find(([a]) => toMin(a) > mins);
-    document.getElementById("status-dot").classList.toggle("on", !!active);
-    document.getElementById("status-text").textContent =
-      active ? `Jetzt bis ${active[1]} Uhr` : next ? `Ab ${next[0]} Uhr` : "Heute keine mehr";
-    document.getElementById("year").textContent = now.getFullYear();
+    // ---------- Status heute (aktualisiert sich jede Minute) ----------
+    function nextSlot(day, mins) {
+      for (let ahead = 0; ahead < 7; ahead++) {
+        const entry = HOURS.find(h => h.idx === (day + ahead) % 7);
+        const slot = entry.slots.find(([a]) => ahead > 0 || toMin(a) > mins);
+        if (slot) return { ahead, entry, slot };
+      }
+    }
+    function updateStatus() {
+      const { day, mins } = berlinNow();
+      HOURS.forEach((h, i) => {
+        const isToday = h.idx === day;
+        rows[i].classList.toggle("today", isToday);
+        const mark = rows[i].querySelector(".now");
+        mark.hidden = !(isToday && mins > DAY_START && mins < DAY_END);
+        mark.style.left = pct(mins) + "%";
+      });
+      const active = HOURS.find(h => h.idx === day).slots.find(([a, b]) => mins >= toMin(a) && mins < toMin(b));
+      const next = nextSlot(day, mins);
+      const text =
+        active ? `Jetzt bis ${active[1]} Uhr`
+        : !next ? "Heute keine mehr"
+        : next.ahead === 0 ? `Ab ${next.slot[0]} Uhr`
+        : next.ahead === 1 ? `Morgen ab ${next.slot[0]} Uhr`
+        : `${next.entry.day} ab ${next.slot[0]} Uhr`;
+      document.querySelectorAll("[data-status-dot]").forEach(d => d.classList.toggle("on", !!active));
+      document.querySelectorAll("[data-status-text]").forEach(t => t.textContent = text);
+    }
+    updateStatus();
+    setInterval(updateStatus, 30000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) updateStatus(); });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---------- Laufschrift: auch auf breiten Bildschirmen lückenlos ----------
+    const track = document.querySelector(".ticker-track");
+    const group = [...track.children].slice(0, track.children.length / 2).map(s => s.outerHTML).join("");
+    let tickerWidth = 0;
+    function fillTicker() {
+      if (innerWidth === tickerWidth) return;
+      tickerWidth = innerWidth;
+      track.innerHTML = group;
+      const n = Math.max(1, Math.ceil(innerWidth / track.scrollWidth));
+      track.innerHTML = group.repeat(n * 2);
+      track.style.animationDuration = 40 * n + "s";
+    }
+    fillTicker();
+    addEventListener("resize", fillTicker);
 
     // ---------- Start-Animation ----------
     requestAnimationFrame(() => setTimeout(() => document.body.classList.add("ready"), 60));
@@ -746,23 +846,6 @@
     nav.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => setMenu(false)));
     addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setMenu(false); burger.focus(); } });
     document.addEventListener("click", e => { if (!nav.contains(e.target)) setMenu(false); });
-    const onScroll = () => nav.classList.toggle("scrolled", scrollY > 40);
-    addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    // Aktiven Menüpunkt markieren (im Startbereich keiner)
-    const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
-    const sectionIO = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        navLinks.forEach(a => {
-          const on = a.getAttribute("href") === "#" + e.target.id;
-          a.classList.toggle("active", on);
-          on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current");
-        });
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    ["top", "tarife", "angebot", "besuch"].forEach(id => sectionIO.observe(document.getElementById(id)));
 
     // ---------- Preise hochzählen ----------
     function countUp(el) {
@@ -771,29 +854,64 @@
       const fmt = v => v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const t0 = performance.now(), dur = 1100;
       (function step(t) {
-        const p = Math.min((t - t0) / dur, 1);
+        const p = Math.max(0, Math.min((t - t0) / dur, 1));
         el.textContent = fmt(target * (1 - Math.pow(1 - p, 3)));
         if (p < 1) requestAnimationFrame(step);
       })(t0);
     }
 
     // ---------- Beim Scrollen einblenden ----------
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add("visible");
-        e.target.querySelectorAll("[data-count]").forEach(countUp);
-        io.unobserve(e.target);
+    // Bewusst ohne IntersectionObserver: Die Position wird direkt gemessen,
+    // das funktioniert in jedem Browser gleich zuverlässig.
+    let pending = [...document.querySelectorAll(".fade, .mask")];
+    function reveal() {
+      const limit = innerHeight * 0.92;
+      pending = pending.filter(el => {
+        if (el.getBoundingClientRect().top >= limit) return true;
+        el.classList.add("visible");
+        el.querySelectorAll("[data-count]").forEach(countUp);
+        return false;
       });
-    }, { threshold: 0.18 });
-    document.querySelectorAll(".fade, .mask, .reveal-img").forEach(el => io.observe(el));
+    }
 
-    // ---------- Karte erst auf Wunsch laden ----------
-    document.getElementById("map-load").addEventListener("click", () => {
-      document.getElementById("map").innerHTML =
-        '<iframe title="Karte: Mönchstraße 50, 34431 Marsberg" referrerpolicy="no-referrer-when-downgrade" allowfullscreen ' +
-        'src="https://maps.google.com/maps?q=M%C3%B6nchstra%C3%9Fe%2050%2C%2034431%20Marsberg&z=16&output=embed"></iframe>';
-    });
+    // ---------- Aktiven Menüpunkt markieren (im Startbereich keiner) ----------
+    const navLinks = [...nav.querySelectorAll(".nav-links li:not(.nav-cta) a")];
+    const sections = ["top", "tarife", "angebot", "besuch"].map(id => document.getElementById(id));
+    function markNav() {
+      const line = innerHeight * 0.45;
+      let current = sections[0];
+      sections.forEach(sec => { if (sec.getBoundingClientRect().top <= line) current = sec; });
+      navLinks.forEach(a => {
+        const on = a.getAttribute("href") === "#" + current.id;
+        a.classList.toggle("active", on);
+        on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current");
+      });
+    }
+
+    // ---------- Beim Scrollen: Schatten, Fortschrittsleiste, Einblenden ----------
+    const progress = document.getElementById("progress");
+    let ticking = false;
+    function update() {
+      nav.classList.toggle("scrolled", scrollY > 40);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+      reveal();
+      markNav();
+      ticking = false;
+    }
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    addEventListener("load", onScroll);
+    addEventListener("hashchange", onScroll);
+    update();
+
+    // Skript ist komplett durchgelaufen – Animationen dürfen bleiben
+    document.documentElement.classList.add("js-ok");
   </script>
 </body>
 </html>
